@@ -1,13 +1,16 @@
 {
     "private": true,
     "scripts": {
-        "dev": "concurrently --kill-others \"php artisan serve\" \"npm run watch-poll\"",
         "mix": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "serve": "php artisan serve",
+        "migrate": "php artisan migrate",
+        "test": "php artisan test",
+        "deploy": "bash ./deploy.sh"
     },
     "devDependencies": {
         "axios": "^0.27",
