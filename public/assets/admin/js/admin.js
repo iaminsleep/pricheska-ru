@@ -704,3 +704,12 @@
     $brand_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_brand_color)
   }
 })(jQuery)
+
+$('.nav-sidebar a').each(function() {
+    let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
+    let link = this.href;
+    if (link === location) {
+        $(this).addClass('active');
+        $(this).closest('.has-treeview').addClass('menu-open');
+    }
+})

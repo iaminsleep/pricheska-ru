@@ -7,9 +7,12 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
+
         "serve": "php artisan serve",
         "migrate": "php artisan migrate",
         "test": "php artisan test",
+        "routes": "php artisan route:list",
+
         "deploy": "bash ./deploy.sh"
     },
     "devDependencies": {

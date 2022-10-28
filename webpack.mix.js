@@ -25,5 +25,6 @@ mix.scripts([
     'resources/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js',
     'resources/assets/admin/js/adminlte.min.js',
     'resources/assets/admin/js/demo.js',
+    'resources/assets/admin/js/navigation-menu.js',
 ], 'public/assets/admin/js/admin.js');
 

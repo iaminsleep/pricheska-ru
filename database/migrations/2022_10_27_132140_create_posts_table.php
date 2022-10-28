@@ -15,7 +15,7 @@ return new class () extends Migration {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->text('content');
             $table->integer('category_id')->unsigned(); // Auto-increment always increases, so it will never use negative values. You might as well make it unsigned, and you get twice the range of values. On the other hand, if your table uses 231 values, it will probably also use 232 values in a short time, so having twice the range of values isn't a big difference. You will have to upgrade to BIGINT anyway.
