@@ -1,3 +1,5 @@
+$('.select2').select2();
+
 $('.nav-sidebar a').each(function() {
     let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
     let link = this.href;

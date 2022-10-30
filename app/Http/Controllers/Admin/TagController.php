@@ -41,8 +41,6 @@ class TagController extends Controller
     {
         Tag::create($request->all());
 
-        // Сообщение об успешно добавленной категории
-        // $request->session()->flash('success', 'Категория добавлена.');
         return redirect()->route('tags.index')->with('success', 'Тэг добавлен.');
     }
 
