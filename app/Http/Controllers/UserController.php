@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthUser;
 use App\Http\Requests\StoreUser;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,8 +23,37 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        session()->flash('success', 'Регистрация пройдена');
+        session()->flash('success', 'Регистрация пройдена.');
 
-        return redirect()->home();
+        return redirect()->route('login.create');
+    }
+
+    public function loginForm()
+    {
+        return view('user.login');
+    }
+
+    public function login(AuthUser $request)
+    {
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
+            session()->flash('success', 'Вы успешно вошли в систему.');
+            if (Auth::user()->is_admin) {
+                // если пользователь - администратор, его перенесёт на страницу админки
+                return redirect()->route('admin.index');
+            } else {
+                return redirect()->home();
+            }
+        } else {
+            return redirect()->back()->with('error', 'Логин или пароль введён неправильно');
+        };
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login.create');
     }
 }
