@@ -10,6 +10,7 @@
 
         "serve": "php artisan serve",
         "migrate": "php artisan migrate",
+        "migrate-fresh": "php artisan migrate:fresh",
         "test": "php artisan test",
         "routes": "php artisan route:list",
 
