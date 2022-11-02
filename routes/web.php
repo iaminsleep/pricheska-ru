@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'App\Http\Controllers\Admin',
@@ -21,16 +17,25 @@ Route::group([
 });
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    // Доступно и гостям, и авторизованным пользователям
+    Route::get('/', 'PostController@index')->name('home');
+    Route::get('/article', 'PostController@show')->name('posts.single');
+
+    // Доступно только гостям
     Route::group(['middleware' => 'guest'], function () {
-        Route::get('/register', 'UserController@create')->name('register.create');
+        Route::group(['prefix' => 'register'], function () {
+            Route::get('/', 'UserController@create')->name('register.create');
+            Route::post('/', 'UserController@store')->name('register.store');
+        });
 
-        Route::post('/register', 'UserController@store')->name('register.store');
 
-        Route::get('/login', 'UserController@loginForm')->name('login.create');
-
-        Route::post('/login', 'UserController@login')->name('login');
+        Route::group(['prefix' => 'login'], function () {
+            Route::get('/', 'UserController@loginForm')->name('login.create');
+            Route::post('/', 'UserController@login')->name('login');
+        });
     });
 
+    // Доступно только авторизованным пользователям
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/logout', 'UserController@logout')->name('logout');
     });

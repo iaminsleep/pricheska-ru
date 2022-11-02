@@ -20,6 +20,16 @@ mix.styles([
     'resources/assets/admin/css/adminlte.min.css',
 ], 'public/assets/admin/css/admin.css');
 
+mix.styles([
+    'resources/assets/front/css/bootstrap.css',
+    'resources/assets/front/css/font-awesome.min.css',
+    'resources/assets/front/style.css',
+    'resources/assets/front/css/animate.css',
+    'resources/assets/front/css/responsive.css',
+    'resources/assets/front/css/colors.css',
+    'resources/assets/front/css/version/marketing.css',
+], 'public/assets/front/css/front.css');
+
 // combine all the scripts into a single file
 
 mix.scripts([
@@ -30,3 +40,12 @@ mix.scripts([
     'resources/assets/admin/js/demo.js',
     'resources/assets/admin/js/navigation-menu.js',
 ], 'public/assets/admin/js/admin.js');
+
+mix.scripts([
+    'resources/assets/front/js/jquery.min.js',
+    'resources/assets/front/js/tether.min.js',
+    'resources/assets/front/js/bootstrap.js',
+    'resources/assets/front/js/animate.js',
+    'resources/assets/front/js/custom.js',
+
+], 'public/assets/front/js/front.js');

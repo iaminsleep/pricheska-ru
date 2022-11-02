@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function create()
     {
-        return view('user.create');
+        return view('front.user.create');
     }
 
     public function store(StoreUser $request)
@@ -30,7 +30,7 @@ class UserController extends Controller
 
     public function loginForm()
     {
-        return view('user.login');
+        return view('front.user.login');
     }
 
     public function login(AuthUser $request)
