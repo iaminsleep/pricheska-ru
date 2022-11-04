@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
         // Сообщение об успешно добавленной категории
         // $request->session()->flash('success', 'Категория добавлена.');
-        return redirect()->route('categories.index')->with('success', 'Категория добавлена.');
+        return redirect()->route('categories.index')->with('success', 'Категория добавлена');
     }
 
     /**
@@ -73,7 +73,7 @@ class CategoryController extends Controller
         $category->update($request->all()); // slug при этом не изменится, его даже не желательно редактировать, так как он уже проиндексирован, и если изменить slug, то все ссылки, связанные с этим slug, будут битыми (недействительными).
 
         // Сообщение об успешно добавленной категории
-        $request->session()->flash('success', 'Категория отредактирована.');
+        $request->session()->flash('success', 'Изменения сохранены');
         return redirect()->route('categories.index');
     }
 
@@ -85,9 +85,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        // $category = Category::find($id);
-        // $category->delete();
-        Category::destroy($id); // удаление одной строчкой кода
-        return redirect()->route('categories.index')->with('success', 'Категория удалена.');
+        $category = Category::find($id);
+
+        if ($category->posts->count()) {
+            return redirect()->route('categories.index')->with('error', 'Ошибка! У категории есть записи');
+        } // предотвращает удаление категории, у которой уже есть посты. Альтернатива внешним ключам
+
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Категория удалена');
     }
 }

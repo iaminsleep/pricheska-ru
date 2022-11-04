@@ -41,7 +41,7 @@ class TagController extends Controller
     {
         Tag::create($request->all());
 
-        return redirect()->route('tags.index')->with('success', 'Тэг добавлен.');
+        return redirect()->route('tags.index')->with('success', 'Тэг добавлен');
     }
 
     /**
@@ -70,7 +70,7 @@ class TagController extends Controller
 
         $tag->update($request->all());
 
-        $request->session()->flash('success', 'Тэг отредактирован.');
+        $request->session()->flash('success', 'Изменения сохранены');
         return redirect()->route('tags.index');
     }
 
@@ -82,8 +82,14 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        Tag::destroy($id);
+        $tag = Tag::find($id);
 
-        return redirect()->route('tags.index')->with('success', 'Тэг удалён.');
+        if ($tag->posts->count()) {
+            return redirect()->route('categories.index')->with('error', 'Ошибка! У тэга есть записи');
+        } // предотвращает удаление тэга, у которого есть посты
+
+        $tag->delete();
+
+        return redirect()->route('tags.index')->with('success', 'Тэг удалён');
     }
 }

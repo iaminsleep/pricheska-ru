@@ -88,3 +88,7 @@
         </div>
     </section>
 @endsection
+
+@section('scripts')
+    @include('admin.layouts.ckeditor')
+@endsection

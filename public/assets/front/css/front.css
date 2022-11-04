@@ -11000,6 +11000,16 @@ hr.invis3 {
     border-radius: 50%
 }
 
+@charset "UTF-8";
+
+/*!
+ * animate.css -http://daneden.me/animate
+ * Version - 3.5.2
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2017 Daniel Eden
+ */
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -12580,7 +12590,7 @@ hr.invis3 {
 **************************************/
 
 
-/* RESPONSIVE
+/* RESPONSIVE 
 **************************************/
 
 @media (max-width: 1156px) {
@@ -12778,7 +12788,7 @@ hr.invis3 {
 **************************************/
 
 
-/* COLORS
+/* COLORS 
 **************************************/
 
 .authorbox p a,
@@ -12824,7 +12834,7 @@ a:focus,
 }
 
 
-/* OTHER COLORS
+/* OTHER COLORS 
 **************************************/
 
 .navbar-nav .nav-link.active.color-pink-hover,

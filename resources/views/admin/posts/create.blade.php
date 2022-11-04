@@ -68,7 +68,7 @@
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input @error('thumbnail') is-invalid @enderror"
-                                        id="thumbnail" name="thumbnail" required>
+                                        id="thumbnail" name="thumbnail">
                                     <label class="custom-file-label" for="thumbnail">Выберите файл</label>
                                 </div>
                             </div>
@@ -81,4 +81,8 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    @include('admin.layouts.ckeditor')
 @endsection
