@@ -101,8 +101,8 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $data = $request->all();
 
-        if ($file = Post::uploadImage($request, $post->thumbnail)) {
-            $data['thumbnail'] = $file; // загрузка и удаление предыдущего изображения через модель поста
+        if ($file = Post::uploadImage($request, $post->thumbnail)) { // загрузка и удаление предыдущего изображения через модель поста
+            $data['thumbnail'] = $file;
         }
 
         $post->update($data);

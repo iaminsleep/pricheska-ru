@@ -19,7 +19,8 @@ Route::group([
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // Доступно и гостям, и авторизованным пользователям
     Route::get('/', 'PostController@index')->name('home');
-    Route::get('/article', 'PostController@show')->name('posts.single');
+    Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
+    Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');
 
     // Доступно только гостям
     Route::group(['middleware' => 'guest'], function () {

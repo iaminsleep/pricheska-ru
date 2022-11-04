@@ -1,14 +1,6 @@
 <script src="{{ asset('public/assets/ckeditor5/build/ckeditor.js') }}"></script>
 <script type="text/javascript">
     ClassicEditor
-        .create(document.querySelector('#description'), {
-            toolbar: ['heading', '|', 'bold', 'italic', '|', 'undo', 'redo']
-        })
-        .catch(error => {
-            console.log(error);
-        });
-
-    ClassicEditor
         .create(document.querySelector('#content'), {
             toolbar: {
                 items: [

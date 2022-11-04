@@ -9426,6 +9426,7 @@ h6 {
 
 a {
     color: #111111;
+    overflow-wrap: break-word;
 }
 
 body,
@@ -9437,6 +9438,7 @@ p {
     margin-bottom: 26px;
     font-size: 15px;
     line-height: 26px;
+    overflow-wrap: break-word;
 }
 
 a {

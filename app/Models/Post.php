@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use App\Http\Requests\Admin\StorePost;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
+
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Http\Requests\Admin\StorePost;
+
+use Image;
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -53,8 +57,16 @@ class Post extends Model
                 Storage::delete($previousImage);
             }
 
+            $imgFile = $request->file('thumbnail');
+
             $folder = date('Y-m-d');
-            return $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
+            $path = $imgFile->store("images/{$folder}");
+
+            Image::make(public_path('uploads/'.$path))->resize(800, 460, function ($const) {
+                $const->aspectRatio();
+            })->save();
+
+            return $data['thumbnail'] = $path;
         }
         return null;
     }
@@ -73,5 +85,10 @@ class Post extends Model
         if ($this->thumbnail) {
             Storage::delete($this->thumbnail);
         }
+    }
+
+    public function getDate()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
     }
 }

@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Описание</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" rows="3"
+                            <textarea class="form-control @error('description') is-invalid @enderror" rows="5"
                                 placeholder="Вступление к статье" id="description" name="description">{{ old('description') }}</textarea>
                         </div>
                         <div class="form-group">
