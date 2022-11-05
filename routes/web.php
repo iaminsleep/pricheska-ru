@@ -21,6 +21,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/', 'PostController@index')->name('home');
     Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
     Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');
+    Route::get('/tag/{slug}', 'TagController@show')->name('tags.single');
 
     // Доступно только гостям
     Route::group(['middleware' => 'guest'], function () {

@@ -29,7 +29,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <a class="navbar-brand" href="marketing-index.html"><img
-                            src="public/assets/front/images/version/market-logo.png" alt=""></a>
+                            src="{{ asset('public/assets/front/images/version/market-logo.png') }}" alt=""></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -59,15 +59,26 @@
 
         @yield('header')
 
-        <section class="section lb @if (!Request::is('/')) m3rem @endif">
+        <section class="section lb">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        @yield('content')
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="widget-no-style">
+                            <div class="newsletter-widget text-center align-self-center">
+                                <h3>Subscribe Today!</h3>
+                                <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
+                                <form class="form-inline" method="post">
+                                    <input type="text" name="email" placeholder="Add your email here.." required
+                                        class="form-control" />
+                                    <input type="submit" value="Subscribe" class="btn btn-default btn-block" />
+                                </form>
+                            </div><!-- end newsletter -->
+                        </div>
+                        @include('front.posts.layouts.sidebar')
                     </div><!-- end col -->
 
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                        @include('front.posts.layouts.sidebar')
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        @yield('content')
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->
