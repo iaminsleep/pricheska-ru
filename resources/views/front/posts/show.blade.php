@@ -51,7 +51,7 @@
                     @foreach ($post->tags as $tag)
                         <small>
                             <a href="{{ route('tags.single', ['slug' => $tag->slug]) }}"
-                                title="">{{ $tag->title }}</a>
+                                title="{{ $tag->title }}">{{ $tag->title }}</a>
                         </small>
                     @endforeach
                 </div><!-- end meta -->
