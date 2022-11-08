@@ -91,4 +91,9 @@ class Post extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
     }
+
+    public function scopeLike($query, $searchQuery, $field)
+    {
+        return $query->where($field, 'LIKE', "%{$searchQuery}%");
+    }
 }
