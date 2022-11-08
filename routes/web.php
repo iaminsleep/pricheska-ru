@@ -2,29 +2,32 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group([
-    'prefix' => 'admin',
-    'namespace' => 'App\Http\Controllers\Admin',
-    'middleware' => 'admin' // запрос пройдёт через этот посредник
-], function () {
-    Route::get('/', 'MainController@index')->name('admin.index');
-
-    Route::resource('/categories', 'CategoryController');
-
-    Route::resource('/tags', 'TagController');
-
-    Route::resource('/posts', 'PostController');
-});
-
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::group([
+        'prefix' => 'admin',
+        'namespace' => 'Admin',
+        'middleware' => 'admin' // запрос пройдёт через этот посредник
+    ], function () {
+        Route::get('/', 'MainController@index')->name('admin.index');
+
+        Route::resource('/categories', 'CategoryController');
+
+        Route::resource('/tags', 'TagController');
+
+        Route::resource('/posts', 'PostController');
+    });
+
     // Доступно и гостям, и авторизованным пользователям
-    Route::get('/', 'PostController@index')->name('home');
 
-    Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
-    Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');
-    Route::get('/tag/{slug}', 'TagController@show')->name('tags.single');
+    Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {
+        Route::get('/', 'PostController@index')->name('posts.index');
 
-    Route::get('/search', 'SearchController@index')->name('search');
+        Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
+        Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');
+        Route::get('/tag/{slug}', 'TagController@show')->name('tags.single');
+
+        Route::get('/search', 'SearchController@index')->name('search');
+    });
 
     // Доступно только гостям
     Route::group(['middleware' => 'guest'], function () {

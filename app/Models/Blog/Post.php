@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Request;
 
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Sluggable;
-use App\Http\Requests\Admin\StorePost;
+use App\Http\Requests\Blog\StorePost;
 
 use Image;
 use Carbon\Carbon;
@@ -92,7 +92,7 @@ class Post extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
     }
 
-    public function scopeLike($query, $searchQuery, $field)
+    public function scopeLike($query, $field, $searchQuery)
     {
         return $query->where($field, 'LIKE', "%{$searchQuery}%");
     }

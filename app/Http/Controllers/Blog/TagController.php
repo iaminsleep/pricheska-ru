@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
-use App\Models\Tag;
+use App\Http\Controllers\Controller;
+
+use App\Models\Blog\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -14,7 +16,7 @@ class TagController extends Controller
         $posts = $tag->posts()->with('category')->orderBy('id', 'desc')->paginate(5); // жадно забираем посты с категориями для уменьшения кол-ва запросов
 
         return view(
-            'front.tags.show',
+            'front.blog.tags.show',
             [
                 'tag' => $tag,
                 'posts' => $posts

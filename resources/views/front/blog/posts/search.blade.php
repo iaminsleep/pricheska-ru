@@ -1,4 +1,4 @@
-@extends('front.posts.layouts.layout')
+@extends('front.blog.posts.layouts.layout')
 
 @section('title', 'Markedia - Search')
 
@@ -13,7 +13,7 @@
                 </div><!-- end col -->
                 <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Blog</a></li>
                         <li class="breadcrumb-item active">Marketing</li>
                     </ol>

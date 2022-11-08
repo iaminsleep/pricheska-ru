@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
-use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Models\Blog\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,7 @@ class CategoryController extends Controller
         $posts = $category->posts()->orderBy('id', 'desc')->paginate(5);
 
         return view(
-            'front.categories.show',
+            'front.blog.categories.show',
             [
                 'category' => $category,
                 'posts' => $posts

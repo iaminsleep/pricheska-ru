@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Post;
-use App\Models\Category;
+use App\Models\Blog\Post;
+use App\Models\Blog\Category;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // использование view composer для вывода данных, в этом случае не нужно передавать данные из контроллера в blade, функция boot делает всё заранее
-        view()->composer('front.posts.layouts.sidebar', function ($view) {
+        view()->composer('front.blog.posts.layouts.sidebar', function ($view) {
             // проверка, есть ли в кэше популярные категории, если их нет то он обновляет данные каждые 60 секунд, т.к по истечению времени данные удаляются из кэша
             if (Cache::has('popular_categories')) {
                 $popular_categories = Cache::get('popular_categories');

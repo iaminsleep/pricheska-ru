@@ -1,4 +1,4 @@
-@extends('front.posts.layouts.layout')
+@extends('front.blog.posts.layouts.layout')
 
 @section('title', $post->title . ' - Markedia')
 
@@ -6,7 +6,7 @@
     <div class="page-wrapper">
         <div class="blog-title-area">
             <ol class="breadcrumb hidden-xs-down">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Home</a></li>
                 <li class="breadcrumb-item"><a
                         href="{{ route('categories.single', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a>
                 </li>

@@ -6,24 +6,18 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="marketing-index.html"><img
-                    src="public/assets/front/images/version/market-logo.png" alt=""></a>
+            <a class="navbar-brand" href="{{ route('posts.index') }}"><img
+                    src="{{ asset('public/assets/front/images/version/market-logo.png') }}" alt=""></a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="marketing-category.html">Marketing</a>
+                        <a class="nav-link" href="marketing-blog.html">Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="marketing-category.html">Make Money</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="marketing-blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="marketing-contact.html">Contact Us</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">Blog</a>
                     </li>
                 </ul>
                 <form class="form-inline" method="get" action="{{ route('search') }}">

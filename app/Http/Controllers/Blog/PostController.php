@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
-use App\Models\Post;
+use App\Http\Controllers\Controller;
+
+use App\Models\Blog\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,7 +13,7 @@ class PostController extends Controller
     {
         $posts = Post::with('category')->orderBy('id', 'desc')->paginate(3);
         return view(
-            'front.posts.index',
+            'front.blog.posts.index',
             ['posts' => $posts]
         );
     }
@@ -23,7 +25,8 @@ class PostController extends Controller
         $post->views += 1; // обновляем счётчик постов
         $post->update();
 
-        return view('front.posts.show',
+        return view(
+            'front.blog.posts.show',
             ['post' => $post]
         );
     }

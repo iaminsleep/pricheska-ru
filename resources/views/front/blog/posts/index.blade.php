@@ -1,4 +1,4 @@
-@extends('front.posts.layouts.layout')
+@extends('front.blog.posts.layouts.layout')
 
 @section('title', 'Markedia - Главная')
 

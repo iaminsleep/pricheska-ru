@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Tag;
-use App\Models\Post;
-use App\Models\Category;
+use App\Models\Blog\Tag;
+use App\Models\Blog\Post;
+use App\Models\Blog\Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\Admin\StorePost;
+use App\Http\Requests\Blog\StorePost;
 
 class PostController extends Controller
 {
