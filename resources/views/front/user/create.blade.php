@@ -6,6 +6,7 @@
 
     <body class="hold-transition register-page">
         <div class="register-box">
+            <a href="{{ route('posts.index') }}" class="h1"><b>Регистрация</b></a>
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
                     <div class="h1"><b>Регистрация</b></div>

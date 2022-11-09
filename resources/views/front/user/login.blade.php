@@ -60,8 +60,10 @@
                         </div>
 
                     </form>
-                    <a href="login.html" class="text-center">Забыл пароль</a>
-                    <a href="login.html" class="text-center">У меня нет аккаунта</a></a>
+                    <div style="display: flex; flex-direction: column; align-items: baseline;">
+                        <a href="{{ route('login.create') }}" class="text-center">Забыл пароль</a>
+                        <a href="{{ route('register.create') }}" class="text-center">У меня нет аккаунта</a></a>
+                    </div>
                 </div>
 
             </div>

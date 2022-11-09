@@ -6,6 +6,7 @@ use App\Models\Blog\Post;
 use App\Models\Blog\Category;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrapFive();
+
         // использование view composer для вывода данных, в этом случае не нужно передавать данные из контроллера в blade, функция boot делает всё заранее
         view()->composer('front.blog.posts.layouts.sidebar', function ($view) {
             // проверка, есть ли в кэше популярные категории, если их нет то он обновляет данные каждые 60 секунд, т.к по истечению времени данные удаляются из кэша

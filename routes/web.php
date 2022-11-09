@@ -20,7 +20,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // Доступно и гостям, и авторизованным пользователям
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {
-        Route::get('/', 'PostController@index')->name('posts.index');
+        Route::get('/', 'PostController@index')->name('home');
 
         Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
         Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');

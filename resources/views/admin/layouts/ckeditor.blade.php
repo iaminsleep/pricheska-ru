@@ -1,4 +1,4 @@
-<script src="{{ asset('public/assets/ckeditor5/build/ckeditor.js') }}"></script>
+<script src="{{ asset('public/assets/front/blog/ckeditor5/build/ckeditor.js') }}"></script>
 <script type="text/javascript">
     ClassicEditor
         .create(document.querySelector('#content'), {
