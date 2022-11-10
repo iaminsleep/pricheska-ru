@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Blog;
 
 use App\Models\Blog\Tag;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class TagController extends Controller
     {
         $tags = Tag::paginate(5);
 
-        return view('admin.tags.index', compact('tags'));
+        return view('admin.blog-tags.index', compact('tags'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        return view('admin.blog-tags.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class TagController extends Controller
     {
         $tag = Tag::findOrFail($id);
 
-        return view('admin.tags.edit', ['tag' => $tag]); // another way instead of "compact()"
+        return view('admin.blog-tags.edit', ['tag' => $tag]); // another way instead of "compact()"
     }
 
     /**

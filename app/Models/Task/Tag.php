@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Blog;
+namespace App\Models\Task;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +16,7 @@ class Tag extends Model
      *
      * @var string
      */
-    protected $table = 'blog_tags';
+    protected $table = 'tags';
 
     protected $fillable = ['title'];
 

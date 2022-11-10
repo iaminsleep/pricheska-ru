@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-// combine all the styles into a single file
+// ADMIN
 
 mix.styles([
     'resources/assets/admin/plugins/fontawesome-free/css/all.min.css',
@@ -19,18 +19,6 @@ mix.styles([
     'resources/assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.css',
     'resources/assets/admin/css/adminlte.min.css',
 ], 'public/assets/admin/css/admin.css');
-
-mix.styles([
-    'resources/assets/front/blog/css/bootstrap.css',
-    'resources/assets/front/blog/css/font-awesome.min.css',
-    'resources/assets/front/blog/style.css',
-    'resources/assets/front/blog/css/animate.css',
-    'resources/assets/front/blog/css/responsive.css',
-    'resources/assets/front/blog/css/colors.css',
-    'resources/assets/front/blog/css/version/marketing.css',
-], 'public/assets/front/blog/css/front.css');
-
-// combine all the scripts into a single file
 
 mix.scripts([
     'resources/assets/admin/plugins/jquery/jquery.min.js',
@@ -41,6 +29,25 @@ mix.scripts([
     'resources/assets/admin/js/demo.js',
     'resources/assets/admin/js/adminlte-init-elements.js',
 ], 'public/assets/admin/js/admin.js');
+
+// TASK
+
+mix.styles([
+    'resources/assets/front/tasks/css/style.css',
+    'resources/assets/front/tasks/css/normalize.css',
+], 'public/assets/front/tasks/css/front.css');
+
+// BLOG
+
+mix.styles([
+    'resources/assets/front/blog/css/bootstrap.css',
+    'resources/assets/front/blog/css/font-awesome.min.css',
+    'resources/assets/front/blog/style.css',
+    'resources/assets/front/blog/css/animate.css',
+    'resources/assets/front/blog/css/responsive.css',
+    'resources/assets/front/blog/css/colors.css',
+    'resources/assets/front/blog/css/version/marketing.css',
+], 'public/assets/front/blog/css/front.css');
 
 mix.scripts([
     'resources/assets/front/blog/js/jquery.min.js',

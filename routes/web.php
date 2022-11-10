@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    // Доступно только админам
     Route::group([
         'prefix' => 'admin',
         'namespace' => 'Admin',
@@ -10,17 +11,30 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     ], function () {
         Route::get('/', 'MainController@index')->name('admin.index');
 
-        Route::resource('/categories', 'CategoryController');
+        Route::group(['namespace' => 'Blog'], function () {
+            Route::resource('/categories', 'CategoryController');
 
-        Route::resource('/tags', 'TagController');
+            Route::resource('/blog-tags', 'TagController');
 
-        Route::resource('/posts', 'PostController');
+            Route::resource('/posts', 'PostController');
+        });
+
+        Route::group(['namespace' => 'Task'], function () {
+            Route::resource('/tags', 'TagController');
+
+            Route::resource('/tasks', 'TaskController');
+        });
     });
 
     // Доступно и гостям, и авторизованным пользователям
+    Route::group(['namespace' => 'Task'], function () {
+        Route::get('/', 'TaskController@index')->name('home');
+
+        Route::get('/tasks', 'TaskController@index')->name('tasks.index');
+    });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {
-        Route::get('/', 'PostController@index')->name('home');
+        Route::get('/', 'PostController@index')->name('posts.index');
 
         Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
         Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');

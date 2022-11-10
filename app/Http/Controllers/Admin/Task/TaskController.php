@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Task;
 
 use App\Models\Blog\Tag;
 use App\Models\Blog\Post;
@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Blog\StorePost;
 
-class PostController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('category', 'tags')->paginate(5); // извлекаем посты с определёнными отношениями (не всеми), для оптимизации ресурсов
-        return view('admin.posts.index', ['posts' => $posts]);
+        return view('admin.tasks.index', ['posts' => $posts]);
     }
 
     /**
