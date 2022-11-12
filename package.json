@@ -10,7 +10,9 @@
 
         "serve": "php artisan serve",
         "migrate": "php artisan migrate",
-        "migrate-fresh": "php artisan migrate:fresh",
+        "fresh": "php artisan migrate:fresh",
+        "seed": "php artisan db:seed",
+        "refresh": "npm run fresh && npm run seed",
         "test": "php artisan test",
         "routes": "php artisan route:list",
 

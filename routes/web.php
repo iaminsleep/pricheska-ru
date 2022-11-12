@@ -11,6 +11,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     ], function () {
         Route::get('/', 'MainController@index')->name('admin.index');
 
+        Route::resource('/roles', 'RoleController');
+
         Route::group(['namespace' => 'Blog'], function () {
             Route::resource('/categories', 'CategoryController');
 
