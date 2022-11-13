@@ -49,22 +49,12 @@ trait HasRolesAndPermissions
         return (bool) $this->permissions->where('slug', $permission->slug)->count();
     }
 
-    // The above method will check if the user’s permissions contain the given permission, if yes then it will return true otherwise false. As we know, we have many to many relationships between roles and permissions. This enables us to check if a user has permission through its role
-    /**
-     * @param $permission
-     * @return bool
-     */
-    protected function hasPermissionTo($permission)
-    {
-        return $this->hasPermissionThroughRole($permission) || $this->hasPermission($permission);
-    }
-
     // Now, we have one method which will check if a user has the permissions directly or through a role.
     /**
      * @param $permission
      * @return bool
      */
-    public function hasPermissionThroughRole($permission)
+    protected function hasPermissionThroughRole($permission)
     {
         foreach ($permission->roles as $role) {
             if ($this->roles->contains($role)) {
@@ -72,6 +62,16 @@ trait HasRolesAndPermissions
             }
         }
         return false;
+    }
+
+    // The above method will check if the user’s permissions contain the given permission, if yes then it will return true otherwise false. As we know, we have many to many relationships between roles and permissions. This enables us to check if a user has permission through its role
+    /**
+     * @param $permission
+     * @return bool
+     */
+    public function hasPermissionTo($permission)
+    {
+        return $this->hasPermissionThroughRole($permission) || $this->hasPermission($permission);
     }
 
     // Now let’s say we want to attach some permissions to the current user. We will add a new method to accomplish this.

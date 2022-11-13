@@ -195,7 +195,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Imported Service Providers...
+         */
         Intervention\Image\ImageServiceProvider::class,
+        App\Providers\RoleServiceProvider::class,
+        App\Providers\PermissionServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
 
     ],
 

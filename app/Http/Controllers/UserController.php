@@ -40,7 +40,7 @@ class UserController extends Controller
             'password' => $request->password
         ])) {
             session()->flash('success', 'Вы успешно вошли в систему.');
-            if (Auth::user()->is_admin) {
+            if (Auth::user()->hasRole('admin')) {
                 // если пользователь - администратор, его перенесёт на страницу админки
                 return redirect()->route('admin.index');
             } else {

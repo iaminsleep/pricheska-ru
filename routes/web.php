@@ -7,7 +7,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::group([
         'prefix' => 'admin',
         'namespace' => 'Admin',
-        'middleware' => 'admin' // запрос пройдёт через этот посредник
+        'middleware' => 'role:admin' // запрос пройдёт через этот посредник
     ], function () {
         Route::get('/', 'MainController@index')->name('admin.index');
 

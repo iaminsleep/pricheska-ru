@@ -22,12 +22,12 @@ class RoleSeeder extends Seeder
 
         $user = new Role();
         $user->name = 'Пользователь';
-        $user->slug = 'polzovatel';
+        $user->slug = 'user';
         $user->save();
 
         $hairdresser = new Role();
         $hairdresser->name = 'Парикмахер';
-        $hairdresser->slug = 'parikmaher';
+        $hairdresser->slug = 'hairdresser';
         $hairdresser->save();
     }
 }
