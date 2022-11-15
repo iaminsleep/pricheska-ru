@@ -11,10 +11,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     ], function () {
         Route::get('/', 'MainController@index')->name('admin.index');
 
+        Route::resource('/users', 'UserController');
+
         Route::resource('/roles', 'RoleController');
 
         Route::group(['namespace' => 'Blog'], function () {
-            Route::resource('/categories', 'CategoryController');
+            Route::resource('/blog-categories', 'CategoryController');
 
             Route::resource('/blog-tags', 'TagController');
 
@@ -22,6 +24,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         });
 
         Route::group(['namespace' => 'Task'], function () {
+            Route::resource('/categories', 'CategoryController');
+
             Route::resource('/tags', 'TagController');
 
             Route::resource('/tasks', 'TaskController');

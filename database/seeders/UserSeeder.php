@@ -18,13 +18,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = Role::where('slug', 'admin')->first();
-        $user = Role::where('slug', 'user')->first();
-        $hairdresser = Role::where('slug', 'hairdresser')->first();
+        $admin = Role::where('codename', 'admin')->first();
+        $user = Role::where('codename', 'user')->first();
+        $hairdresser = Role::where('codename', 'hairdresser')->first();
 
-        $manageEverything = Permission::where('slug', 'manage-everything')->first();
-        $createTasks = Permission::where('slug', 'create-task')->first();
-        $createBlog = Permission::where('slug', 'create-blog')->first();
+        $manageEverything = Permission::where('codename', 'manage-everything')->first();
+        $createTasks = Permission::where('codename', 'create-task')->first();
+        $createBlog = Permission::where('codename', 'create-blog')->first();
 
         $user0 = new User();
         $user0->name = 'Admin';

@@ -10,6 +10,53 @@
                 </p>
             </a>
         </li>
+        <li class="nav-header">ОСНОВНОЕ</li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    Пользователи
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Список пользователей</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('users.create') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Новый пользователь</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                    Роли
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('tags.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Список ролей</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('tags.create') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Новая роль</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-header">СЕРВИС</li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -59,7 +106,7 @@
         </li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
+                <i class="nav-icon fas fa-book"></i>
                 <p>
                     Заказы
                     <i class="right fas fa-angle-left"></i>

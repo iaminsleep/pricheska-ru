@@ -17,17 +17,17 @@ class RoleSeeder extends Seeder
     {
         $admin = new Role();
         $admin->name = 'Админ';
-        $admin->slug = 'admin';
+        $admin->codename = 'admin';
         $admin->save();
 
         $user = new Role();
         $user->name = 'Пользователь';
-        $user->slug = 'user';
+        $user->codename = 'user';
         $user->save();
 
         $hairdresser = new Role();
         $hairdresser->name = 'Парикмахер';
-        $hairdresser->slug = 'hairdresser';
+        $hairdresser->codename = 'hairdresser';
         $hairdresser->save();
     }
 }

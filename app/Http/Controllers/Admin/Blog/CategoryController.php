@@ -18,7 +18,7 @@ class CategoryController extends Controller
     {
         $categories = Category::paginate(5);
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.blog-categories.index', compact('categories'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.blog-categories.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
         // Сообщение об успешно добавленной категории
         // $request->session()->flash('success', 'Категория добавлена.');
-        return redirect()->route('categories.index')->with('success', 'Категория добавлена');
+        return redirect()->route('blog-categories.index')->with('success', 'Категория добавлена');
     }
 
     /**
@@ -56,7 +56,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return view('admin.categories.edit', ['category' => $category]); // another way instead of "compact()"
+        return view('admin.blog-categories.edit', ['category' => $category]); // another way instead of "compact()"
     }
 
     /**
@@ -74,7 +74,7 @@ class CategoryController extends Controller
 
         // Сообщение об успешно добавленной категории
         $request->session()->flash('success', 'Изменения сохранены');
-        return redirect()->route('categories.index');
+        return redirect()->route('blog-categories.index');
     }
 
     /**
@@ -88,11 +88,11 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if ($category->posts->count()) {
-            return redirect()->route('categories.index')->with('error', 'Ошибка! У категории есть записи');
+            return redirect()->route('blog-categories.index')->with('error', 'Ошибка! У категории есть записи');
         } // предотвращает удаление категории, у которой уже есть посты. Альтернатива внешним ключам
 
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Категория удалена');
+        return redirect()->route('blog-categories.index')->with('success', 'Категория удалена');
     }
 }

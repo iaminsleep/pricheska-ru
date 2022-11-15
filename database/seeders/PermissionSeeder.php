@@ -17,17 +17,17 @@ class PermissionSeeder extends Seeder
     {
         $manageEverything = new Permission();
         $manageEverything->name = 'Управлять всем';
-        $manageEverything->slug = 'manage-everything';
+        $manageEverything->codename = 'manage-everything';
         $manageEverything->save();
 
         $manageUser = new Permission();
         $manageUser->name = 'Создать задание';
-        $manageUser->slug = 'create-task';
+        $manageUser->codename = 'create-task';
         $manageUser->save();
 
         $createTasks = new Permission();
         $createTasks->name = 'Создать блог';
-        $createTasks->slug = 'create-blog';
+        $createTasks->codename = 'create-blog';
         $createTasks->save();
     }
 }

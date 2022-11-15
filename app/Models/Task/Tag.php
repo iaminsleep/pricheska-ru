@@ -2,9 +2,10 @@
 
 namespace App\Models\Task;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Task\Task;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tag extends Model
 {
@@ -20,9 +21,9 @@ class Tag extends Model
 
     protected $fillable = ['title'];
 
-    public function posts()
+    public function tasks()
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Task::class);
     }
 
     /**

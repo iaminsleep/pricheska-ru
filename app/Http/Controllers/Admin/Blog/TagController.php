@@ -85,7 +85,7 @@ class TagController extends Controller
         $tag = Tag::find($id);
 
         if ($tag->posts->count()) {
-            return redirect()->route('categories.index')->with('error', 'Ошибка! У тэга есть записи');
+            return redirect()->route('tags.index')->with('error', 'Ошибка! У тэга есть записи');
         } // предотвращает удаление тэга, у которого есть посты
 
         $tag->delete();

@@ -12,10 +12,10 @@ return new class () extends Migration {
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('blog_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug')->unique(); // можно сделать поле уникальным (unique), но в этом проекте используется библиотека которая будет следить за уникальностью slug'ов, поэтому этот параметр здесь не потребуется
             $table->timestamps();
         });
     }
