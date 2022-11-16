@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Task;
 
-use App\Models\Blog\Tag;
-use App\Models\Blog\Post;
-use App\Models\Blog\Category;
+use App\Models\Task\Tag;
+use App\Models\Task\Task;
+use App\Models\Task\Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,8 +20,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category', 'tags')->paginate(5); // извлекаем посты с определёнными отношениями (не всеми), для оптимизации ресурсов
-        return view('admin.tasks.index', ['posts' => $posts]);
+        $tasks = Task::with('category', 'tags')->paginate(5); // извлекаем посты с определёнными отношениями (не всеми), для оптимизации ресурсов
+        return view('admin.tasks.index', ['tasks' => $tasks]);
     }
 
     /**
@@ -34,7 +34,7 @@ class TaskController extends Controller
         $categories = Category::pluck('title', 'id')->all(); // превращение в массив, где два выбранных поля для вывода превращаются в ключ => значение
         $tags = Tag::pluck('title', 'id')->all();
 
-        return view('admin.posts.create', [
+        return view('admin.tasks.create', [
             'categories' => $categories,
             'tags' => $tags
         ]);
@@ -50,13 +50,13 @@ class TaskController extends Controller
     {
         $data = $request->all();
 
-        $data['thumbnail'] = Post::uploadImage($request); // логика с загрузкой изображения перенесена в модель
+        $data['image'] = Task::uploadImage($request); // логика с загрузкой изображения перенесена в модель
 
-        $post = Post::create($data);
+        $post = Task::create($data);
 
         $post->tags()->sync($request->tags); // синхронизируем тэги с постами, передаём в sync() массив тэгов. При этом меняется таблица post_tag с many to many отношением.
 
-        return redirect()->route('posts.index')->with('success', 'Статья добавлена');
+        return redirect()->route('admin.tasks.index')->with('success', 'Статья добавлена');
     }
 
     /**
@@ -80,10 +80,10 @@ class TaskController extends Controller
     {
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
-        $post = Post::findOrFail($id);
+        $task = Task::findOrFail($id);
 
-        return view('admin.posts.edit', [
-            'post' => $post,
+        return view('admin.tasks.edit', [
+            'task' => $task,
             'categories' => $categories,
             'tags' => $tags
         ]);
@@ -98,18 +98,18 @@ class TaskController extends Controller
      */
     public function update(StorePost $request, $id)
     {
-        $post = Post::findOrFail($id);
+        $task = Task::findOrFail($id);
         $data = $request->all();
 
-        if ($file = Post::uploadImage($request, $post->thumbnail)) { // загрузка и удаление предыдущего изображения через модель поста
-            $data['thumbnail'] = $file;
+        if ($file = Task::uploadImage($request, $taks->thumbnail)) { // загрузка и удаление предыдущего изображения через модель поста
+            $data['image'] = $file;
         }
 
-        $post->update($data);
-        $post->tags()->sync($request->tags);
+        $task->update($data);
+        $task->tags()->sync($request->tags);
 
         $request->session()->flash('success', 'Изменения сохранены');
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.tasks.index');
     }
 
     /**
@@ -120,12 +120,12 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
+        $task = Task::findOrFail($id);
 
-        $post->tags()->sync([]); // удаляем теги из таблицы связи тэгов и постов
-        $post->deleteImage(); // удаление изображения через фукнцию в eloquent модели
-        $post->delete();
+        $task->tags()->sync([]); // удаляем теги из таблицы связи тэгов и постов
+        $task->deleteImage(); // удаление изображения через фукнцию в eloquent модели
+        $task->delete();
 
-        return redirect()->route('posts.index')->with('success', 'Статья удалена');
+        return redirect()->route('admin.tasks.index')->with('success', 'Статья удалена');
     }
 }

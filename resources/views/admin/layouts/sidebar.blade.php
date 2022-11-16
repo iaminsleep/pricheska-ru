@@ -114,13 +114,13 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('tasks.index') }}" class="nav-link">
+                    <a href="{{ route('admin.tasks.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Список заказов</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('tasks.create') }}" class="nav-link">
+                    <a href="{{ route('admin.tasks.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Новый заказ</p>
                     </a>
@@ -138,13 +138,13 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('categories.index') }}" class="nav-link">
+                    <a href="{{ route('blog-categories.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Список категорий</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('categories.create') }}" class="nav-link">
+                    <a href="{{ route('blog-categories.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Новая категория</p>
                     </a>
@@ -184,13 +184,13 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('posts.index') }}" class="nav-link">
+                    <a href="{{ route('admin.posts.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Список статей</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('posts.create') }}" class="nav-link">
+                    <a href="{{ route('admin.posts.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Новая статья</p>
                     </a>

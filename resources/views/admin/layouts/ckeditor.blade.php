@@ -55,7 +55,7 @@
                 ]
             },
             ckfinder: {
-                uploadUrl: '/public/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+                uploadUrl: '/public/assets/front/blog/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
             }
         })
         .catch(error => {

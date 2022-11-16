@@ -56,7 +56,7 @@ class PostController extends Controller
 
         $post->tags()->sync($request->tags); // синхронизируем тэги с постами, передаём в sync() массив тэгов. При этом меняется таблица post_tag с many to many отношением.
 
-        return redirect()->route('posts.index')->with('success', 'Статья добавлена');
+        return redirect()->route('admin.posts.index')->with('success', 'Статья добавлена');
     }
 
     /**
@@ -109,7 +109,7 @@ class PostController extends Controller
         $post->tags()->sync($request->tags);
 
         $request->session()->flash('success', 'Изменения сохранены');
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -126,6 +126,6 @@ class PostController extends Controller
         $post->deleteImage(); // удаление изображения через фукнцию в eloquent модели
         $post->delete();
 
-        return redirect()->route('posts.index')->with('success', 'Статья удалена');
+        return redirect()->route('admin.posts.index')->with('success', 'Статья удалена');
     }
 }

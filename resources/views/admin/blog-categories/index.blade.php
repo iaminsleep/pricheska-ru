@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">
+                <a href="{{ route('blog-categories.create') }}" class="btn btn-primary mb-3">
                     Добавить категорию
                 </a>
                 @if ($categories->count())

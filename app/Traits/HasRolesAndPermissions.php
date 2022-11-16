@@ -32,7 +32,7 @@ trait HasRolesAndPermissions
     {
         // we are passing $roles array and running a for each loop on each role to check if the current user’s roles contain the given role.
         foreach ($roles as $role) {
-            if ($this->roles->contains('slug', $role)) {
+            if ($this->roles->contains('codename', $role)) {
                 return true;
             }
         }

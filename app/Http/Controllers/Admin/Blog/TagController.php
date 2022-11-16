@@ -41,7 +41,7 @@ class TagController extends Controller
     {
         Tag::create($request->all());
 
-        return redirect()->route('tags.index')->with('success', 'Тэг добавлен');
+        return redirect()->route('tags.index')->with('success', 'Тэг для блога добавлен');
     }
 
     /**
@@ -85,11 +85,11 @@ class TagController extends Controller
         $tag = Tag::find($id);
 
         if ($tag->posts->count()) {
-            return redirect()->route('tags.index')->with('error', 'Ошибка! У тэга есть записи');
+            return redirect()->route('tags.index')->with('error', 'Ошибка! У тэга для блога уже есть записи');
         } // предотвращает удаление тэга, у которого есть посты
 
         $tag->delete();
 
-        return redirect()->route('tags.index')->with('success', 'Тэг удалён');
+        return redirect()->route('tags.index')->with('success', 'Тэг для блога удалён');
     }
 }

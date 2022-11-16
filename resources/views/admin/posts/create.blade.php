@@ -22,7 +22,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Заполните форму</h3>
                 </div>
-                <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">

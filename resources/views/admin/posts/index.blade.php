@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">
+                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-3">
                     Добавить статью
                 </a>
                 @if ($posts->count())
@@ -64,11 +64,15 @@
                                         </td>
                                         <td>{{ $post->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('posts.edit', ['post' => $post->id]) }}"
+                                            <a href="{{ route('posts.single', ['slug' => $post->slug]) }}"
+                                                class="btn btn-warning btn-sm float-left mr-1" target="_blank">
+                                                <i class="fas fa-share"></i>
+                                            </a>
+                                            <a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}"
                                                 class="btn btn-info btn-sm float-left mr-1">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <form action="{{ route('posts.destroy', ['post' => $post->id]) }}"
+                                            <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}"
                                                 method="post" class="float-left">
                                                 @csrf
                                                 @method('DELETE')

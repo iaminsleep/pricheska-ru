@@ -20,7 +20,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
             Route::resource('/blog-tags', 'TagController');
 
-            Route::resource('/posts', 'PostController');
+            Route::resource('/posts', 'PostController', [
+                'names' => [
+                    'index' => 'admin.posts.index',
+                    'create' => 'admin.posts.create',
+                    'store' => 'admin.posts.store',
+                    'edit' => 'admin.posts.edit',
+                    'update' => 'admin.posts.update',
+                    'destroy' => 'admin.posts.destroy',
+                ]
+            ]);
         });
 
         Route::group(['namespace' => 'Task'], function () {
@@ -28,7 +37,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
             Route::resource('/tags', 'TagController');
 
-            Route::resource('/tasks', 'TaskController');
+            Route::resource('/tasks', 'TaskController', [
+                'names' => [
+                    'index' => 'admin.tasks.index',
+                    'create' => 'admin.tasks.create',
+                    'store' => 'admin.tasks.store',
+                    'edit' => 'admin.tasks.edit',
+                    'update' => 'admin.tasks.update',
+                    'destroy' => 'admin.tasks.destroy',
+                ]
+            ]);
         });
     });
 

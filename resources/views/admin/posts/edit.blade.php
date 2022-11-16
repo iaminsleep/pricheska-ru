@@ -22,7 +22,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Заполните форму</h3>
                 </div>
-                <form action="{{ route('posts.update', ['post' => $post->id]) }}" method="post"
+                <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')

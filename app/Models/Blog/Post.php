@@ -60,7 +60,7 @@ class Post extends Model
             $imgFile = $request->file('thumbnail');
 
             $folder = date('Y-m-d');
-            $path = $imgFile->store("images/{$folder}");
+            $path = $imgFile->store("blog/thumbnails/{$folder}");
 
             Image::make(public_path('uploads/'.$path))->resize(800, 460, function ($const) {
                 $const->aspectRatio();
