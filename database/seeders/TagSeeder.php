@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class BlogTagSeeder extends Seeder
+class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -32,6 +33,6 @@ class BlogTagSeeder extends Seeder
             ['title' => 'Учёба', 'slug' => 'ucheba', 'created_at' => now(), 'updated_at' => now()],
         ];
 
-        DB::table('blog_tags')->insert($tags);
+        DB::table('tags')->insert($tags);
     }
 }

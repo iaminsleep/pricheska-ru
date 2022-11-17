@@ -2,8 +2,13 @@
 
 namespace App\Models\Task;
 
+use Image;
+use Carbon\Carbon;
+use App\Models\Tag;
+use App\Models\Task\Category;
 use App\Http\Requests\Task\StoreTask;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model
@@ -17,14 +22,14 @@ class Task extends Model
         'creator_id',
         'budget',
         'deadline',
-        'location',
+        'address',
         'performer_id',
         'image',
     ];
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class)->withTimestamps(); // при использовании $task->tags()->sync() автоматически заполняется таблица task_tag, но при этом не сохраняется время. Функция withTimestamps() исправляет это дело.
+        return $this->belongsToMany(Tag::class, 'task_tag')->withTimestamps(); // при использовании $task->tags()->sync() автоматически заполняется таблица task_tag, но при этом не сохраняется время. Функция withTimestamps() исправляет это дело.
     }
 
     public function category()
@@ -42,7 +47,7 @@ class Task extends Model
             $imgFile = $request->file('image');
 
             $folder = date('Y-m-d');
-            $path = $imgFile->store("images/task/{$folder}");
+            $path = $imgFile->store("task/images/{$folder}");
 
             Image::make(public_path('uploads/'.$path))->resize(800, 460, function ($const) {
                 $const->aspectRatio();

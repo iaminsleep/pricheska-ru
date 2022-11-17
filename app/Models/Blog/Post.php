@@ -2,16 +2,17 @@
 
 namespace App\Models\Blog;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Image;
+use Carbon\Carbon;
+use App\Models\Tag;
+
+use App\Http\Requests\Blog\StorePost;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Sluggable;
-use App\Http\Requests\Blog\StorePost;
-
-use Image;
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -23,6 +24,7 @@ class Post extends Model
         'description',
         'content',
         'category_id',
+        'creator_id',
         'thumbnail',
     ];
 

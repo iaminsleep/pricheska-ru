@@ -12,7 +12,7 @@
         "migrate": "php artisan migrate",
         "fresh": "php artisan migrate:fresh",
         "seed": "php artisan db:seed",
-        "db-refresh": "npm run fresh && npm run seed",
+        "refresh": "npm run fresh && npm run seed",
         "test": "php artisan test",
         "routes": "php artisan route:list",
 

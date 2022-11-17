@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Blog;
 
-use App\Models\Blog\Tag;
+use App\Models\Tag;
 use App\Models\Blog\Post;
 use App\Models\Blog\Category;
 
@@ -51,6 +51,7 @@ class PostController extends Controller
         $data = $request->all();
 
         $data['thumbnail'] = Post::uploadImage($request); // логика с загрузкой изображения перенесена в модель
+        $data['creator_id'] = auth()->user()->id;
 
         $post = Post::create($data);
 

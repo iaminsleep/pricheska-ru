@@ -200,7 +200,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         App\Providers\RoleServiceProvider::class,
-        App\Providers\PermissionServiceProvider::class,
+        // App\Providers\PermissionServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
 
     ],

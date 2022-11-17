@@ -15,10 +15,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::resource('/roles', 'RoleController');
 
+        Route::resource('/tags', 'TagController');
+
         Route::group(['namespace' => 'Blog'], function () {
             Route::resource('/blog-categories', 'CategoryController');
-
-            Route::resource('/blog-tags', 'TagController');
 
             Route::resource('/posts', 'PostController', [
                 'names' => [
@@ -34,8 +34,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::group(['namespace' => 'Task'], function () {
             Route::resource('/categories', 'CategoryController');
-
-            Route::resource('/tags', 'TagController');
 
             Route::resource('/tasks', 'TaskController', [
                 'names' => [
@@ -55,6 +53,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/', 'TaskController@index')->name('home');
 
         Route::get('/tasks', 'TaskController@index')->name('tasks.index');
+
+        Route::get('/task/{id}', 'TaskController@show')->name('tasks.single');
     });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {

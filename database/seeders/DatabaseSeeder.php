@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         // Main
         $this->call(RoleSeeder::class);
-        $this->call(PermissionSeeder::class);
+        // $this->call(PermissionSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(TagSeeder::class);
         // Service Section
         $this->call(CategorySeeder::class);
         // Blog Section
         $this->call(BlogCategorySeeder::class);
-        $this->call(BlogTagSeeder::class);
     }
 }

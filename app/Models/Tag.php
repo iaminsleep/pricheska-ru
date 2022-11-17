@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Models\Blog;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Blog\Post;
+use App\Models\Task\Task;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tag extends Model
 {
     use HasFactory;
     use Sluggable;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'blog_tags';
-
     protected $fillable = ['title'];
+
+    public function tasks()
+    {
+        return $this->belongsToMany(Task::class, 'task_tag');
+    }
 
     public function posts()
     {

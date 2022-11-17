@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
         $user = Role::where('codename', 'user')->first();
         $hairdresser = Role::where('codename', 'hairdresser')->first();
 
-        $manageEverything = Permission::where('codename', 'manage-everything')->first();
-        $createTasks = Permission::where('codename', 'create-task')->first();
-        $createBlog = Permission::where('codename', 'create-blog')->first();
+        // $manageEverything = Permission::where('codename', 'manage-everything')->first();
+        // $createTasks = Permission::where('codename', 'create-task')->first();
+        // $createBlog = Permission::where('codename', 'create-blog')->first();
 
         $user0 = new User();
         $user0->name = 'Admin';
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         $user0->password = bcrypt('admin');
         $user0->save();
         $user0->roles()->attach($admin);
-        $user0->permissions()->attach($manageEverything);
+        // $user0->permissions()->attach($manageEverything);
 
         $user1 = new User();
         $user1->name = 'John Doe';
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
         $user1->password = bcrypt('johndoe');
         $user1->save();
         $user1->roles()->attach($user);
-        $user1->permissions()->attach($createTasks);
+        // $user1->permissions()->attach($createTasks);
 
         $user2 = new User();
         $user2->name = 'Mike Thomas';
@@ -48,6 +48,6 @@ class UserSeeder extends Seeder
         $user2->password = bcrypt('mikethomas');
         $user2->save();
         $user2->roles()->attach($hairdresser);
-        $user2->permissions()->attach($createBlog);
+        // $user2->permissions()->attach($createBlog);
     }
 }

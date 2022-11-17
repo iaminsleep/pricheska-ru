@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Task;
 
-use App\Models\Task\Tag;
+use App\Models\Tag;
 use App\Models\Task\Task;
 use App\Models\Task\Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\Blog\StorePost;
+use App\Http\Requests\Task\StoreTask;
 
 class TaskController extends Controller
 {
@@ -46,15 +46,16 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePost $request)
+    public function store(StoreTask $request)
     {
         $data = $request->all();
 
         $data['image'] = Task::uploadImage($request); // логика с загрузкой изображения перенесена в модель
+        $data['creator_id'] = auth()->user()->id;
 
-        $post = Task::create($data);
+        $task = Task::create($data);
 
-        $post->tags()->sync($request->tags); // синхронизируем тэги с постами, передаём в sync() массив тэгов. При этом меняется таблица post_tag с many to many отношением.
+        $task->tags()->sync($request->tags); // синхронизируем тэги с постами, передаём в sync() массив тэгов. При этом меняется таблица task_tag с many to many отношением.
 
         return redirect()->route('admin.tasks.index')->with('success', 'Статья добавлена');
     }
@@ -96,7 +97,7 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePost $request, $id)
+    public function update(StoreTask $request, $id)
     {
         $task = Task::findOrFail($id);
         $data = $request->all();

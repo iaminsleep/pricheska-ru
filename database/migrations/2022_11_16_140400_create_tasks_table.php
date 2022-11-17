@@ -15,14 +15,14 @@ return new class () extends Migration {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->integer('category_id');
-            $table->string('location')->nullable();
+            $table->string('address');
             $table->integer('budget');
             $table->integer('creator_id');
             $table->integer('performer_id')->nullable();
             $table->date('deadline');
-            $table->date('image');
+            $table->string('image');
             $table->timestamps();
         });
     }
