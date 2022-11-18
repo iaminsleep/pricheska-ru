@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::with('roles')->paginate(5); // извлекаем посты с определёнными отношениями (не всеми), для оптимизации ресурсов
+        return view('admin.users.index', ['users' => $users]);
     }
 
     /**
@@ -24,7 +26,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::pluck('title', 'id')->all(); // превращение в массив, где два выбранных поля для вывода превращаются в ключ => значение
+        $tags = Tag::pluck('title', 'id')->all();
+
+        return view('admin.posts.create', [
+            'categories' => $categories,
+            'tags' => $tags
+        ]);
     }
 
     /**
@@ -33,9 +41,18 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        //
+        $data = $request->all();
+
+        $data['thumbnail'] = Post::uploadImage($request); // логика с загрузкой изображения перенесена в модель
+        $data['creator_id'] = auth()->user()->id;
+
+        $post = Post::create($data);
+
+        $post->tags()->sync($request->tags); // синхронизируем тэги с постами, передаём в sync() массив тэгов. При этом меняется таблица post_tag с many to many отношением.
+
+        return redirect()->route('admin.posts.index')->with('success', 'Статья добавлена');
     }
 
     /**
@@ -57,7 +74,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        $post = Post::findOrFail($id);
+
+        return view('admin.posts.edit', [
+            'post' => $post,
+            'categories' => $categories,
+            'tags' => $tags
+        ]);
     }
 
     /**
@@ -67,9 +92,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePost $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $data = $request->all();
+
+        if ($file = Post::uploadImage($request, $post->thumbnail)) { // загрузка и удаление предыдущего изображения через модель поста
+            $data['thumbnail'] = $file;
+        }
+
+        $post->update($data);
+        $post->tags()->sync($request->tags);
+
+        $request->session()->flash('success', 'Изменения сохранены');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -80,6 +116,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->tags()->sync([]); // удаляем теги из таблицы связи тэгов и постов
+        $post->deleteImage(); // удаление изображения через фукнцию в eloquent модели
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('success', 'Статья удалена');
     }
 }

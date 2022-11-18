@@ -48,6 +48,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         });
     });
 
+    Route::get('/user/{id}', 'UserController@show')->name('users.single');
+
     // Доступно и гостям, и авторизованным пользователям
     Route::group(['namespace' => 'Task'], function () {
         Route::get('/', 'TaskController@index')->name('home');

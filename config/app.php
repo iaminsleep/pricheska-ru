@@ -202,6 +202,7 @@ return [
         App\Providers\RoleServiceProvider::class,
         // App\Providers\PermissionServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
+        Yandex\Geocode\YandexGeocodeServiceProvider::class
 
     ],
 
@@ -218,7 +219,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'YaGeo' => Yandex\Geocode\Facades\YandexGeocodeFacade::class
     ])->toArray(),
 
 ];

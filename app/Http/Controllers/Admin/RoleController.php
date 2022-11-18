@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
@@ -62,7 +63,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreRole $request, $id)
     {
         $role = Role::find($id);
 
@@ -82,8 +83,8 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
 
-        if ($role->posts->count()) {
-            return redirect()->route('roles.index')->with('error', 'Ошибка! У роли есть записи');
+        if ($role->users->count()) {
+            return redirect()->route('roles.index')->with('error', 'Ошибка! У роли есть пользователи');
         }
 
         $role->delete();

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Task;
 
-use App\Http\Controllers\Controller;
+use App\Models\Task\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreCategory;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(5);
+
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -33,20 +37,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategory $request)
     {
-        //
-    }
+        Category::create($request->all());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->route('categories.index')->with('success', 'Категория для заданий добавлена');
     }
 
     /**
@@ -57,7 +52,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.categories.edit', ['category' => $category]);
     }
 
     /**
@@ -67,9 +64,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCategory $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->update($request->all());
+
+        $request->session()->flash('success', 'Изменения сохранены');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -80,6 +81,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        if ($category->tasks->count()) {
+            return redirect()->route('categories.index')->with('error', 'Ошибка! К данной категории уже привязаны заказы');
+        }
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Категория для заданий удалена');
     }
 }

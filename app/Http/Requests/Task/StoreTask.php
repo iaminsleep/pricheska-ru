@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Task;
 
+use App\Rules\RealAddressRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTask extends FormRequest
@@ -24,14 +25,13 @@ class StoreTask extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|min:10|max:200',
             'description' => 'required|min:10|max:2000',
             'category_id' => 'required',
-            // 'location' => ['string', 'nullable', new RealAddressRule()],
-            'address' => 'required|string',
-            'budget' => 'required|integer|between:100,1000000',
+            'address' => ['string', 'required', new RealAddressRule()],
+            'budget' => 'required|integer|between:100,10000',
             'deadline' => 'required|date|after:yesterday',
-            'image' => 'required',
+            'image' => 'nullable|mimes:jpeg,jpg,png|max:10000',
         ];
     }
 
@@ -62,7 +62,8 @@ class StoreTask extends FormRequest
             'deadline.date' => 'Дата неправильного формата',
             'deadline.after' => 'Срок исполнения не может быть раньше текущей даты',
 
-            'image.required' => 'Прикрепите хотя бы один файл, который поможет исполнителю узнать детали задания',
+            'image.mimes' => 'Превью должно быть в формате .png или .jpg',
+            'image.max' => 'Слишком большой размер изображения',
         ];
     }
 }

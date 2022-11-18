@@ -37,7 +37,7 @@
             </div>
             <div class="card-body">
                 <a href="{{ route('admin.tasks.create') }}" class="btn btn-primary mb-3">
-                    Добавить статью
+                    Добавить задание
                 </a>
                 @if ($tasks->count())
                     <div class="table-responsive">
@@ -45,7 +45,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
-                                    <th>Заголовок</th>
+                                    <th style="width: 400px">Заголовок</th>
                                     <th>Категория</th>
                                     <th>Тэги</th>
                                     <th>Адрес</th>

@@ -102,7 +102,7 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $data = $request->all();
 
-        if ($file = Task::uploadImage($request, $taks->thumbnail)) { // загрузка и удаление предыдущего изображения через модель поста
+        if ($file = Task::uploadImage($request, $task->image)) { // загрузка и удаление предыдущего изображения через модель поста
             $data['image'] = $file;
         }
 
