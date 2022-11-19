@@ -11,7 +11,7 @@ trait HasRoles
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'user_role');
+        return $this->belongsToMany(Role::class, 'user_role')->withTimestamps();
     }
 
     // Now to check if a current logged in user has a role, we will add a new function in HasRolesAndPermissions trait

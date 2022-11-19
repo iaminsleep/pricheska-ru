@@ -68,7 +68,6 @@
 
             </div>
         </div>
-        <script src="{{ asset('public/assets/admin/js/admin.js') }}"></script>
     </body>
 
 @endsection

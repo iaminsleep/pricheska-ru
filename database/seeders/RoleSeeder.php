@@ -21,8 +21,8 @@ class RoleSeeder extends Seeder
         $admin->save();
 
         $user = new Role();
-        $user->name = 'Пользователь';
-        $user->codename = 'user';
+        $user->name = 'Клиент';
+        $user->codename = 'customer';
         $user->save();
 
         $hairdresser = new Role();

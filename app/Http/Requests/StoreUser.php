@@ -26,7 +26,8 @@ class StoreUser extends FormRequest
         return [
             'name' => 'required|min:2|max:50',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:5|max:50|confirmed'
+            'password' => 'required|min:5|max:50|confirmed',
+            'role' => 'required|in:customer,hairdresser'
         ];
     }
 
@@ -53,6 +54,10 @@ class StoreUser extends FormRequest
             'password.confirmed' => 'Пароли не совпадают',
             'password.min' => 'Слишком короткий пароль',
             'password.max' => 'Слишком длинный пароль',
+
+            // role
+            'role.required' => 'Выберите свою роль',
+            'role.in' => 'Такой роли не существует',
         ];
     }
 }

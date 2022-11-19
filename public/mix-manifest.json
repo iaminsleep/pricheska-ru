@@ -1,7 +1,11 @@
 {
     "/assets/admin/css/admin.css": "/assets/admin/css/admin.css",
     "/assets/admin/js/admin.js": "/assets/admin/js/admin.js",
-    "/assets/front/task/css/front.css": "/assets/front/task/css/front.css",
+    "/assets/front/tasks/css/front.css": "/assets/front/tasks/css/front.css",
     "/assets/front/blog/css/front.css": "/assets/front/blog/css/front.css",
-    "/assets/front/blog/js/front.js": "/assets/front/blog/js/front.js"
+    "/assets/front/blog/js/front.js": "/assets/front/blog/js/front.js",
+    "/assets/front/user/css/user.css": "/assets/front/user/css/user.css",
+    "/assets/front/user/js/user.js": "/assets/front/user/js/user.js",
+    "/assets/front/user/img/comb.png": "/assets/front/user/img/comb.png",
+    "/assets/front/user/img/customers.png": "/assets/front/user/img/customers.png"
 }

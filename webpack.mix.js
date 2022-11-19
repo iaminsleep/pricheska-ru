@@ -57,3 +57,15 @@ mix.scripts([
     'resources/assets/front/blog/js/custom.js',
 
 ], 'public/assets/front/blog/js/front.js');
+
+// USER
+
+mix.styles([
+    'resources/assets/front/user/css/style.css',
+], 'public/assets/front/user/css/user.css');
+
+mix.scripts([
+    'resources/assets/front/user/js/script.js',
+], 'public/assets/front/user/js/user.js');
+
+mix.copyDirectory('resources/assets/front/user/img', 'public/assets/front/user/img');

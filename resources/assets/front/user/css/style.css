@@ -1,0 +1,114 @@
+.tile-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+.role-header {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+    color: #464646;
+    font-weight: bold;
+}
+
+.tile-input {
+    height: 200px;
+    width: 170px;
+    position: relative;
+}
+
+.tile-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    border: 3px solid transparent;
+    box-shadow: 15px 15px 25px rgba(2, 28, 53, 0.05);
+}
+
+.tile-checkbox:after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    font-size: 22px;
+    top: 10px;
+    left: 10px;
+    color: lightgrey;
+    content: "\f111";
+}
+
+.tile-checkbox:hover {
+    transform: scale(1.08);
+}
+
+.tile-checkbox:checked {
+    border: 3px solid #478bfb;
+}
+
+.tile-checkbox:checked:after {
+    font-weight: 900;
+    content: "\f058";
+    color: #478bfb;
+}
+
+.tile-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 90%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.tile-icon.customer {
+    background-image: url('../img/customers.png');
+    display: block;
+    background-size: 100% 100%;
+    width: 128px;
+    height: 128px;
+}
+
+.tile-icon.hairdresser {
+    background-image: url('../img/comb.png');
+    display: block;
+    background-size: 100% 100%;
+    width: 128px;
+    height: 128px;
+}
+
+.tile-title {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: initial;
+    color: #444;
+}
+
+.card {
+    width: 500px
+}
+
+.padding-inputs {
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 20px;
+}

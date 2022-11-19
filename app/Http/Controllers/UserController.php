@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthUser;
@@ -12,7 +13,8 @@ class UserController extends Controller
 {
     public function create()
     {
-        return view('front.user.create');
+        $roles = Role::whereNot('codename', 'admin')->pluck('name', 'codename')->all();
+        return view('front.user.create', ['roles' => $roles]);
     }
 
     public function store(StoreUser $request)
@@ -23,15 +25,18 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
+        $role = Role::where('codename', $request->role)->first();
+        $user->roles()->attach($role);
+
         session()->flash('success', 'Регистрация пройдена.');
 
         return redirect()->route('login.create');
     }
 
-    public function loginForm()
-    {
-        return view('front.user.login');
-    }
+     public function loginForm()
+     {
+         return view('front.user.login');
+     }
 
     public function login(AuthUser $request)
     {
