@@ -17,12 +17,12 @@ class TaskController extends Controller
     {
         $tasks = Task::with('category')->orderBy('id', 'desc')->paginate(5);
 
-        return view('front.tasks.index');
+        return view('front.tasks.index', ['tasks' => $tasks]);
     }
 
     public function show($id)
     {
-        $task = Post::findOrFail($id); // findOrFail() означает, что если запись не будет найдена, сайт выдаст ошибку 404, что является хорошей практикой
+        $task = Task::findOrFail($id); // findOrFail() означает, что если запись не будет найдена, сайт выдаст ошибку 404, что является хорошей практикой
 
         return view(
             'front.tasks.task.show',

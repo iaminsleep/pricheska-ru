@@ -110,5 +110,8 @@
 .padding-inputs {
     padding-left: 35px;
     padding-right: 35px;
+}
+
+.pt-20 {
     padding-top: 20px;
 }

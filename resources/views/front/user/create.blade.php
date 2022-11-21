@@ -9,7 +9,7 @@
 @section('content')
 
     <body class="hold-transition register-page">
-        <div class="register-box">
+        <div>
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
                     <div class="h1"><b>Регистрация</b></div>
@@ -26,7 +26,7 @@
                     @endif
                     <form action="{{ route('register.store') }}" method="post">
                         @csrf
-                        <div class="padding-inputs">
+                        <div class="padding-inputs pt-20">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Полное имя" name="name"
                                     value="{{ old('name') }}">
@@ -82,16 +82,17 @@
                                 @endforeach
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-4 offset-8">
-                                <button type="submit" class="btn btn-primary btn-block">Далее</button>
+                        <div class="padding-inputs">
+                            <div class="row">
+                                <div class="col-4 offset-8">
+                                    <button type="submit" class="btn btn-primary btn-block">Далее</button>
+                                </div>
                             </div>
+                            <a href="{{ route('login.create') }}">У меня уже есть
+                                аккаунт</a>
                         </div>
 
                     </form>
-                    <a href="{{ route('login.create') }}">У меня уже есть
-                        аккаунт</a>
                 </div>
 
             </div>

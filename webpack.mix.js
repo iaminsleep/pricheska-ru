@@ -37,6 +37,9 @@ mix.styles([
     'resources/assets/front/tasks/css/normalize.css',
 ], 'public/assets/front/tasks/css/front.css');
 
+mix.copyDirectory('resources/assets/front/tasks/img', 'public/assets/front/tasks/img');
+mix.copyDirectory('resources/assets/front/tasks/fonts', 'public/assets/front/tasks/fonts');
+
 // BLOG
 
 mix.styles([

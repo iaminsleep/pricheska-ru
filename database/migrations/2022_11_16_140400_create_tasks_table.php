@@ -22,7 +22,7 @@ return new class () extends Migration {
             $table->integer('creator_id');
             $table->integer('performer_id')->nullable();
             $table->date('deadline');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -79,7 +79,7 @@ class Post extends Model
             return asset('/public/no-image.jpg');
         }
 
-        return asset('/public/uploads/'.$this->thumbnail);
+        return asset('/public/uploads/blog/thumbnails/'.$this->thumbnail);
     }
 
     public function deleteImage()

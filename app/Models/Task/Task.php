@@ -5,6 +5,7 @@ namespace App\Models\Task;
 use Image;
 use Carbon\Carbon;
 use App\Models\Tag;
+use App\Models\User;
 use App\Models\Task\Category;
 use App\Http\Requests\Task\StoreTask;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,11 @@ class Task extends Model
         'performer_id',
         'image',
     ];
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
 
     public function tags()
     {
@@ -64,7 +70,7 @@ class Task extends Model
             return asset('/public/no-image.jpg');
         }
 
-        return asset('/public/uploads/'.$this->image);
+        return asset('/public/uploads/task/images/'.$this->image);
     }
 
     public function deleteImage()

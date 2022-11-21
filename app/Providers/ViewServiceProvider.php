@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Blog\Post;
-use App\Models\Blog\Category;
+use App\Models\Blog\Category as BlogCategory;
+use App\Models\Task\Category as TaskCategory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,7 +33,7 @@ class ViewServiceProvider extends ServiceProvider
             if (Cache::has('popular_categories')) {
                 $popular_categories = Cache::get('popular_categories');
             } else {
-                $popular_categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->limit(8)->get();
+                $popular_categories = BlogCategory::withCount('posts')->orderBy('posts_count', 'desc')->limit(8)->get();
                 Cache::put('popular_categories', $popular_categories, 60); // 60 seconds until cache expiration
             }
 
@@ -41,6 +42,16 @@ class ViewServiceProvider extends ServiceProvider
 
             // популярные категории в боковом меню
             $view->with('popular_categories', $popular_categories);
+        });
+
+        view()->composer('front.tasks.layouts.search', function ($view) {
+            if (Cache::has('categories')) {
+                $categories = Cache::get('categories');
+            } else {
+                $categories = TaskCategory::withCount('tasks')->orderBy('tasks_count', 'desc')->get();
+                Cache::put('categories', $categories, 60);
+            }
+            $view->with('categories', $categories);
         });
     }
 }
