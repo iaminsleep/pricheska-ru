@@ -58,6 +58,11 @@
                                 </div>
                             </div>
 
+                            <div class="input-group">
+                                <input type="checkbox" name="remember_me" id="remember_me">
+                                <label class="checkbox-label" for="remember_me">Remember me</label>
+                            </div>
+
                             <div class="row pt-20">
                                 <div class="col-4 offset-8">
                                     <button type="submit" class="btn btn-primary btn-block">Далее</button>

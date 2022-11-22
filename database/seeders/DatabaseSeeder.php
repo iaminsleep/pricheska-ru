@@ -19,8 +19,10 @@ class DatabaseSeeder extends Seeder
         // $this->call(PermissionSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(TagSeeder::class);
-        // Service Section
+        // Tasks Section
         $this->call(CategorySeeder::class);
+        $this->call(TaskSeeder::class);
+        $this->call(ResponseSeeder::class);
         // Blog Section
         $this->call(BlogCategorySeeder::class);
     }

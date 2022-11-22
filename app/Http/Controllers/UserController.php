@@ -43,7 +43,7 @@ class UserController extends Controller
         if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password
-        ])) {
+        ], $request->remember_me)) { // if remember me checkbox is checked, passes as second argument
             session()->flash('success', 'Вы успешно вошли в систему.');
             if (Auth::user()->hasRole('admin')) {
                 // если пользователь - администратор, его перенесёт на страницу админки

@@ -49,5 +49,13 @@ class UserSeeder extends Seeder
         $user2->save();
         $user2->roles()->attach($hairdresser);
         // $user2->permissions()->attach($createBlog);
+
+        $user3 = new User();
+        $user3->name = 'David Bay';
+        $user3->email = 'davidbay@email.com';
+        $user3->password = bcrypt('davidbay');
+        $user3->save();
+        $user3->roles()->attach($hairdresser);
+        // $user2->permissions()->attach($createBlog);
     }
 }

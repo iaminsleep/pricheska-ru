@@ -22,12 +22,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
             Route::resource('/posts', 'PostController', [
                 'names' => [
-                    'index' => 'admin.posts.index',
-                    'create' => 'admin.posts.create',
-                    'store' => 'admin.posts.store',
-                    'edit' => 'admin.posts.edit',
-                    'update' => 'admin.posts.update',
-                    'destroy' => 'admin.posts.destroy',
+                    'index' => 'admin.posts.index', 'create' => 'admin.posts.create',
+                    'store' => 'admin.posts.store', 'edit' => 'admin.posts.edit',
+                    'update' => 'admin.posts.update', 'destroy' => 'admin.posts.destroy',
                 ]
             ]);
         });
@@ -35,14 +32,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::group(['namespace' => 'Task'], function () {
             Route::resource('/categories', 'CategoryController');
 
+            Route::resource('/responses', 'ResponseController');
+
             Route::resource('/tasks', 'TaskController', [
                 'names' => [
-                    'index' => 'admin.tasks.index',
-                    'create' => 'admin.tasks.create',
-                    'store' => 'admin.tasks.store',
-                    'edit' => 'admin.tasks.edit',
-                    'update' => 'admin.tasks.update',
-                    'destroy' => 'admin.tasks.destroy',
+                    'index' => 'admin.tasks.index', 'create' => 'admin.tasks.create',
+                    'store' => 'admin.tasks.store', 'edit' => 'admin.tasks.edit',
+                    'update' => 'admin.tasks.update', 'destroy' => 'admin.tasks.destroy',
                 ]
             ]);
         });
