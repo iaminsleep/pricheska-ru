@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Task;
 
+use App\Models\Task\Task;
 use Illuminate\Http\Request;
 use App\Models\Task\Response;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,7 @@ class ResponseController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.responses.create');
     }
 
     /**
@@ -39,9 +40,20 @@ class ResponseController extends Controller
      */
     public function store(StoreResponse $request)
     {
-        Response::create($request->all());
+        $task = Task::find($request->task_id);
 
-        return redirect()->route('responses.index')->with('success', 'Ответ к заданию отправлен');
+        if (!$task) {
+            return redirect()->back()->with('error', 'Заказ не был найден!');
+        }
+
+        Response::create([
+            'task_id' => $request->task_id,
+            'user_id' => auth()->user()->id,
+            'comment' => $request->comment,
+            'payment' => $request->payment,
+        ]);
+
+        return redirect()->route('responses.index')->with('success', 'Отклик отправлен');
     }
 
     /**
@@ -69,7 +81,7 @@ class ResponseController extends Controller
         $response = Response::find($id);
         $response->update($request->all());
 
-        $response->session()->flash('success', 'Изменения сохранены');
+        $request->session()->flash('success', 'Изменения сохранены');
         return redirect()->route('responses.index');
     }
 
@@ -85,6 +97,6 @@ class ResponseController extends Controller
 
         $response->delete();
 
-        return redirect()->route('responses.index')->with('success', 'Ответ к заданию удалён');
+        return redirect()->route('responses.index')->with('success', 'Отклик удалён');
     }
 }

@@ -13,7 +13,7 @@ class StoreResponse extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,26 @@ class StoreResponse extends FormRequest
     public function rules()
     {
         return [
-            //
+            'payment' => 'required|integer',
+            'comment' => 'required|string|min:5|max:280',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'payment.required' => 'Введите вашу оплату',
+            'payment.integer' => 'Оплата должна быть числовым значением',
+
+            'comment.required' => 'Введите небольшой комментарий',
+            'comment.string' => 'Комментарий должен быть строковым значением',
+            'comment.min' => 'Слишком короткий комментарий',
+            'comment.max' => 'Достигнут лимит символов',
         ];
     }
 }
