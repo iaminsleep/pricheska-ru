@@ -83,29 +83,6 @@
         <li class="nav-header">СЕРВИС</li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-archive"></i>
-                <p>
-                    Категории
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('categories.index') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Список категорий</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('categories.create') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Новая категория</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                     Заказы
@@ -150,7 +127,6 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-header">БЛОГ</li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-archive"></i>
@@ -161,19 +137,43 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('blog-categories.index') }}" class="nav-link">
+                    <a href="{{ route('categories.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Список категорий</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('blog-categories.create') }}" class="nav-link">
+                    <a href="{{ route('categories.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Новая категория</p>
                     </a>
                 </li>
             </ul>
         </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-star"></i>
+                <p>
+                    Отзывы
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('feedbacks.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Все отзывы</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('feedbacks.create') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Новый отзыв</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-header">БЛОГ</li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
@@ -193,6 +193,29 @@
                     <a href="{{ route('admin.posts.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Новая статья</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-archive"></i>
+                <p>
+                    Категории
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('blog-categories.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Список категорий</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('blog-categories.create') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Новая категория</p>
                     </a>
                 </li>
             </ul>

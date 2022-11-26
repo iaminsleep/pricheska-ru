@@ -34,6 +34,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
             Route::resource('/responses', 'ResponseController');
 
+            Route::resource('/feedbacks', 'FeedbackController');
+
             Route::resource('/tasks', 'TaskController', [
                 'names' => [
                     'index' => 'admin.tasks.index', 'create' => 'admin.tasks.create',
