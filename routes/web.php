@@ -13,6 +13,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::resource('/users', 'UserController');
 
+        Route::get('/hairdressers', 'UserController@hairdressers')->name('admin.hairdressers.index');
+
         Route::resource('/roles', 'RoleController');
 
         Route::resource('/tags', 'TagController');

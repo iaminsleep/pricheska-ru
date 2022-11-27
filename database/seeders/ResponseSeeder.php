@@ -36,7 +36,7 @@ class ResponseSeeder extends Seeder
                         'task_id' => 2,
                         'user_id' => 3,
                         'comment' => 'Могу сделать всё в лучшем виде. У меня есть необходимый опыт и инструменты.',
-                        'payment' => 3000,
+                        'payment' => 2000,
                         'created_at' => now(),
                     ],
                     [

@@ -35,15 +35,6 @@ class FeedbackSeeder extends Seeder
                 'created_at' => today(),
             ],
             [
-                'id' => 3,
-                'task_id' => 3,
-                'author_id' => 2,
-                'receiver_id' => 4,
-                'comment' => 'Работа была выполнена, но процесс затянулся надолго.',
-                'rating' => 4,
-                'created_at' => today(),
-            ],
-            [
                 'id' => 4,
                 'task_id' => 3,
                 'author_id' => 1,

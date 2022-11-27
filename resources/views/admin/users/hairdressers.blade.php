@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 
-@section('title', 'Список всех пользователей')
+@section('title', 'Список парикмахеров')
 
 @section('content')
     <section class="content">
@@ -10,7 +10,7 @@
                 <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">
                     Добавить пользователя
                 </a>
-                @if ($users->count())
+                @if ($hairdressers->count())
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -18,32 +18,35 @@
                                     <th style="width: 10px">#</th>
                                     <th>Имя пользователя</th>
                                     <th>Почта</th>
-                                    <th>Роль</th>
-                                    <th>Дата регистрации</th>
+                                    <th>Рейтинг</th>
+                                    <th style="width: 200px">Кол-во выполненных заданий</th>
+                                    <th style="width: 140px">Средняя плата за услуги</th>
+                                    <th style="width: 215px">Кол-во дней с последнего выполнения задания</th>
+                                    <th style="width: 180px">Частота выполнения заданий</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($hairdressers as $hairdresser)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->roles->pluck('name')->map(function ($name) {
-                                                return $name;
-                                            })->join(', ') }}
-                                        </td>
-                                        <td>{{ $user->created_at }}</td>
+                                        <td>{{ $hairdresser->id }}</td>
+                                        <td>{{ $hairdresser->name }}</td>
+                                        <td>{{ $hairdresser->email }}</td>
+                                        <td>{{ $hairdresser->averageRating() }}</td>
+                                        <td>{{ $hairdresser->tasksCount('completed') }}</td>
+                                        <td>{{ $hairdresser->averagePayment() }} &#8381;</td>
+                                        <td>{{ $hairdresser->daysSinceLastTaskCompletion() }}</td>
+                                        <td>{{ $hairdresser->frequencyOfTaskCompletions() / 24 }} заданий/сутки</td>
                                         <td>
-                                            <a href="{{ route('users.single', ['id' => $user->id]) }}"
+                                            <a href="{{ route('users.single', ['id' => $hairdresser->id]) }}"
                                                 class="btn btn-warning btn-sm float-left mr-1" target="_blank">
                                                 <i class="fas fa-share"></i>
                                             </a>
-                                            <a href="{{ route('users.edit', ['user' => $user->id]) }}"
+                                            <a href="{{ route('users.edit', ['user' => $hairdresser->id]) }}"
                                                 class="btn btn-info btn-sm float-left mr-1">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <form action="{{ route('users.destroy', ['user' => $user->id]) }}"
+                                            <form action="{{ route('users.destroy', ['user' => $hairdresser->id]) }}"
                                                 method="post" class="float-left">
                                                 @csrf
                                                 @method('DELETE')
@@ -59,11 +62,11 @@
                         </table>
                     </div>
                 @else
-                    <p>Пользователей пока нет...</p>
+                    <p>Пользователей, зарегистрированных как парикмахер пока нет...</p>
                 @endif
             </div>
             <div class="card-footer">
-                {{ $users->links() }}
+                {{ $hairdressers->links() }}
             </div>
         </div>
     </section>

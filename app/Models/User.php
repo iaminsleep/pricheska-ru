@@ -16,7 +16,6 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use HasRoles; // New trait
-    use HasHairdresserRole; // New trait
 
     /**
      * The attributes that are mass assignable.
@@ -47,8 +46,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function scopeAverageRating()
-    {
-    }
 }

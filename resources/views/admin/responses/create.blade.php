@@ -31,7 +31,7 @@
                                 Оплата
                             </label>
                             <input type="number" class="form-control @error('payment') is-invalid @enderror" id="payment"
-                                name="payment" placeholder="Введите желаемую оплату за работу, &#8381;"
+                                name="payment" placeholder="Введите желаемую оплату за работу, в рублях"
                                 value="{{ old('payment') }}">
                         </div>
                         <div class="mt-4">

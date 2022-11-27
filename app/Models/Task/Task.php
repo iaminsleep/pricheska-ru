@@ -43,6 +43,11 @@ class Task extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
     public static function uploadImage(StoreTask $request, $previousImage = null)
     {
         if ($request->hasFile('image')) {

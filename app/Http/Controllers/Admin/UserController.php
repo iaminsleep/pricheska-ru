@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Hairdresser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +16,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->paginate(5); // извлекаем посты с определёнными отношениями (не всеми), для оптимизации ресурсов
+        $users = User::with('roles')->paginate(5);
         return view('admin.users.index', ['users' => $users]);
+    }
+
+    public function hairdressers()
+    {
+        $hairdressers = Hairdresser::paginate(5);
+        return view('admin.users.hairdressers', ['hairdressers' => $hairdressers]);
     }
 
     /**
