@@ -20,4 +20,13 @@ class Hairdresser extends User
 
         static::addGlobalScope(new HairdresserScope());
     }
+
+    protected $appends = [
+        'additive_criterion'
+    ];
+
+    public function getAdditiveCriterionAttribute()
+    {
+        return $this->scopeAdditiveCriterion();
+    }
 }

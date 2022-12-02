@@ -41,7 +41,6 @@ class Response extends Model
             'id',
             'name',
             'avatar',
-            'rating',
         ]);
     }
 }

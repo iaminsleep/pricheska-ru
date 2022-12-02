@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Hairdresser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -22,7 +23,15 @@ class UserController extends Controller
 
     public function hairdressers()
     {
-        $hairdressers = Hairdresser::paginate(5);
+        $sorted = Hairdresser::get()
+            ->sortBy('additive_criterion') //appended attribute
+            ->pluck('id')
+            ->toArray();
+
+        $orderedIds = implode(',', $sorted);
+
+        $hairdressers = Hairdresser::orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->paginate(5);
+
         return view('admin.users.hairdressers', ['hairdressers' => $hairdressers]);
     }
 

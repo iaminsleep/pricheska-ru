@@ -16,27 +16,33 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
+                                    <th style="width: 100px">ID пользователя</th>
                                     <th>Имя пользователя</th>
                                     <th>Почта</th>
                                     <th>Рейтинг</th>
-                                    <th style="width: 200px">Кол-во выполненных заданий</th>
+                                    <th style="width: 140px">Кол-во выполненных заданий</th>
+                                    <th style="width: 100px">Кол-во отзывов</th>
                                     <th style="width: 140px">Средняя плата за услуги</th>
-                                    <th style="width: 215px">Кол-во дней с последнего выполнения задания</th>
-                                    <th style="width: 180px">Частота выполнения заданий</th>
+                                    <th style="width: 190px">Кол-во дней с последнего выполнения задания</th>
+                                    <th style="width: 100px">Частота выполнения заданий</th>
+                                    <th style="width: 100px">Аддитивный критерий</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($hairdressers as $hairdresser)
                                     <tr>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $hairdresser->id }}</td>
                                         <td>{{ $hairdresser->name }}</td>
                                         <td>{{ $hairdresser->email }}</td>
                                         <td>{{ $hairdresser->averageRating() }}</td>
-                                        <td>{{ $hairdresser->tasksCount('completed') }}</td>
+                                        <td>{{ $hairdresser->scopeCompletedTasksCount() }}</td>
+                                        <td>{{ $hairdresser->feedbacksCount() }}</td>
                                         <td>{{ $hairdresser->averagePayment() }} &#8381;</td>
                                         <td>{{ $hairdresser->daysSinceLastTaskCompletion() }}</td>
-                                        <td>{{ $hairdresser->frequencyOfTaskCompletions() / 24 }} заданий/сутки</td>
+                                        <td>{{ $hairdresser->frequencyOfTaskCompletions() }}</td>
+                                        <td>{{ $hairdresser->additiveCriterion() }}</td>
                                         <td>
                                             <a href="{{ route('users.single', ['id' => $hairdresser->id]) }}"
                                                 class="btn btn-warning btn-sm float-left mr-1" target="_blank">

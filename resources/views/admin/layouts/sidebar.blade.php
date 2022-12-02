@@ -29,7 +29,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.hairdressers.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Только парикмахеры</p>
+                        <p>Рейтинг парикмахеров</p>
                     </a>
                 </li>
                 <li class="nav-item">
