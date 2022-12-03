@@ -1,0 +1,41 @@
+{
+    "name": "jackmartin/laravel-yandex-geocode",
+    "description": "Simply service laravel Yandex Geocoding",
+    "keywords": [
+        "laravel",
+        "yandex",
+        "geocode",
+        "geocoding",
+        "address",
+        "latitude",
+        "longitude",
+        "api"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Evgen Kytonin",
+            "email": "killfess@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/martinjack/laravel-yandex-geocoding",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yandex\\Geocode\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yandex\\Geocode\\YandexGeocodeServiceProvider"
+            ],
+            "aliases": {
+                "YaGeo": "Yandex\\Geocode\\Facades\\YandexGeocodeFacade"
+            }
+        }
+    }
+}

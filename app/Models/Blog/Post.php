@@ -6,10 +6,11 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Tag;
 
+use App\Models\Blog\Comment;
 use App\Http\Requests\Blog\StorePost;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Request;
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,6 +38,11 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     } // одному посту - одна категория
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     /**
      * Return the sluggable configuration array for this model.
@@ -68,7 +74,7 @@ class Post extends Model
                 $const->aspectRatio();
             })->save();
 
-            return $data['thumbnail'] = $path;
+            return $data['thumbnail'] = str_replace('blog/thumbnails/', '', $path);
         }
         return null;
     }
