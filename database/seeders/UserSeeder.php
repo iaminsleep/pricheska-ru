@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Permission;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
@@ -57,5 +59,17 @@ class UserSeeder extends Seeder
         $user3->save();
         $user3->roles()->attach($hairdresser);
         // $user2->permissions()->attach($createBlog);
+
+        if (Storage::exists('users')) {
+            $path = public_path('uploads').'/users';
+            delete_folder($path);
+        }
+
+        $roles_id = Role::whereNot('codename', 'admin')->pluck('id');
+        $users = User::factory(20)->create();
+
+        $users->each(function ($user) use ($roles_id) {
+            $user->roles()->attach($roles_id->random(1));
+        });
     }
 }
