@@ -599,6 +599,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'App\\Models\\Task\\Status' => __DIR__ . '/../..' . '/app/Models/Task/Status.php',
         'App\\Models\\Task\\Task' => __DIR__ . '/../..' . '/app/Models/Task/Task.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\Views\\AllAverageRatings' => __DIR__ . '/../..' . '/app/Models/Views/AllAverageRatings.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

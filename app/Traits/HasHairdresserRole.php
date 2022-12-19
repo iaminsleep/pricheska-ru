@@ -16,7 +16,7 @@ trait HasHairdresserRole
             ->where('users.id', $this->id)
             ->first();
 
-        return $result->average_rating;
+        return (float)$result->average_rating;
     }
 
     public function scopeCompletedTasksCount()
@@ -55,7 +55,7 @@ trait HasHairdresserRole
             ->where('tasks.status_id', $status->id)
             ->first();
 
-        return $result->average_payment;
+        return (int)$result->average_payment;
     }
 
     public function getDaysSinceEveryTaskCompletion() // helper function
@@ -81,45 +81,17 @@ trait HasHairdresserRole
             ->distinct()
             ->first();
 
-        return $result->days_since_last_task_completion;
-    }
-
-    public function scopeFrequencyOfTaskCompletions()
-    {
-        $subQuery = $this->getDaysSinceEveryTaskCompletion();
-
-        $result = DB::table(DB::raw("({$subQuery->toSql()}) as days"))
-            ->mergeBindings($subQuery)
-            ->select(DB::raw('ROUND((AVG(days_since_every_task_completion) / COUNT(days_since_every_task_completion)), 2) AS frequency_of_task_completions'))
-            ->first();
-
-        return $result->frequency_of_task_completions;
+        return (int)$result->days_since_last_task_completion;
     }
 
     public function scopeAdditiveCriterion()
     {
-        $averageRating = $this->scopeAverageRating();
-        $averageRatingImportance = 1;
-        $averageRatingValue = $averageRating * $averageRatingImportance;
+        $result = DB::table('additive_criterion')
+            ->select(DB::raw('additive_criterion'))
+            ->join('users', 'additive_criterion.user_id', '=', 'users.id')
+            ->where('users.id', $this->id)
+            ->first();
 
-        $tasksCount = $this->scopeCompletedTasksCount();
-        $tasksCountImportance = 0.8;
-        $tasksCountValue = $tasksCount * $tasksCountImportance;
-
-        $feedbacksCount = $this->scopeFeedbacksCount();
-        $feedbacksCountImportance = 0.8;
-        $feedbacksCountValue = $feedbacksCount * $feedbacksCountImportance;
-
-        $daysSinceLastTaskCompletion = $this->scopeDaysSinceLastTaskCompletion();
-        $daysSinceLastTaskCompletionImportance = -0.4;
-        $daysSinceLastTaskCompletionValue = $daysSinceLastTaskCompletion * $daysSinceLastTaskCompletionImportance;
-
-        $frequencyOfTaskCompletions = $this->scopeFrequencyOfTaskCompletions();
-        $frequencyOfTaskCompletionsImportance = -0.5;
-        $frequencyOfTaskCompletionsValue = $frequencyOfTaskCompletions * $frequencyOfTaskCompletionsImportance;
-
-        $additive_criterion = $averageRatingValue + $tasksCountValue + $feedbacksCountValue + $daysSinceLastTaskCompletionValue + $frequencyOfTaskCompletionsValue;
-
-        return $additive_criterion;
+        return (float)$result->additive_criterion;
     }
 }

@@ -24,7 +24,6 @@
                                     <th style="width: 100px">Кол-во отзывов</th>
                                     <th style="width: 140px">Средняя плата за услуги</th>
                                     <th style="width: 190px">Кол-во дней с последнего выполнения задания</th>
-                                    <th style="width: 100px">Частота выполнения заданий</th>
                                     <th style="width: 100px">Аддитивный критерий</th>
                                     <th>Действия</th>
                                 </tr>
@@ -41,7 +40,6 @@
                                         <td>{{ $hairdresser->feedbacksCount() }}</td>
                                         <td>{{ $hairdresser->averagePayment() }} &#8381;</td>
                                         <td>{{ $hairdresser->daysSinceLastTaskCompletion() }}</td>
-                                        <td>{{ $hairdresser->frequencyOfTaskCompletions() }}</td>
                                         <td>{{ $hairdresser->additiveCriterion() }}</td>
                                         <td>
                                             <a href="{{ route('users.single', ['id' => $hairdresser->id]) }}"

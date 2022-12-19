@@ -60,6 +60,7 @@ return array(
     'App\\Models\\Task\\Status' => $baseDir . '/app/Models/Task/Status.php',
     'App\\Models\\Task\\Task' => $baseDir . '/app/Models/Task/Task.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\Views\\AllAverageRatings' => $baseDir . '/app/Models/Views/AllAverageRatings.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
