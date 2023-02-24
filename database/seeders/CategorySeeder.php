@@ -20,6 +20,7 @@ class CategorySeeder extends Seeder
             ['title' => 'Средняя стрижка', 'slug' => 'srednaya-strizhka', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'Длинная стрижка', 'slug' => 'dlinnaya-strizhka', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'Окрашивание волос', 'slug' => 'okrashivanie-volos', 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Стрижка бороды', 'slug' => 'strizhka-borodi', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'Наращивание волос', 'slug' => 'narashivanie-volos', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'Стрижка для животных', 'slug' => 'strizhka-dlya-zhivotnih', 'created_at' => now(), 'updated_at' => now()],
         ];

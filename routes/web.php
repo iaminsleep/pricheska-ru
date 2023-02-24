@@ -57,6 +57,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/tasks', 'TaskController@index')->name('tasks.index');
 
         Route::get('/task/{id}', 'TaskController@show')->name('tasks.single');
+
+        Route::get('/search-task', 'TaskController@search')->name('task.search');
     });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {

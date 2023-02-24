@@ -44,7 +44,7 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('popular_categories', $popular_categories);
         });
 
-        view()->composer('front.tasks.layouts.search', function ($view) {
+        view()->composer('front.tasks.browse.index', function ($view) {
             if (Cache::has('categories')) {
                 $categories = Cache::get('categories');
             } else {
