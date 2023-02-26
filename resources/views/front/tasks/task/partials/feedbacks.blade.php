@@ -4,9 +4,9 @@
         <x-cards.response :response="$response"></x-cards.response>
     @empty
         @auth
-            @if (auth()->user()->id !== $task->user->id)
+            @if (auth()->user()->id !== $task->creator->id)
                 <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
-            @elseif(auth()->user()->id === $task->user->id)
+            @elseif(auth()->user()->id === $task->creator->id)
                 <p class="pd-l-20">На данный момент нет у вашего задания нет откликов.</p>
             @endif
         @else

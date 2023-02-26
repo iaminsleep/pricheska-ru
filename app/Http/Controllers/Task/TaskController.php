@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Task;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Task\Task;
+use App\Models\Hairdresser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Services\YaGeoService;
 use App\Http\Controllers\Controller;
 
 class TaskController extends Controller
@@ -16,7 +21,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::orderBy('status_id', 'ASC')
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('id', 'ASC')
             ->select([
                 'id',
                 'title',
@@ -24,9 +29,18 @@ class TaskController extends Controller
                 'category_id',
                 'address',
                 'budget',
-                'created_at'
+                'created_at',
+                'image'
             ])->paginate(5);
 
+        $sorted = Hairdresser::get()
+                    ->sortBy('additive_criterion') //appended attribute
+                    ->pluck('id')
+                    ->toArray();
+
+        $orderedIds = implode(',', $sorted);
+
+        $hairdressers = Hairdresser::orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"));
 
         $optional_filters = [
                     [
@@ -54,16 +68,41 @@ class TaskController extends Controller
             ],
         ];
 
-        return view('front.tasks.browse.index', ['tasks' => $tasks, 'optional_filters' => $optional_filters, 'time_filters' => $time_filters]);
+        return view('front.tasks.browse.index', [
+            'tasks' => $tasks,
+            'optional_filters' => $optional_filters,
+            'time_filters' => $time_filters,
+            'hairdressers' => $hairdressers,
+        ]);
     }
 
-    public function show($id)
+    public function show($id, YaGeoService $service)
     {
-        $task = Task::findOrFail($id); // findOrFail() означает, что если запись не будет найдена, сайт выдаст ошибку 404, что является хорошей практикой
+        $task = Task::findOrFail($id);
+
+        $deadline = Carbon::parse($task->deadline)->format('d.m.Y');
+
+        $coordinates = $task->address ?
+            $service->getCoordinates('Moscow', $task->address)
+            : null;
+
+        $task_amount = $task->creator->tasks()->count();
+
+        $performer = Hairdresser::where('users.id', $task->performer_id)->select([
+            'id',
+            'name',
+            'avatar',
+        ])->first() ?? null;
 
         return view(
             'front.tasks.task.index',
-            ['task' => $task]
+            [
+                'task' => $task,
+                'deadline' => $deadline,
+                'task_amount' => $task_amount,
+                'coordinates' => $coordinates,
+                'performer' => $performer,
+            ]
         );
     }
 

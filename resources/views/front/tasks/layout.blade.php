@@ -13,14 +13,12 @@
 
 <body class="@yield('body-class')">
     <div class="table-layout">
-        @if (\Request::is('/'))
-            <x-header></x-header>
-        @endif
+        <x-header></x-header>
         <main class="@yield('main-class')">
             @yield('page-content')
         </main>
         @guest
-            @include('login.index')
+            @include('front.tasks.login.index')
         @endguest
         <x-footer></x-footer>
         <div class="overlay"></div>

@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
         $user0->name = 'Admin';
         $user0->email = 'admin@email.com';
         $user0->password = bcrypt('admin');
+        $user0->avatar = 'avatar-6.png';
         $user0->save();
         $user0->roles()->attach($admin);
         // $user0->permissions()->attach($manageEverything);
@@ -40,6 +41,7 @@ class UserSeeder extends Seeder
         $user1->name = 'John Doe';
         $user1->email = 'johndoe@email.com';
         $user1->password = bcrypt('johndoe');
+        $user1->avatar = 'avatar-5.png';
         $user1->save();
         $user1->roles()->attach($customer);
         // $user1->permissions()->attach($createTasks);
@@ -48,6 +50,7 @@ class UserSeeder extends Seeder
         $user2->name = 'Mike Thomas';
         $user2->email = 'mikethomas@email.com';
         $user2->password = bcrypt('mikethomas');
+        $user2->avatar = 'avatar-7.jpg';
         $user2->save();
         $user2->roles()->attach($hairdresser);
         // $user2->permissions()->attach($createBlog);
@@ -56,20 +59,21 @@ class UserSeeder extends Seeder
         $user3->name = 'David Bay';
         $user3->email = 'davidbay@email.com';
         $user3->password = bcrypt('davidbay');
+        $user3->avatar = 'avatar-3.png';
         $user3->save();
         $user3->roles()->attach($hairdresser);
         // $user2->permissions()->attach($createBlog);
 
-        if (Storage::exists('users')) {
-            $path = public_path('uploads').'/users';
-            delete_folder($path);
-        }
+        // if (Storage::exists('users')) {
+        //     $path = public_path('uploads').'/users';
+        //     delete_folder($path);
+        // }
 
-        $roles_id = Role::whereNot('codename', 'admin')->pluck('id');
-        $users = User::factory(20)->create();
+        // $roles_id = Role::whereNot('codename', 'admin')->pluck('id');
+        // // $users = User::factory(20)->create();
 
-        $users->each(function ($user) use ($roles_id) {
-            $user->roles()->attach($roles_id->random(1));
-        });
+        // $users->each(function ($user) use ($roles_id) {
+        //     $user->roles()->attach($roles_id->random(1));
+        // });
     }
 }

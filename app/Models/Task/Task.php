@@ -6,7 +6,9 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Task\Status;
 use App\Models\Task\Category;
+use App\Models\Task\Response;
 use App\Http\Requests\Task\StoreTask;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -48,6 +50,11 @@ class Task extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function responses()
+    {
+        return $this->hasMany(Response::class);
+    }
+
     public static function uploadImage(StoreTask $request, $previousImage = null)
     {
         if ($request->hasFile('image')) {
@@ -60,7 +67,7 @@ class Task extends Model
             $folder = date('Y-m-d');
             $path = $imgFile->store("task/images/{$folder}");
 
-            Image::make(public_path('uploads/'.$path))->resize(800, 460, function ($const) {
+            Image::make(public_path('uploads/'.$path))->resize(100, 100, function ($const) {
                 $const->aspectRatio();
             })->save();
 

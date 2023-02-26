@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Task\Task;
 use App\Scopes\HairdresserScope;
 use App\Traits\HasHairdresserRole;
 use Illuminate\Database\Eloquent\Model;
@@ -28,5 +29,10 @@ class Hairdresser extends User
     public function getAdditiveCriterionAttribute()
     {
         return $this->scopeAdditiveCriterion();
+    }
+
+    public function performing_tasks()
+    {
+        return $this->hasMany(Task::class, 'performer_id');
     }
 }

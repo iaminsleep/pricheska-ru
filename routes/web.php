@@ -56,9 +56,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::get('/tasks', 'TaskController@index')->name('tasks.index');
 
+        Route::put('/{taskId}/refuse', 'TaskController@refuse')->name('task.refuse');
+        Route::put('/{taskId}/complete', 'TaskController@complete')->name('task.complete');
+
         Route::get('/task/{id}', 'TaskController@show')->name('tasks.single');
 
         Route::get('/search-task', 'TaskController@search')->name('task.search');
+
+        Route::group(['prefix' => 'responses'], function () {
+            Route::post('{taskId}/post', 'ResponseController@store')->name('response.store');
+            Route::delete('/delete/{responseId}', 'ResponseController@delete')->name('response.delete');
+            Route::put('/accept/{responseId}', 'ResponseController@accept')->name('response.accept');
+        });
     });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {

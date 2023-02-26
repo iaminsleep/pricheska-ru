@@ -3,12 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Traits\HasRoles;
+use App\Models\Task\Task;
+use App\Models\Task\Response;
 use Laravel\Sanctum\HasApiTokens;
 
-use App\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -46,4 +48,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'creator_id');
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(Response::class);
+    }
+
+    public function getImage()
+    {
+        if (!$this->avatar) {
+            return asset('/public/no-avatar.png');
+        }
+
+        return asset('/public/uploads/user/avatars/'.$this->avatar);
+    }
+
+    public function deleteImage()
+    {
+        if ($this->avatar) {
+            Storage::delete($this->avatar);
+        }
+    }
 }

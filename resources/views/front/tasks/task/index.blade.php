@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('front.tasks.layout')
 
 @section('title', 'Просмотр задания')
 
@@ -13,7 +13,7 @@
 @section('scripts')
     {{-- Yandex Maps --}}
     @if ($coordinates !== null)
-        @include('task.ymaps')
+        @include('front.tasks.task.ymaps')
     @endif
 
     {{-- Messenger --}}
@@ -27,25 +27,28 @@
     <div class="main-container page-container" @if ($task->status->id !== 1 && $task->status->id !== 4) style="opacity: 0.7" @endif>
         <section class="content-view">
             <div class="content-view__card">
-                @include('task.partials.info-general')
-                @include('task.partials.action-buttons')
+                @include('front.tasks.task.partials.info-general')
+                @include('front.tasks.task.partials.action-buttons')
             </div>
-            @include('task.partials.feedbacks')
+            @include('front.tasks.task.partials.feedbacks')
         </section>
         <section class="connect-desk">
-            @include('task.partials.status-overview')
-            @include('task.partials.customer-overview')
+            @include('front.tasks.task.partials.status-overview')
+            @include('front.tasks.task.partials.customer-overview')
             @if ($task->performer_id)
-                @include('task.partials.performer-overview')
+                @include('front.tasks.task.partials.performer-overview')
             @endif
             @auth
-                @if ($task->status->id === 1 && $task->performer_id && ($task->performer_id === auth()->user()->id || $task->user_id === auth()->user()->id))
-                    @include('task.section-messenger')
+                @if (
+                    $task->status->id === 1 &&
+                        $task->performer_id &&
+                        ($task->performer_id === auth()->user()->id || $task->creator_id === auth()->user()->id))
+                    @include('front.tasks.task.section-messenger')
                 @endif
             @endauth
         </section>
     </div>
     @auth
-        @include('task.section-modals')
+        @include('front.tasks.task.section-modals')
     @endauth
 @endsection
