@@ -67,7 +67,7 @@ class Task extends Model
             $folder = date('Y-m-d');
             $path = $imgFile->store("task/images/{$folder}");
 
-            Image::make(public_path('uploads/'.$path))->resize(100, 100, function ($const) {
+            Image::make(public_path('uploads/'.$path))->resize(300, 300, function ($const) {
                 $const->aspectRatio();
             })->save();
 
@@ -82,7 +82,7 @@ class Task extends Model
             return asset('/public/no-image.jpg');
         }
 
-        return asset('/public/uploads/task/images/'.$this->image);
+        return asset('/public/uploads/'.$this->image);
     }
 
     public function deleteImage()

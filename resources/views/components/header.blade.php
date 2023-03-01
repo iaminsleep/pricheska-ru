@@ -57,19 +57,22 @@
         <div class="header__nav">
             <ul class="header-nav__list site-list">
                 <li class="site-list__item">
-                    <a href="#">Задания</a>
+                    <a href="{{ route('tasks.index') }}">Задания</a>
                 </li>
                 <li class="site-list__item">
                     <a href="#">Парикмахеры</a>
                 </li>
                 @auth
                     <li class="site-list__item">
-                        <a href="#">Создать заказ</a>
+                        <a href="{{ route('task.create') }}">Создать заказ</a>
                     </li>
                     <li class="site-list__item">
                         <a href="#">Мой профиль</a>
                     </li>
                 @endauth
+                <li class="site-list__item">
+                    <a href="{{ route('posts.index') }}">Перейти в блог</a>
+                </li>
             </ul>
         </div>
         @auth
@@ -102,7 +105,7 @@
                     <a>Настройки</a>
                 </li>
                 <li>
-                    <a>Выход</a>
+                    <a href="{{ route('logout') }}">Выход</a>
                 </li>
             </ul>
         </div>

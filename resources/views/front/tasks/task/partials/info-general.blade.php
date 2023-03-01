@@ -14,10 +14,17 @@
         </b>
         <div class="new-task__icon new-task__icon--clean content-view-icon"></div>
     </div>
-    <div class="content-view__description">
-        <h3 class="content-view__h3">Общее описание</h3>
-        <p> {{ $task->description }} </p>
+    <div style="display:flex; margin-bottom: 18px">
+        <div style="width:300px; height:300px; margin-right: 50px;">
+            <img style='height: 100%; width: 100%; object-fit: cover' src="{{ $task->getImage() }}"
+                alt="{{ $task->title }}" />
+        </div>
+        <div class="content-view__description" style="width: 350px;">
+            <h3 class="content-view__h3">Общее описание</h3>
+            <p style="    word-wrap: break-word;"> {{ $task->description }} </p>
+        </div>
     </div>
+
     <div class="content-view__location">
         <h3 class="content-view__h3">Расположение</h3>
         <div class="content-view__location-wrapper">
@@ -29,5 +36,18 @@
                 <p>Срок выполнения: {{ $deadline }}</p>
             </div>
         </div>
+    </div>
+    <div>
+        @if ($task->tags->count())
+            <div class="tag-cloud-single">
+                <h3 class="content-view__h3" style="margin-top: 20px;">Тэги</h3>
+                @foreach ($task->tags as $tag)
+                    <small>
+                        #<a href="{{ route('tags.single', ['slug' => $tag->slug]) }}"
+                            title="{{ $tag->title }}">{{ $tag->title }}</a>
+                    </small>
+                @endforeach
+            </div><!-- end meta -->
+        @endif
     </div>
 </div>

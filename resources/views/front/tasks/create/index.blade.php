@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('front.tasks.layout')
 
 @section('title', 'Опубликовать задание')
 
@@ -11,18 +11,19 @@
 
 @section('scripts')
     {{-- Dropzone Script Import --}}
-    <script src="/js/dropzone.js"></script>
+    {{-- <script src="/js/dropzone.js"></script> --}}
     {{-- Dropzone Settings --}}
-    @include('create.dropzone')
+    {{-- @include('front.tasks.create.dropzone') --}}
+    <script src="{{ asset('public/assets/front/tasks/js/admin.js') }}"></script>
 @endsection
 
 @section('page-content')
     <div class="main-container page-container">
         <section class="create__task">
-            <h1>Публикация нового задания</h1>
+            <h1>Публикация нового заказа</h1>
             <div class="create__task-main">
-                @include('create.section-create-form')
-                @include('create.section-warnings')
+                @include('front.tasks.create.section-create-form')
+                @include('front.tasks.create.section-warnings')
             </div>
             <button form="task-form" class="button" type="submit">Опубликовать</button>
         </section>

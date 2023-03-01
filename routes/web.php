@@ -68,6 +68,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::delete('/delete/{responseId}', 'ResponseController@delete')->name('response.delete');
             Route::put('/accept/{responseId}', 'ResponseController@accept')->name('response.accept');
         });
+
+        Route::get('/create', 'TaskController@create')->name('task.create');
+        Route::post('/create', 'TaskController@store')->name('task.store');
     });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {

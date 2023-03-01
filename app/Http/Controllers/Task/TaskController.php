@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Task;
 
 use Carbon\Carbon;
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Task\Task;
 use App\Models\Hairdresser;
@@ -10,6 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\YaGeoService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Task\StoreTask;
+use App\Http\Services\CreateTaskService;
+use App\Http\Services\SearchTaskService;
 
 class TaskController extends Controller
 {
@@ -113,12 +117,58 @@ class TaskController extends Controller
         if (empty(array_filter($searchParameters, function ($searchParam) {
             return $searchParam !== null; //check if search parameters are empty
         }))) {
-            return redirect('/browse');
+            return redirect('/');
         } else {
             $tasks = $service->execute();
-            $tasks = $tasks->paginate(4);
+            $tasks = $tasks->paginate(5);
         }
 
-        return view('search-task.index', ['tasks' => $tasks]);
+        return view('front.tasks.search-task.index', ['tasks' => $tasks]);
+    }
+
+    public function create()
+    {
+        $errors_array = [
+            [
+                'name' => 'Заголовок',
+                'alias' => 'title'
+            ],
+            [
+                'name' => 'Описание задания',
+                'alias' => 'description'
+            ],
+            [
+                'name' => 'Категория',
+                'alias' => 'category_id'
+            ],
+            [
+                'name' => 'Адрес',
+                'alias' => 'address'
+            ],
+            [
+                'name' => 'Бюджет',
+                'alias' => 'budget'
+            ],
+            [
+                'name' => 'Срок исполнения',
+                'alias' => 'deadline'
+            ],
+        ];
+
+        $tags = Tag::pluck('title', 'id')->all();
+
+        return view('front.tasks.create.index', [ 'errors_array' => $errors_array, 'tags' => $tags ]);
+    }
+
+    public function store(StoreTask $request, CreateTaskService $service)
+    {
+        $data = $request->validated();
+        $data['image'] = Task::uploadImage($request);
+
+        $task = $service->execute($data);
+
+        $task->tags()->sync($request->tags); // синхронизируем тэги с постами, передаём в sync() массив тэгов. При этом меняется таблица task_tag с many to many отношением.
+
+        return redirect(route('tasks.single', ['id' => $task->id]));
     }
 }

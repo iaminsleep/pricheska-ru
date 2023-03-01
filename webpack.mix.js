@@ -35,7 +35,16 @@ mix.scripts([
 mix.styles([
     'resources/assets/front/tasks/css/style.css',
     'resources/assets/front/tasks/css/normalize.css',
+    'resources/assets/admin/plugins/select2/css/select2.css',
 ], 'public/assets/front/tasks/css/front.css');
+
+mix.scripts([
+    'resources/assets/admin/plugins/jquery/jquery.min.js',
+    'resources/assets/admin/plugins/select2/js/select2.full.js',
+    'resources/assets/admin/js/adminlte.min.js',
+    'resources/assets/admin/js/adminlte-init-elements.js',
+], 'public/assets/front/tasks/js/admin.js');
+
 
 mix.copyDirectory('resources/assets/front/tasks/img', 'public/assets/front/tasks/img');
 mix.copyDirectory('resources/assets/front/tasks/fonts', 'public/assets/front/tasks/fonts');

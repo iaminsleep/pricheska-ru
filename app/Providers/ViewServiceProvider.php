@@ -3,10 +3,11 @@
 namespace App\Providers;
 
 use App\Models\Blog\Post;
-use App\Models\Blog\Category as BlogCategory;
-use App\Models\Task\Category as TaskCategory;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Blog\Category as BlogCategory;
+use App\Models\Task\Category as TaskCategory;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -44,14 +45,12 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('popular_categories', $popular_categories);
         });
 
-        view()->composer('front.tasks.browse.index', function ($view) {
-            if (Cache::has('categories')) {
-                $categories = Cache::get('categories');
-            } else {
-                $categories = TaskCategory::withCount('tasks')->orderBy('tasks_count', 'desc')->get();
-                Cache::put('categories', $categories, 60);
-            }
-            $view->with('categories', $categories);
-        });
+        if (Cache::has('categories')) {
+            $categories = Cache::get('categories');
+        } else {
+            $categories = TaskCategory::withCount('tasks')->orderBy('tasks_count', 'desc')->get();
+            Cache::put('categories', $categories, 60);
+        }
+        View::share('categories', $categories);
     }
 }

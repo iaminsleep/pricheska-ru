@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('front.tasks.layout')
 
 @section('title', 'Результаты поиска')
 
@@ -6,10 +6,10 @@
 
 @section('page-content')
     <div class="main-container page-container relative-container">
-        <a class="dec-none" href="{{ route('browse.page') }}">
+        <a class="dec-none" href="{{ route('tasks.index') }}">
             <button class="button absolute-button">
                 << Назад</button>
         </a>
-        @include('search-task.section-tasks')
+        @include('front.tasks.search-task.section-tasks')
     </div>
 @endsection

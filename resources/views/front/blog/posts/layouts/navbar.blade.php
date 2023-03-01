@@ -25,7 +25,7 @@
                 @auth
                     <div class="header__account">
                         <a class="header__account-photo">
-                            <img src="/img/avatars/{{ auth()->user()->avatar }}" width="43" height="44"
+                            <img src="{{ auth()->user()->getImage() }}" width="43" height="44"
                                 alt="Аватар пользователя {{ auth()->user()->name }}">
                         </a>
                         <span class="header__account-name">
