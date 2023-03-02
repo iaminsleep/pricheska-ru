@@ -6,8 +6,9 @@ namespace App\Models;
 use App\Traits\HasRoles;
 use App\Models\Task\Task;
 use App\Models\Task\Response;
-use Laravel\Sanctum\HasApiTokens;
+use App\Models\Task\Favourite;
 
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,6 +58,11 @@ class User extends Authenticatable
     public function responses()
     {
         return $this->hasMany(Response::class);
+    }
+
+    public function favourites()
+    {
+        return $this->hasMany(Favourite::class);
     }
 
     public function getImage()

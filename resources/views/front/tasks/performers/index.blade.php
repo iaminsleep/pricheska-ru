@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('front.tasks.layout')
 
 @section('title', 'Исполнители')
 
@@ -6,7 +6,7 @@
 
 @section('page-content')
     <div class="main-container page-container">
-        @include('performers.section-users')
-        @include('performers.section-search-filters')
+        @include('front.tasks.performers.section-users')
+        @include('front.tasks.performers.section-search-filters')
     </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Task\Task;
+use App\Models\Task\Feedback;
 use App\Scopes\HairdresserScope;
 use App\Traits\HasHairdresserRole;
 use Illuminate\Database\Eloquent\Model;
@@ -34,5 +35,10 @@ class Hairdresser extends User
     public function performing_tasks()
     {
         return $this->hasMany(Task::class, 'performer_id');
+    }
+
+    public function received_feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'receiver_id');
     }
 }

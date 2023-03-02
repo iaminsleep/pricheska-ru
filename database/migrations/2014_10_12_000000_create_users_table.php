@@ -18,6 +18,12 @@ return new class () extends Migration {
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+
+            //online status
+            $table->timestamp('last_seen')->nullable();
+            $table->string('description')->nullable();
+            $table->date('birth_date')->nullable();
+
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->rememberToken();

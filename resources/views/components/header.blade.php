@@ -60,7 +60,7 @@
                     <a href="{{ route('tasks.index') }}">Задания</a>
                 </li>
                 <li class="site-list__item">
-                    <a href="#">Парикмахеры</a>
+                    <a href="{{ route('users.index') }}">Парикмахеры</a>
                 </li>
                 @auth
                     <li class="site-list__item">

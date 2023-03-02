@@ -1,5 +1,5 @@
 <section class="user__search">
-    @include('performers.partials.main-filters')
+    @include('front.tasks.performers.partials.main-filters')
     @forelse($users as $user)
         <x-cards.user :user="$user"></x-cards.user>
     @empty

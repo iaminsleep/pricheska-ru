@@ -71,6 +71,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::get('/create', 'TaskController@create')->name('task.create');
         Route::post('/create', 'TaskController@store')->name('task.store');
+
+        Route::get('/hairdressers', 'UserController@index')->name('users.index');
+        Route::get('/hairdressers/{id}', 'UserController@show')->name('users.single');
+        Route::get('/search-user', 'UserController@search')->name('users.search');
+
+
+        Route::group(['prefix' => 'user'], function () {
+            Route::post('/{id}/add-fav', 'UserController@add_fav')->name('favourites.add');
+            Route::delete('/{id}/del-fav', 'UserController@delete_fav')->name('favourites.delete');
+        });
     });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {

@@ -11,7 +11,7 @@
             </label>
             <input
                 class="enter-form-email input input-middle @if ($errors->has('email') || $errors->has('auth-error')) {{ 'login-danger' }} @endif"
-                name="email" id="enter-email" autocomplete="off" value="{{ old('email') }}">
+                name="email" id="enter-email" autocomplete="on" value="{{ old('email') }}">
             @error('email')
                 <span class="fs-12"> {{ $errors->first('email') }} </span>
             @enderror
@@ -28,7 +28,7 @@
             </label>
             <input
                 class="enter-form-email input input-middle  @if ($errors->has('password')) {{ 'login-danger' }} @endif"
-                type="password" name="password" id="enter-password" autocomplete="off" value="{{ old('password') }}">
+                type="password" name="password" id="enter-password" autocomplete="on" value="{{ old('password') }}">
             @error('password')
                 <span class="fs-12">{{ $errors->first('password') }}</span>
             @enderror
