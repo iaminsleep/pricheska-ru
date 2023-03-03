@@ -12,12 +12,12 @@ class Response extends Model
 {
     use HasFactory;
 
-    // /**
-    //  * The database table used by the model.
-    //  *
-    //  * @var string
-    //  */
-    // protected $table = 'responses';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'responses';
 
     protected $fillable = [
         'user_id',
@@ -33,15 +33,12 @@ class Response extends Model
             'title',
             'creator_id',
             'performer_id',
+            'status_id'
         ]);
     }
 
     public function user()
     {
-        return $this->belongsTo(Hairdresser::class)->select([
-            'id',
-            'name',
-            'avatar',
-        ]);
+        return $this->belongsTo(Hairdresser::class, 'user_id');
     }
 }

@@ -20,7 +20,7 @@
     <script type="text/javascript">
         var authUserId = @json(auth()->user()->id ?? null); //pass authenticated user id to the messenger script
     </script>
-    <script src="/js/messenger.js"></script>
+    <script src="{{ asset('public/assets/front/tasks/js/front.js') }}"></script>
 @endsection
 
 @section('page-content')

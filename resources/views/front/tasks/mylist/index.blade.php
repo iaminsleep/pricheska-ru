@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('front.tasks.layout')
 
 @section('title', 'Мои задания')
 
@@ -6,7 +6,7 @@
 
 @section('page-content')
     <div class="main-container page-container">
-        @include('mylist.section-menu-toggle')
-        @include('mylist.section-tasks')
+        @include('front.tasks.mylist.section-menu-toggle')
+        @include('front.tasks.mylist.section-tasks')
     </div>
 @endsection

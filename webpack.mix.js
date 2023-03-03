@@ -44,7 +44,9 @@ mix.scripts([
     'resources/assets/admin/js/adminlte.min.js',
     'resources/assets/admin/js/adminlte-init-elements.js',
 ], 'public/assets/front/tasks/js/admin.js');
-
+mix.scripts([
+    'resources/assets/front/tasks/js/main.js',
+], 'public/assets/front/tasks/js/front.js');
 
 mix.copyDirectory('resources/assets/front/tasks/img', 'public/assets/front/tasks/img');
 mix.copyDirectory('resources/assets/front/tasks/fonts', 'public/assets/front/tasks/fonts');

@@ -7,9 +7,10 @@ use Carbon\Carbon;
 use App\Models\Tag;
 
 use App\Models\Blog\Comment;
+use App\Models\Blog\Category;
 use App\Http\Requests\Blog\StorePost;
-use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -36,7 +37,7 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     } // одному посту - одна категория
 
     public function comments()

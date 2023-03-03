@@ -1,9 +1,11 @@
 <div class="content-view__feedback-wrapper">
     <div class="content-view__feedback-card">
         <div class="feedback-card__top">
-            <a href="{{ route('users.single', ['id' => $response->user->id]) }}" style="margin-right:25px;">
-                <img src="{{ $response->user->getImage() }}" width="55" height="55">
-            </a>
+            <div style="width: 55px; height: 55px; margin-right:25px;">
+                <a href="{{ route('users.single', ['id' => $response->user_id]) }}">
+                    <img src="{{ $response->user->getImage() }}" style="width: 100%; height: 100%; object-fit:cover">
+                </a>
+            </div>
             <div class="feedback-card__top--name">
                 <p>
                     <a href="{{ route('users.single', ['id' => $response->user->id]) }}" class="link-regular">

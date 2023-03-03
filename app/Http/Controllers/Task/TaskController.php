@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\StoreTask;
 use App\Http\Services\CreateTaskService;
 use App\Http\Services\SearchTaskService;
+use App\Http\Services\FilterProfileTasksService;
 
 class TaskController extends Controller
 {
@@ -170,5 +171,23 @@ class TaskController extends Controller
         $task->tags()->sync($request->tags); // синхронизируем тэги с постами, передаём в sync() массив тэгов. При этом меняется таблица task_tag с many to many отношением.
 
         return redirect(route('tasks.single', ['id' => $task->id]));
+    }
+
+    public function personal(FilterProfileTasksService $service)
+    {
+        $tasks = !count(request()->all())
+                    ? Task::where('creator_id', auth()->user()->id)
+                    ->orWhere('performer_id', auth()->user()->id)
+                    ->select([
+                        'id',
+                        'title',
+                        'description',
+                        'category_id',
+                        'performer_id',
+                        'status_id',
+                    ])->get()
+                    : $service->execute()->get();
+
+        return view('front.tasks.mylist.index', [ 'tasks' => $tasks ]);
     }
 }
