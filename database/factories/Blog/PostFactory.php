@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Blog\Post;
 use Illuminate\Http\File;
 use Illuminate\Support\Str;
-use App\Models\Task\Category;
+use App\Models\Blog\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\Factory;

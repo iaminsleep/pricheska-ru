@@ -56,10 +56,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::get('/tasks', 'TaskController@index')->name('tasks.index');
 
-        Route::put('/{taskId}/refuse', 'TaskController@refuse')->name('task.refuse');
-        Route::put('/{taskId}/complete', 'TaskController@complete')->name('task.complete');
-
-        Route::get('/task/{id}', 'TaskController@show')->name('tasks.single');
+        Route::get('/tasks/{id}', 'TaskController@show')->name('tasks.single');
+        Route::get('/tasks/{id}/edit', 'TaskController@edit')->name('task.edit');
+        Route::put('/tasks/{id}/update', 'TaskController@update')->name('task.update');
+        Route::delete('/tasks/{id}/delete', 'TaskController@destroy')->name('task.delete');
+        Route::put('tasks/{taskId}/refuse', 'TaskController@refuse')->name('task.refuse');
+        Route::put('tasks/{taskId}/complete', 'TaskController@complete')->name('task.complete');
 
         Route::get('/search-task', 'TaskController@search')->name('task.search');
 

@@ -59,8 +59,8 @@ class UserSeeder extends Seeder
         // $user2->permissions()->attach($createBlog);
 
         $user3 = new User();
-        $user3->name = 'Руслан Крючков';
-        $user3->email = 'ruslan@email.com';
+        $user3->name = 'Кирилл Крючков';
+        $user3->email = 'kirill@email.com';
         $user3->password = bcrypt('password@');
         $user3->avatar = 'avatar-4.png';
         $user3->last_seen = (new \DateTime())->format("Y-m-d H:i:s");

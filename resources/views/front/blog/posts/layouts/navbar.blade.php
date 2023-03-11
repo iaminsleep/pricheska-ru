@@ -1,4 +1,4 @@
-<header class="market-header header">
+{{-- <header class="market-header header">
     <div class="container-fluid">
         <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -49,4 +49,6 @@
             border: 2px solid red;
         }
     </style>
-</header><!-- end market-header -->
+</header><!-- end market-header --> --}}
+@include('components.header')
+<link href="{{ asset('public/assets/front/tasks/css/front.css') }}" rel="stylesheet">

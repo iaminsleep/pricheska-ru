@@ -60,17 +60,18 @@
 
                             <div class="input-group">
                                 <input type="checkbox" name="remember_me" id="remember_me">
-                                <label class="checkbox-label" for="remember_me">Remember me</label>
-                            </div>
+                                <label class="checkbox-label" for="remember_me">Запомнить меня</label>
 
+                            </div>
                             <div class="row pt-20">
                                 <div class="col-4 offset-8">
-                                    <button type="submit" class="btn btn-primary btn-block">Далее</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
                                 </div>
                             </div>
                             <div style="display: flex; flex-direction: column; align-items: baseline;">
-                                <a href="{{ route('login.create') }}" class="text-center">Забыл пароль</a>
-                                <a href="{{ route('register.create') }}" class="text-center">У меня нет аккаунта</a></a>
+                                {{-- <a href="{{ route('login.create') }}" class="text-center">Забыл пароль</a> --}}
+                                <a href="{{ route('register.create') }}" class="text-center">У меня нет
+                                    аккаунта</a></a>
                             </div>
                         </div>
 

@@ -24,7 +24,7 @@ class UserController extends Controller
     public function hairdressers()
     {
         $sorted = Hairdresser::get()
-            ->sortBy('additive_criterion') //appended attribute
+            ->sortBy('normalization_additive_criterion') //appended attribute
             ->pluck('id')
             ->toArray();
 

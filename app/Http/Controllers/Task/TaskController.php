@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Task\Task;
 use App\Models\Hairdresser;
 use Illuminate\Http\Request;
+use App\Models\Task\Category;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\YaGeoService;
 use App\Http\Controllers\Controller;
@@ -38,14 +39,16 @@ class TaskController extends Controller
                 'image'
             ])->paginate(5);
 
+
         $sorted = Hairdresser::get()
-                    ->sortBy('additive_criterion') //appended attribute
+                    ->sortBy('normalization_additive_criterion') //appended attribute
                     ->pluck('id')
                     ->toArray();
 
         $orderedIds = implode(',', $sorted);
 
-        $hairdressers = Hairdresser::orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"));
+        $hairdressers = Hairdresser::orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->paginate(5);
+
 
         $optional_filters = [
                     [
@@ -189,5 +192,70 @@ class TaskController extends Controller
                     : $service->execute()->get();
 
         return view('front.tasks.mylist.index', [ 'tasks' => $tasks ]);
+    }
+
+    public function edit($id)
+    {
+        $errors_array = [
+            [
+                'name' => 'Заголовок',
+                'alias' => 'title'
+            ],
+            [
+                'name' => 'Описание задания',
+                'alias' => 'description'
+            ],
+            [
+                'name' => 'Категория',
+                'alias' => 'category_id'
+            ],
+            [
+                'name' => 'Адрес',
+                'alias' => 'address'
+            ],
+            [
+                'name' => 'Бюджет',
+                'alias' => 'budget'
+            ],
+            [
+                'name' => 'Срок исполнения',
+                'alias' => 'deadline'
+            ],
+        ];
+
+        $tags = Tag::pluck('title', 'id')->all();
+        $task = Task::findOrFail($id);
+
+        return view('front.tasks.edit.index', [
+            'task' => $task,
+            'tags' => $tags,
+            'errors_array' => $errors_array,
+        ]);
+    }
+
+    public function update(StoreTask $request, $id)
+    {
+        $task = Task::findOrFail($id);
+        $data = $request->all();
+
+        if ($file = Task::uploadImage($request, $task->image)) { // загрузка и удаление предыдущего изображения через модель поста
+            $data['image'] = $file;
+        }
+
+        $task->update($data);
+        $task->tags()->sync($request->tags);
+
+        return redirect()->route('tasks.single', ['id' => $task->id]);
+    }
+
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+
+        $task->tags()->sync([]); // удаляем теги из таблицы связи тэгов и постов
+        // $task->deleteImage(); // удаление изображения через фукнцию в eloquent модели
+        $task->delete();
+
+        return redirect()->route('tasks.index');
     }
 }

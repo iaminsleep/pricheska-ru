@@ -4,8 +4,7 @@
 @include('front.blog.posts.layouts.head')
 
 <body>
-
-    <div id="wrapper">
+    <div class="wrapper table-layout">
         @include('front.blog.posts.layouts.navbar')
 
         @yield('header')

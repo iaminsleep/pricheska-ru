@@ -86,12 +86,12 @@ trait HasHairdresserRole
 
     public function scopeAdditiveCriterion()
     {
-        $result = DB::table('additive_criterion')
-            ->select(DB::raw('additive_criterion'))
-            ->join('users', 'additive_criterion.user_id', '=', 'users.id')
+        $result = DB::table('normalization_additive_criterion')
+            ->select(DB::raw('normalization_additive_criterion'))
+            ->join('users', 'normalization_additive_criterion.user_id', '=', 'users.id')
             ->where('users.id', $this->id)
             ->first();
 
-        return (float)$result->additive_criterion;
+        return (float)$result->normalization_additive_criterion;
     }
 }

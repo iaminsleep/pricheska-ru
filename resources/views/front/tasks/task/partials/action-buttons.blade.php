@@ -1,6 +1,6 @@
 <div class="content-view__action-buttons">
     @auth
-        @if (($task->creator->id === 1 || $task->creator->id === 4) && auth()->user()->id === $task->creator->id)
+        @if (($task->status->id === 1 || $task->status->id === 4) && auth()->user()->id === $task->creator->id)
             <button class="button button__big-color request-button open-modal" type="button"
                 data-for="complete-form">Завершить</button>
         @elseif(

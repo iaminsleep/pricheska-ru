@@ -11,4 +11,5 @@
     </div>
     <b class="done-task">Выполнил(а) {{ $completedTasksCount }} заказов</b><br>
     <b class="done-review">Получил(а) {{ $receivedFeedbacks->count() }} отзывов</b>
+
 </div>

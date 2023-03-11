@@ -31,9 +31,9 @@ class PostSeeder extends Seeder
         $posts->each(function ($post) use ($tags_id) {
             $post->tags()->attach($tags_id->random(3));
 
-            Comment::factory(3)->create([
-                'post_id' => $post->id,
-            ]);
+            // Comment::factory(3)->create([
+            //     'post_id' => $post->id,
+            // ]);
         });
     }
 }

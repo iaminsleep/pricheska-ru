@@ -12,13 +12,13 @@ return new class () extends Migration {
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('post_id');
-            $table->bigInteger('author_id');
-            $table->text('text');
-            $table->timestamps();
-        });
+        // Schema::create('comments', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->bigInteger('post_id');
+        //     $table->bigInteger('author_id');
+        //     $table->text('text');
+        //     $table->timestamps();
+        // });
     }
 
     /**

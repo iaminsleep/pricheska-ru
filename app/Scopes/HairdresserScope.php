@@ -13,8 +13,8 @@ class HairdresserScope implements Scope
         $builder->select('users.*')
             ->join('user_role', 'user_role.user_id', '=', 'users.id')
             ->join('roles', 'roles.id', '=', 'user_role.role_id')
-            ->where('roles.codename', 'hairdresser')
-            ->orWhere('roles.codename', 'admin')
+            ->where('roles.codename', 'hairdresser') //            ->orWhere('roles.codename', 'admin')
+
         ;
     }
 

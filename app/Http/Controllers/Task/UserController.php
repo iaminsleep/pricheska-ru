@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         $sorted = Hairdresser::get()
-                    ->sortBy('additive_criterion') //appended attribute
+                    ->sortBy('normalization_additive_criterion') //appended attribute
                     ->pluck('id')
                     ->toArray();
 
@@ -62,7 +62,7 @@ class UserController extends Controller
         $receivedFeedbacks = null;
         $completedTasksCount = null;
 
-        $user = Hairdresser::findOrFail($id);
+        $user = Hairdresser::find($id);
         if (!$user) {
             $user = User::findOrFail($id);
         } else {

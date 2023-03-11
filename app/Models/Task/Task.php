@@ -6,6 +6,7 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Hairdresser;
 use App\Models\Task\Status;
 use App\Models\Task\Category;
 use App\Models\Task\Response;
@@ -33,6 +34,11 @@ class Task extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function performer()
+    {
+        return $this->belongsTo(Hairdresser::class, 'performer_id');
     }
 
     public function tags()

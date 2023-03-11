@@ -8,7 +8,7 @@
     <link href="{{ asset('public/assets/front/tasks/css/front.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data.js"></script>
-    <script src="public/js/main.js" defer></script>
+    <script src="https://kit.fontawesome.com/77ae30b638.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="@yield('body-class')">
