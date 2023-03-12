@@ -47,17 +47,13 @@ class TaskController extends Controller
 
         $orderedIds = implode(',', $sorted);
 
-        $hairdressers = Hairdresser::orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->paginate(5);
+        $hairdressers = Hairdresser::orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->get(5);
 
 
         $optional_filters = [
                     [
                         'name' => 'Без откликов',
                         'alias' => 'no_responses'
-                    ],
-                    [
-                        'name' => 'Удалённая работа',
-                        'alias' => 'remote_job',
                     ],
                 ];
 
@@ -196,40 +192,12 @@ class TaskController extends Controller
 
     public function edit($id)
     {
-        $errors_array = [
-            [
-                'name' => 'Заголовок',
-                'alias' => 'title'
-            ],
-            [
-                'name' => 'Описание задания',
-                'alias' => 'description'
-            ],
-            [
-                'name' => 'Категория',
-                'alias' => 'category_id'
-            ],
-            [
-                'name' => 'Адрес',
-                'alias' => 'address'
-            ],
-            [
-                'name' => 'Бюджет',
-                'alias' => 'budget'
-            ],
-            [
-                'name' => 'Срок исполнения',
-                'alias' => 'deadline'
-            ],
-        ];
-
         $tags = Tag::pluck('title', 'id')->all();
         $task = Task::findOrFail($id);
 
         return view('front.tasks.edit.index', [
             'task' => $task,
             'tags' => $tags,
-            'errors_array' => $errors_array,
         ]);
     }
 

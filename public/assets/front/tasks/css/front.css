@@ -354,7 +354,7 @@ position: absolute;
 
 .page-footer {
   color: #ffffff;
-  background-color: #2f3542; }
+  background-color: #3E332C; }
 
 .page-footer__container {
   display: -webkit-box;
@@ -476,8 +476,8 @@ position: absolute;
   background-color: #5f5f5f; }
 
 .new-task__icon--clean {
-  background-image: url("../img/clean.png");
-  background-color: #ff6b81; }
+  background-image: url("../img/barber-shop.png");
+  background-color: #aa7e63; }
 
 .new-task__icon--cargo {
   background-image: url("../img/cargo.png");
@@ -519,7 +519,7 @@ position: absolute;
   color: #5f5f5f; }
 
 .new-task__price--clean {
-  color: #ff6b81; }
+  color: #aa7e63; }
 
 .new-task__price--cargo {
   color: #ff7f50; }
@@ -768,7 +768,7 @@ position: absolute;
   font-weight: 500;
   letter-spacing: 0.8px;
   color: #ffffff;
-  background-color: #3742fa;
+  background-color: #6F4E37;
   border: 1px solid transparent;
   border-radius: 4px;
   text-decoration: none;
@@ -908,9 +908,9 @@ position: absolute;
           justify-content: center;
   width: 39px;
   height: 40px;
-  background-color: #3366ff;
+  background-color: #6F4E37;
   cursor: pointer;
-  border-right: 1px solid #2436ab; }
+  border-right: 1px solid #4a3a2e; }
 
 .pagination__item a {
   color: #ffffff;
@@ -938,15 +938,15 @@ position: absolute;
 
 .pagination__item--current,
 .pagination__item:hover {
-  background-color: #1a34b8; }
+  background-color: #533B29; }
 
 .link-regular {
-  color: #1e90ff;
+  color: #614430;
   cursor:pointer;
   text-decoration: none; }
   .link-regular:hover {
     text-decoration: underline;
-    color: #005db8; }
+    color: #614430; }
 
 .content-view {
   width: 780px;

@@ -1,6 +1,6 @@
 @extends('front.blog.posts.layouts.layout')
 
-@section('title', $post->title . ' - Markedia')
+@section('title', $post->title . ' - Причёска.ру')
 
 @section('content')
     <div class="page-wrapper">
@@ -24,7 +24,7 @@
                 <small><a href="#" title=""><i class="fa fa-eye"></i> {{ $post->views }}</a></small>
             </div><!-- end meta -->
 
-            <div class="post-sharing">
+            {{-- <div class="post-sharing">
                 <ul class="list-inline">
                     <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span
                                 class="down-mobile">Share on Facebook</span></a></li>
@@ -32,7 +32,7 @@
                                 class="down-mobile">Tweet on Twitter</span></a></li>
                     <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
                 </ul>
-            </div><!-- end post-sharing -->
+            </div><!-- end post-sharing --> --}}
         </div><!-- end title -->
 
         <div class="single-post-media">
@@ -59,11 +59,8 @@
 
             <div class="post-sharing">
                 <ul class="list-inline">
-                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span
-                                class="down-mobile">Share on Facebook</span></a></li>
-                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span
-                                class="down-mobile">Tweet on Twitter</span></a></li>
-                    <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-vk"></i> <span
+                                class="down-mobile">Поделиться ВК</span></a></li>
                 </ul>
             </div><!-- end post-sharing -->
         </div><!-- end title -->

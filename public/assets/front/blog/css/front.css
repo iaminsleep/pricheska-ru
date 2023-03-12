@@ -10603,7 +10603,7 @@ hr.invis3 {
 }
 
 .blog-custom-build .blog-meta {
-    margin: -4rem 3rem 0;
+    margin: -4rem 8rem 0;
     z-index: 11;
     padding: 2rem 2rem;
     position: relative;
@@ -12591,7 +12591,7 @@ hr.invis3 {
 **************************************/
 
 
-/* RESPONSIVE 
+/* RESPONSIVE
 **************************************/
 
 @media (max-width: 1156px) {
@@ -12789,7 +12789,7 @@ hr.invis3 {
 **************************************/
 
 
-/* COLORS 
+/* COLORS
 **************************************/
 
 .authorbox p a,
@@ -12835,7 +12835,7 @@ a:focus,
 }
 
 
-/* OTHER COLORS 
+/* OTHER COLORS
 **************************************/
 
 .navbar-nav .nav-link.active.color-pink-hover,

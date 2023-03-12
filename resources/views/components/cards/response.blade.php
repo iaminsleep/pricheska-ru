@@ -27,7 +27,7 @@
             <div class="feedback-card__actions">
                 @if (
                     $response->task->status_id === 1 &&
-                        auth()->user()->id === $response->task->user_id &&
+                        auth()->user()->id === $response->task->creator_id &&
                         !$response->task->performer_id)
                     <form action="{{ route('response.accept', ['responseId' => $response->id]) }}" method="post">
                         @method('PUT')
@@ -45,7 +45,7 @@
                     </form>
                 @elseif(
                     $response->task->status_id === 1 &&
-                        auth()->user()->id === $response->user_id &&
+                        auth()->user()->id === $response->creator_id &&
                         auth()->user()->id !== $response->task->performer_id)
                     <form action="{{ route('response.delete', ['responseId' => $response->id]) }}" method="post">
                         @method('DELETE')

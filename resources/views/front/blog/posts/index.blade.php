@@ -1,9 +1,9 @@
 @extends('front.blog.posts.layouts.layout')
 
-@section('title', 'Markedia - Главная')
+@section('title', 'Причёска.ру - Блог')
 
 @section('header')
-    <section id="cta" class="section">
+    {{-- <section id="cta" class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12 align-self-center">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 
 @section('content')
@@ -46,14 +46,13 @@
                     <div class="blog-meta big-meta text-center">
                         <div class="post-sharing">
                             <ul class="list-inline">
-                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span
-                                            class="down-mobile">Share
-                                            on Facebook</span></a></li>
-                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span
+                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-vk"></i> <span
+                                            class="down-mobile">Поделиться ВКонтакте</span></a></li>
+                                {{-- <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span
                                             class="down-mobile">Tweet
                                             on Twitter</span></a></li>
                                 <li><a href="#" class="gp-button btn btn-primary"><i
-                                            class="fa fa-google-plus"></i></a>
+                                            class="fa fa-google-plus"></i></a> --}}
                                 </li>
                             </ul>
                         </div>

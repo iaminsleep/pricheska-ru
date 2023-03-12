@@ -34,10 +34,10 @@ return new class () extends Migration {
     private function createView(): string
     {
         $average_rating_importance = 1;
-        $completed_tasks_count_importance = 0.9;
-        $frequency_importance = -0.6;
+        $completed_tasks_count_importance = 0.7;
+        $frequency_importance = -0.3;
         $feedbacks_count_importance = 0.8;
-        $days_importance = -0.4;
+        $days_importance = -0.3;
 
         return <<<SQL
             CREATE VIEW additive_criterion AS

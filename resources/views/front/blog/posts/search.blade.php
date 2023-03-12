@@ -1,6 +1,6 @@
 @extends('front.blog.posts.layouts.layout')
 
-@section('title', 'Markedia - Search')
+@section('title', 'Причёска.ру - Поиск')
 
 @section('header')
     <div class="page-title db">

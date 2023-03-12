@@ -12,9 +12,9 @@
 </head>
 
 <body class="@yield('body-class')">
-    <div class="table-layout">
+    <div class="table-layout" style="background-color:#EDE9E6">
         <x-header></x-header>
-        <main class="@yield('main-class')">
+        <main class="@yield('main-class')" style="background-color: #EDE9E6">
             @yield('page-content')
         </main>
         @guest
