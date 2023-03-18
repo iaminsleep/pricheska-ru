@@ -6,10 +6,11 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Tag;
 
+use App\Models\User;
 use App\Models\Blog\Comment;
 use App\Models\Blog\Category;
-use App\Http\Requests\Blog\StorePost;
 
+use App\Http\Requests\Blog\StorePost;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
@@ -34,6 +35,11 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class)->withTimestamps(); // при использовании $post->tags()->sync() автоматически заполняется таблица post_tag, но при этом не сохраняется время. Функция withTimestamps() исправляет это дело.
     } // пост может иметь много тэгов
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
 
     public function category()
     {

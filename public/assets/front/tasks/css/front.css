@@ -107,7 +107,7 @@ background-color: #f1f2f6;
           align-items: center; }
 
 .page-header {
-  background-color: #1e90ff;
+  background-color: #533B29;
   min-height: 80px; }
 
 .page-header__logo {
@@ -278,7 +278,7 @@ position: absolute;
   top: 70px;
   right: 23px;
   z-index: 10;
-  background-color: #b8dbff;
+  background-color: #e3d1c5;
   border-radius: 8px;
   width: 160px; }
 
@@ -294,12 +294,12 @@ position: absolute;
     padding-bottom: 12px;
     vertical-align: middle; }
     .account__pop-up-list li:hover {
-      background-color: #cee6ff;
+      background-color: #d9c2b2;
       border-radius: 8px;
       cursor: pointer; }
     .account__pop-up-list li a {
       font-family: "Roboto", sans-serif;
-      color: #1e90ff;
+      color: #614430;
       text-decoration: none;
         padding: 1em;
         margin: -1em; }
@@ -776,7 +776,7 @@ position: absolute;
   cursor: pointer; }
 
 .button:hover {
-  background-color: #598bff; }
+  background-color: #533B29; }
 
 .button:active {
   background-color: #274bdb; }
@@ -1448,7 +1448,7 @@ position: absolute;
   right: 0; }
 
 .warning-item--advice::after {
-  background-color: #72b9fe;
+  background-color: #c6a48c;
   background-image: url("../img/info-icon.png");
   background-position: center;
   background-repeat: no-repeat; }
@@ -1477,7 +1477,7 @@ position: absolute;
   color: #5e5d5f; }
 
 .warning-item--advice {
-  background-color: #cbe5ff; }
+  background-color: #e3d1c5; }
 
 .warning-item--error {
   background-color: #ff7675;
@@ -1925,11 +1925,11 @@ position: absolute;
 
 .menu_toggle__item--current {
   position: relative;
-  background-color: #1e90ff; }
+  background-color: #533B29; }
   .menu_toggle__item--current a {
     color: #ffffff; }
   .menu_toggle__item--current:hover {
-    background-color: #1e90ff; }
+    background-color: #533B29; }
 
 .menu_toggle__item--current::before {
   position: absolute;
@@ -1937,7 +1937,7 @@ position: absolute;
   top: 11px;
   right: -33px;
   border: 15px solid transparent;
-  border-left: 20px solid #1e90ff; }
+  border-left: 20px solid #533B29; }
 
 .menu-toggle__item svg {
   fill: #000000; }
@@ -1974,8 +1974,42 @@ position: absolute;
   padding: 0;
   margin: 0; }
 
+  .first::after {
+    display: block;
+        content: ' ';
+        background-image: url('../img/gold-medal.png');
+        background-size: 28px 32px;
+        height: 32px;
+        width: 28px;
+        position: relative;
+        top: -17px;
+        left: 35px;
+  }
+  .second::after {
+    display: block;
+        content: ' ';
+        background-image: url('../img/silver-medal.png');
+        background-size: 28px 32px;
+        height: 32px;
+        width: 28px;
+        position: relative;
+        top: -17px;
+        left: 35px;
+  }
+  .third::after {
+    display: block;
+        content: ' ';
+        background-image: url('../img/bronze-medal.png');
+        background-size: 28px 32px;
+        height: 32px;
+        width: 28px;
+        position: relative;
+        top: -17px;
+        left: 35px;
+  }
+
 .user__search-item a {
-  color: #1e90ff;
+  color: #533B29;
   padding-left: 20px;
   position: relative; }
   .user__search-item a::after {
@@ -2600,9 +2634,9 @@ position: absolute;
 
 .modal-button {
   background-color: #b1d0fe;
-  border: 1px solid #3366ff;
+  border: 1px solid #71421a;
   background-color: #ffffff;
-  color: #3366ff;
+  color: #71421a;
   padding: 12px 17px;
   font-size: 12px; }
   .modal-button:hover {

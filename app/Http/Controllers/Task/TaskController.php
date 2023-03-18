@@ -10,11 +10,13 @@ use App\Models\Hairdresser;
 use Illuminate\Http\Request;
 use App\Models\Task\Category;
 use Illuminate\Support\Facades\DB;
+use App\Http\Services\CompleteTask;
 use App\Http\Services\YaGeoService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\StoreTask;
 use App\Http\Services\CreateTaskService;
 use App\Http\Services\SearchTaskService;
+use App\Http\Requests\Task\CompleteTaskRequest;
 use App\Http\Services\FilterProfileTasksService;
 
 class TaskController extends Controller
@@ -37,18 +39,17 @@ class TaskController extends Controller
                 'budget',
                 'created_at',
                 'image'
-            ])->paginate(5);
+            ])->paginate(6);
 
 
         $sorted = Hairdresser::get()
-                    ->sortBy('normalization_additive_criterion') //appended attribute
+                    ->sortBy('additive_criterion') //appended attribute
                     ->pluck('id')
                     ->toArray();
 
         $orderedIds = implode(',', $sorted);
 
         $hairdressers = Hairdresser::orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->get(5);
-
 
         $optional_filters = [
                     [
@@ -225,5 +226,12 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect()->route('tasks.index');
+    }
+
+    public function complete($taskId, CompleteTaskRequest $request, CompleteTask $service)
+    {
+        $service->execute($request->validated(), $taskId);
+
+        return redirect(route('tasks.index'));
     }
 }

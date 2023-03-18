@@ -6,5 +6,5 @@
         @empty
             <p>Ни одно задание не подошло под заданные фильтры! Попробуйте ещё раз.</p>
         @endforelse
-        {{ $tasks->appends(Illuminate\Support\Facades\Request::all())->links() }}
+        {{ $tasks->appends(Illuminate\Support\Facades\Request::all())->links('front.tasks.vendor.pagination.bootstrap-4') }}
 </section>

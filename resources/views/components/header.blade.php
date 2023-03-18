@@ -1,6 +1,6 @@
 <header class="page-header" style="background-color:#816450">
     <div class="main-container page-header__container">
-        <div class="page-header__logo" style="height:90px; margin-left: 35px;">
+        <div class="page-header__logo" style="height:70px; margin-left: 35px;">
             <a href="{{ route('home') }}">
                 <img src="{{ asset('/public/assets/front/tasks/img/logo.png') }}" style="width: 100%;">
             </a>

@@ -40,15 +40,8 @@
                         <div class="blog-meta big-meta text-center">
                             <div class="post-sharing">
                                 <ul class="list-inline">
-                                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i>
-                                            <span class="down-mobile">Share
-                                                on Facebook</span></a></li>
-                                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i>
-                                            <span class="down-mobile">Tweet
-                                                on Twitter</span></a></li>
-                                    <li><a href="#" class="gp-button btn btn-primary"><i
-                                                class="fa fa-google-plus"></i></a>
-                                    </li>
+                                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-vk"></i> <span
+                                                class="down-mobile">Поделиться ВКонтакте</span></a></li>
                                 </ul>
                             </div>
                             <h4><a href="{{ route('posts.single', ['slug' => $post->slug]) }}"
@@ -57,7 +50,7 @@
                             <small><a href="{{ route('categories.single', ['slug' => $post->category->slug]) }}"
                                     title="{{ $post->category->title }}">{{ $post->category->title }}</a></small>
                             <small><a href="" title="{{ $post->getDate() }}">{{ $post->getDate() }}</a></small>
-                            <small><a href="#" title="">by Jack</a></small>
+                            <small><a href="#" title="">от {{ $post->creator->id }}</a></small>
                             <small><a href="#" title=""><i class="fa fa-eye"></i>
                                     {{ $post->views }}</a></small>
                         </div>
@@ -77,14 +70,6 @@
         <div class="col-md-12">
             <nav aria-label="Page navigation">
                 {{ $posts->appends(['search' => request()->search])->links() }}
-                {{-- <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul> --}}
             </nav>
         </div><!-- end col -->
     </div><!-- end row -->

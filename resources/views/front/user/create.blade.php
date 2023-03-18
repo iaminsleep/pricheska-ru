@@ -8,9 +8,9 @@
 
 @section('content')
 
-    <body class="hold-transition register-page">
+    <body class="hold-transition register-page" style="background-color: #EDE9E6;">
         <div>
-            <div class="card card-outline card-primary">
+            <div class="card card-outline card-primary" style="border-top: 3px solid #816450;">
                 <div class="card-header text-center">
                     <div class="h1"><b>Регистрация</b></div>
                 </div>
@@ -85,7 +85,8 @@
                         <div class="padding-inputs">
                             <div class="row">
                                 <div class="col-4 offset-8">
-                                    <button type="submit" class="btn btn-primary btn-block">Далее</button>
+                                    <button type="submit" class="btn btn-primary btn-block"
+                                        style="background-color: #816450;border-color: #816450;">Далее</button>
                                 </div>
                             </div>
                             <a href="{{ route('login.create') }}">У меня уже есть

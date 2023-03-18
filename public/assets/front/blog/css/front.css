@@ -10173,7 +10173,7 @@ div.tab button:hover {
     color: #ffffff;
     display: inline-block !important;
     margin-right: 0.5rem !important;
-    padding: 0 1rem;
+    padding: 0.1rem 1rem;
 }
 
 .post-sharing {
@@ -10278,7 +10278,7 @@ div.tab button:hover {
 }
 
 .blog-title-area span a {
-    padding: 0 1rem;
+    padding: 0.25rem 1rem;
     color: #ffffff !important;
     border-radius: 3px;
 }
@@ -10603,7 +10603,7 @@ hr.invis3 {
 }
 
 .blog-custom-build .blog-meta {
-    margin: -4rem 8rem 0;
+    margin: -4rem 6rem 0;
     z-index: 11;
     padding: 2rem 2rem;
     position: relative;
@@ -13300,12 +13300,12 @@ a:focus,
 .fa-star,
 .pp a,
 .blog-list-widget small {
-    color: #f9ca27 !important;
+    color: #6F4E37 !important;
 }
 
 .market-header .navbar,
 .newsletter-widget.text-center {
-    border-color: #f9ca27;
+    border-color: #6F4E37;
 }
 
 .color-yellow a,
@@ -13317,5 +13317,5 @@ a:focus,
 .dropdown-item:hover,
 .bg-inverse {
     color: #111111 !important;
-    background-color: #f9ca27 !important;
+    background-color: #6F4E37 !important;
 }

@@ -9,7 +9,7 @@
         <x-rating :rating="$user->averageRating()"></x-rating>
         <b>{{ $user->averageRating() }}</b>
     </div>
-    <b class="done-task">Выполнил(а) {{ $completedTasksCount }} заказов</b><br>
-    <b class="done-review">Получил(а) {{ $receivedFeedbacks->count() }} отзывов</b>
+    <b class="done-task">Выполнил(а) {{ $completedTasksCount }} заказа</b><br>
+    <b class="done-review">Получил(а) {{ $receivedFeedbacks->count() }} отзыва</b>
 
 </div>

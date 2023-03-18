@@ -4,7 +4,10 @@
         <div class="profile-mini__top">
             <img src="{{ $task->creator->getImage() }}" width="62" height="62" alt="Аватар заказчика">
             <div class="profile-mini__name five-stars__rate">
-                <p>{{ $task->creator->name }}</p>
+                <p>{{ $task->creator->name }} @if (auth()->user() && $task->creator->id === auth()->user()->id)
+                        (Вы)
+                    @endif
+                </p>
             </div>
         </div>
         <p class="info-customer">

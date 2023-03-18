@@ -10,26 +10,15 @@
 
         @yield('header')
 
-        <section class="section lb">
+        <section class="section lb" style="background-color: #EDE9E6">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                        <div class="widget-no-style">
-                            <div class="newsletter-widget text-center align-self-center">
-                                <h3>Subscribe Today!</h3>
-                                <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
-                                <form class="form-inline" method="post">
-                                    <input type="text" name="email" placeholder="Add your email here.." required
-                                        class="form-control" />
-                                    <input type="submit" value="Subscribe" class="btn btn-default btn-block" />
-                                </form>
-                            </div><!-- end newsletter -->
-                        </div>
-                        @include('front.blog.posts.layouts.sidebar')
-                    </div><!-- end col -->
-
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         @yield('content')
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        @include('front.blog.posts.layouts.sidebar')
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->

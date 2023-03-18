@@ -8,9 +8,9 @@
 
 @section('content')
 
-    <body class="hold-transition register-page">
+    <body class="hold-transition register-page" style="background-color: #EDE9E6;">
         <div>
-            <div class="card card-outline card-primary">
+            <div class="card card-outline card-primary" style="border-top: 3px solid #816450;">
                 <div class="card-header text-center">
                     <div class="h1"><b>Авторизация</b></div>
                 </div>
@@ -65,7 +65,8 @@
                             </div>
                             <div class="row pt-20">
                                 <div class="col-4 offset-8">
-                                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                                    <button type="submit" class="btn btn-primary btn-block"
+                                        style="background-color: #816450;border-color: #816450;">Войти</button>
                                 </div>
                             </div>
                             <div style="display: flex; flex-direction: column; align-items: baseline;">

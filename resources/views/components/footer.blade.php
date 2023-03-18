@@ -19,7 +19,7 @@
                     <a>Мой профиль</a>
                 </li>
                 <li class="links__item">
-                    <a>Исполнители</a>
+                    <a>Парикмахеры</a>
                 </li>
                 <li class="links__item">
                     <a>Регистрация</a>
