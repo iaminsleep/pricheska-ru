@@ -49,6 +49,7 @@
                         </li>
                     @endif
                 </ul>
+                {{-- Show Results --}}
                 <div>
                     <p class="small text-muted">
                         {!! __('Показано от') !!}

@@ -15,7 +15,7 @@
                     @endif
                 </span>
             @endif
-            <span>{{ $user->received_feedbacks->count() }} отзывов</span>
+            <span>{{ $user->received_feedbacks->count() }} отзыва</span>
         </div>
         <div class="feedback-card__top--name user__search-card">
             <p class="link-name">

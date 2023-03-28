@@ -48,6 +48,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         });
     });
 
+    // По какой-то причине работает только за пределами группировки по Namespace
     Route::get('/user/{id}', 'UserController@show')->name('users.single');
 
     // Доступно и гостям, и авторизованным пользователям
