@@ -37,7 +37,7 @@
         <div class="blog-title-area">
             @if ($post->tags->count())
                 <div class="tag-cloud-single">
-                    <span>Tags</span>
+                    <span style="color: white !important;">Tags</span>
                     @foreach ($post->tags as $tag)
                         <small>
                             <a href="{{ route('tags.single', ['slug' => $tag->slug]) }}"
@@ -47,7 +47,21 @@
                 </div><!-- end meta -->
             @endif
 
-            <div class="post-sharing">
+            <div class="post-sharing" style="display: flex; justify-content: center;">
+                <form id="form-like" onclick="document.getElementById('form-like').submit();"
+                    style="display:flex; flex-direction:row; align-items:center; margin-bottom: 15px; margin-right: 50px; cursor:pointer"
+                    action="{{ route('posts.like', ['slug' => $post->slug]) }}">
+                    @if ($post->isAuthUserLiked())
+                        <i class="fa fa-heart" style="font-size:28px; color:red"></i>
+                    @else
+                        <i class="fa fa-heart-o" style="font-size:28px"></i>
+                    @endif
+                    <p
+                        style="padding-left:10px;font-size:28px; margin:0;@if ($post->isAuthUserLiked()) color:red; @endif">
+                        {{ $post->likes()->count() }}
+                    </p>
+                    @csrf
+                </form>
                 <ul class="list-inline">
                     <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-vk"></i> <span
                                 class="down-mobile">Поделиться ВК</span></a></li>
@@ -55,7 +69,7 @@
             </div><!-- end post-sharing -->
         </div><!-- end title -->
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="banner-spot clearfix">
                     <div class="banner-img">
@@ -63,7 +77,7 @@
                     </div><!-- end banner-img -->
                 </div><!-- end banner -->
             </div><!-- end col -->
-        </div><!-- end row -->
+        </div><!-- end row --> --}}
 
         <hr class="invis1">
 
@@ -134,72 +148,62 @@
         <hr class="invis1">
 
         <div class="custombox clearfix">
-            <h4 class="small-title">3 Комментария</h4>
+            <h4 class="small-title">{{ $post->comments->count() }} Комментария</h4>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="comments-list">
-                        <div class="media">
-                            <a class="media-left" href="#">
-                                <img src="upload/author.jpg" alt="" class="rounded-circle">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading user_name">Аманда Мартинес <small>5 дней назад</small></h4>
-                                <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft
-                                    beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v
-                                    laborum. Aliquip veniam delectus, Marfa eiusmod Pinterest in do umami readymade swag.
-                                    Selfies iPhone Kickstarter, drinking vinegar jean.</p>
-                                <a href="#" class="btn btn-primary btn-sm">Ответить</a>
+                        @forelse($post->comments as $comment)
+                            <div class="media @if ($loop->last) last-child @endif">
+                                <a class="media-left" href="#">
+                                    <img src="{{ $comment->author->getImage() }}" alt="{{ $comment->author->name }}"
+                                        class="rounded-circle">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading user_name">{{ $comment->author->name }}
+                                        <small>{{ Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
+                                    </h4>
+                                    <p>{{ $comment->text }}</p>
+                                    {{-- <a href="#" class="btn btn-primary btn-sm">Ответить</a> --}}
+                                </div>
+                                @auth
+                                    @if (auth()->user()->id === $comment->author_id)
+                                        <form action="{{ route('comments.delete', ['commentId' => $comment->id]) }}"
+                                            method="post">
+                                            @method('DELETE')
+                                            <button class="button__small-color refusal-button button" type="submit"
+                                                style="border: 0;padding: 0;outline: 0;background: transparent;">
+                                                <img src="{{ asset('public/assets/front/blog/images/garbage.png') }}"
+                                                    width="20px" height="20px" />
+                                            </button>
+                                            @csrf
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
-                        </div>
-                        <div class="media">
-                            <a class="media-left" href="#">
-                                <img src="upload/author_01.jpg" alt="" class="rounded-circle">
-                            </a>
-                            <div class="media-body">
-
-                                <h4 class="media-heading user_name">Балтей Сингх <small>5 дней назад</small></h4>
-
-                                <p>Drinking vinegar stumptown yr pop-up artisan sunt. Deep v cliche lomo biodiesel Neutra
-                                    selfies. Shorts fixie consequat flexitarian four loko tempor duis single-origin coffee.
-                                    Banksy, elit small.</p>
-
-                                <a href="#" class="btn btn-primary btn-sm">Reply</a>
-                            </div>
-                        </div>
-                        <div class="media last-child">
-                            <a class="media-left" href="#">
-                                <img src="upload/author_02.jpg" alt="" class="rounded-circle">
-                            </a>
-                            <div class="media-body">
-
-                                <h4 class="media-heading user_name">Мари Джонсон <small>5 дней назад</small></h4>
-                                <p>Kickstarter seitan retro. Drinking vinegar stumptown yr pop-up artisan sunt. Deep v
-                                    cliche lomo biodiesel Neutra selfies. Shorts fixie consequat flexitarian four loko
-                                    tempor duis single-origin coffee. Banksy, elit small.</p>
-
-                                <a href="#" class="btn btn-primary btn-sm">Reply</a>
-                            </div>
-                        </div>
+                        @empty
+                            <p>Никто ещё не оставлял комментарий. Станьте первыми!</p>
+                        @endforelse
                     </div>
                 </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end custom-box -->
 
         <hr class="invis1">
-
-        <div class="custombox clearfix">
-            <h4 class="small-title">Оставь отзыв</h4>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form class="form-wrapper">
-                        <input type="text" class="form-control" placeholder="Your name">
-                        <input type="text" class="form-control" placeholder="Email address">
-                        <input type="text" class="form-control" placeholder="Website">
-                        <textarea class="form-control" placeholder="Your comment"></textarea>
-                        <button type="submit" class="btn btn-primary">Опубликовать</button>
-                    </form>
+        @auth
+            <div class="custombox clearfix">
+                <h4 class="small-title">Оставь отзыв</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-wrapper"
+                            action="{{ route('comments.store', ['postId' => $post->id, 'slug' => $post->slug]) }}"
+                            method="post" method="post">
+                            @csrf
+                            <textarea class="form-control" name="text" placeholder="Ваш комментарий"></textarea>
+                            <button type="submit" class="btn btn-primary" style="cursor:pointer">Опубликовать</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endauth
     </div><!-- end page-wrapper -->
 @endsection

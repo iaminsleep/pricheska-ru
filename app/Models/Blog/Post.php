@@ -7,9 +7,11 @@ use Carbon\Carbon;
 use App\Models\Tag;
 
 use App\Models\User;
+use App\Models\Blog\Like;
 use App\Models\Blog\Comment;
-use App\Models\Blog\Category;
 
+use App\Models\Blog\Category;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Blog\StorePost;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
@@ -51,11 +53,21 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function isAuthUserLiked()
+    {
+        return $this->likes()->where('user_id', auth()->id())->exists();
+    }
+
     /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
+      * Return the sluggable configuration array for this model.
+      *
+      * @return array
+      */
     public function sluggable(): array
     {
         return [

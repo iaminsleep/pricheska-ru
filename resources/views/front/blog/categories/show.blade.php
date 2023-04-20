@@ -51,19 +51,5 @@
 
     <hr class="invis">
 
-    <div class="row">
-        <div class="col-md-12">
-            <nav aria-label="Page navigation">
-                {{ $posts->links() }}
-                {{-- <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul> --}}
-            </nav>
-        </div><!-- end col -->
-    </div><!-- end row -->
+    {{ $posts->links('front.blog.vendor.pagination.bootstrap-4') }}
 @endsection

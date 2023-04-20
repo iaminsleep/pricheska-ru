@@ -65,6 +65,11 @@ class User extends Authenticatable
         return $this->hasMany(Favourite::class);
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
+    }
+
     public function getImage()
     {
         if (!$this->avatar) {

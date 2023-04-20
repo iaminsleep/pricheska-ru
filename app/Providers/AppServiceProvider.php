@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Pagination\Paginator;
 use Carbon\Carbon;
-
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +37,13 @@ class AppServiceProvider extends ServiceProvider
                 storage_path('/logs/query.log'),
                 $query->sql . ' [' . implode(', ', $query->bindings) . ']' . PHP_EOL
             );
+        });
+
+        Blade::if('hairdresser', function () {
+            if (Auth::check()) { // Проверяем, что пользователь авторизован
+                return Auth::user()->roles()->where('id', 3)->exists(); // Проверяем, что у пользователя есть роль с id = 3
+            }
+            return false;
         });
 
         Paginator::useBootstrapFive();

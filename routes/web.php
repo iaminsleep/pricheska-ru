@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Blog\CommentController;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // Доступно только админам
@@ -53,28 +54,35 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // Доступно и гостям, и авторизованным пользователям
     Route::group(['namespace' => 'Task'], function () {
+        // Home Page
         Route::get('/', 'TaskController@index')->name('home');
-
         Route::get('/tasks', 'TaskController@index')->name('tasks.index');
 
+        // Single Task Logic
         Route::get('/tasks/{id}', 'TaskController@show')->name('tasks.single');
         Route::get('/tasks/{id}/edit', 'TaskController@edit')->name('task.edit');
         Route::put('/tasks/{id}/update', 'TaskController@update')->name('task.update');
         Route::delete('/tasks/{id}/delete', 'TaskController@destroy')->name('task.delete');
+
+        // Single Task Refuse Completion or Completed
         Route::put('tasks/{taskId}/refuse', 'TaskController@refuse')->name('task.refuse');
         Route::put('tasks/{taskId}/complete', 'TaskController@complete')->name('task.complete');
 
+        // Search Task
         Route::get('/search-task', 'TaskController@search')->name('task.search');
 
+        // Response to task Logic
         Route::group(['prefix' => 'responses'], function () {
             Route::post('{taskId}/post', 'ResponseController@store')->name('response.store');
             Route::delete('/delete/{responseId}', 'ResponseController@delete')->name('response.delete');
             Route::put('/accept/{responseId}', 'ResponseController@accept')->name('response.accept');
         });
 
+        // Create task
         Route::get('/create', 'TaskController@create')->name('task.create');
         Route::post('/create', 'TaskController@store')->name('task.store');
 
+        // Users (hairdressers) page logic + search
         Route::get('/users', 'UserController@index')->name('users.index');
         Route::get('/users/{id}', 'UserController@show')->name('users.single');
         Route::get('/search-user', 'UserController@search')->name('users.search');
@@ -84,10 +92,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::delete('/{id}/del-fav', 'UserController@delete_fav')->name('favourites.delete');
         });
 
+        // List of authenticated user's tasks (created or completed)
         Route::get('/mylist', 'TaskController@personal')->name('mylist.index');
 
+        // Account logic
         Route::get('/account', 'UserController@account')->name('account.index');
         Route::put('/account', 'UserController@store')->name('account.store');
+
+        // Messenger
+        Route::group(['prefix' => 'messages'], function () {
+            Route::get('/{taskId}', 'MessageController@fetch');
+            Route::post('/{taskId}', 'MessageController@send');
+        });
+
+        // Notifications
+        Route::get('/mark-as-read', 'NotificationController@read')->name('notifications.read');
+
     });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {
@@ -98,6 +118,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/tag/{slug}', 'TagController@show')->name('tags.single');
 
         Route::get('/search', 'SearchController@index')->name('search');
+
+        // Comments logic
+        Route::group(['prefix' => 'comments'], function () {
+            Route::post('{postId}/post', [CommentController::class, 'store'])->name('comments.store');
+            Route::delete('/delete/{commentId}', [CommentController::class, 'delete'])->name('comments.delete');
+        });
+
+        Route::get('/article/{slug}/like', 'PostController@like')->name('posts.like');
     });
 
     // Доступно только гостям

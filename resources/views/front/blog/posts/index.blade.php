@@ -51,11 +51,5 @@
 
     <hr class="invis">
 
-    <div class="row">
-        <div class="col-md-12">
-            <nav aria-label="Page navigation">
-                {{ $posts->links() }}
-            </nav>
-        </div><!-- end col -->
-    </div><!-- end row -->
+    {{ $posts->links('front.blog.vendor.pagination.bootstrap-4') }}
 @endsection

@@ -8,21 +8,22 @@
         <div class="header__nav" style="margin-left:10%">
             <ul class="header-nav__list site-list">
                 <li class="site-list__item @if (Route::currentRouteName() === 'tasks.index') {{ 'site-list__item--active' }} @endif">
-                    <a href="{{ route('tasks.index') }}">Задания</a>
+                    <a style="color: #ffffff !important;" href="{{ route('tasks.index') }}">Задания</a>
                 </li>
                 <li class="site-list__item @if (Route::currentRouteName() === 'users.index') {{ 'site-list__item--active' }} @endif">
-                    <a href="{{ route('users.index') }}">Парикмахеры</a>
+                    <a style="color: #ffffff !important;" href="{{ route('users.index') }}">Парикмахеры</a>
                 </li>
                 @auth
                     <li class="site-list__item @if (Route::currentRouteName() === 'task.create') {{ 'site-list__item--active' }} @endif">
-                        <a href="{{ route('task.create') }}">Создать заказ</a>
+                        <a style="color: #ffffff !important;" href="{{ route('task.create') }}">Создать заказ</a>
                     </li>
                     <li class="site-list__item @if (Route::currentRouteName() === 'users.single') {{ 'site-list__item--active' }} @endif">
-                        <a href="{{ route('users.single', ['id' => auth()->id()]) }}">Мой профиль</a>
+                        <a style="color: #ffffff !important;" href="{{ route('users.single', ['id' => auth()->id()]) }}">Мой
+                            профиль</a>
                     </li>
                 @endauth
-                <li class="site-list__item">
-                    <a href="{{ route('posts.index') }}">Блог</a>
+                <li class="site-list__item  @if (Route::currentRouteName() === 'posts.index') {{ 'site-list__item--active' }} @endif">
+                    <a style="color: #ffffff !important;" href="{{ route('posts.index') }}">Блог</a>
                 </li>
             </ul>
         </div>

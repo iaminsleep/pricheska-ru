@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Blog\Like;
 use App\Models\Blog\Post;
 use App\Models\Blog\Comment;
 use Illuminate\Database\Seeder;
@@ -31,9 +32,18 @@ class PostSeeder extends Seeder
         $posts->each(function ($post) use ($tags_id) {
             $post->tags()->attach($tags_id->random(3));
 
-            // Comment::factory(3)->create([
-            //     'post_id' => $post->id,
-            // ]);
+            Comment::factory(3)->create([
+                'post_id' => $post->id,
+            ]);
+
+            $users_id = User::pluck('id');
+
+            foreach ($users_id as $userId) {
+                Like::factory(1)->create([
+                    'post_id' => $post->id,
+                    'user_id' => $userId,
+                ]);
+            }
         });
     }
 }
