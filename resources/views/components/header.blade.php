@@ -40,7 +40,7 @@
         @endauth
         @guest
             <div class="header__account--index guest">
-                <a href="{{ route('login.create') }}" class="open-modal" data-for="enter-form">
+                <a href="{{ route('login.create') }}" data-for="enter-form">
                     <span class="header__account-enter">Вход</span>
                 </a> или
                 <a href="{{ route('register.create') }}" class="header__account-registration">

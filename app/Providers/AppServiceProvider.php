@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::if('hairdresser', function () {
             if (Auth::check()) { // Проверяем, что пользователь авторизован
-                return Auth::user()->roles()->where('id', 3)->exists(); // Проверяем, что у пользователя есть роль с id = 3
+                return Auth::user()->roles()->where('codename', 'hairdresser')->exists();
             }
             return false;
         });
