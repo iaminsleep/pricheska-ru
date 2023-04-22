@@ -28,6 +28,29 @@
             </ul>
         </div>
         @auth
+            <div class="header__lightbulb @if (auth()->user()->unreadNotifications->count()) has-notifications @endif"
+                @if (auth()->user()->unreadNotifications->count()) data-count="{{ auth()->user()->unreadNotifications->count() }}" @endif>
+                <div class="lightbulb__pop-up">
+                    <h3>Новые события</h3>
+                    @forelse(auth()->user()->unreadNotifications as $notification)
+                        <p class="lightbulb__new-task lightbulb__new-task--{{ $notification->data['type'] }}">
+                            {{ $notification->data['message'] }}
+                            <a href="{{ route('tasks.single', ['id' => $notification->data['task_id']]) }}"
+                                class="link-regular">
+                                «{{ $notification->data['task_name'] }}»
+                            </a>
+                        </p>
+                    @empty
+                        <p>У вас нет новых уведомлений!</p>
+                    @endforelse
+                    @if (auth()->user()->unreadNotifications->count())
+                        <div class="read-button-container">
+                            <a class="read-button" href="{{ route('notifications.read') }}">Пометить как прочитанные</a>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
             <div class="header__account">
                 <a class="header__account-photo" style="width: 44px; height: 44px;">
                     <img src="{{ auth()->user()->getImage() }}" style="width: 100%; height: 100%; object-fit:cover"

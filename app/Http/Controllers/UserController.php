@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AuthUser;
 use App\Http\Requests\StoreUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
@@ -45,11 +46,21 @@ class UserController extends Controller
             'password' => $request->password
         ], $request->remember_me)) { // if remember me checkbox is checked, passes as second argument
             session()->flash('success', 'Вы успешно вошли в систему.');
-            if (Auth::user()->hasRole('admin')) {
-                // если пользователь - администратор, его перенесёт на страницу админки
-                return redirect()->route('admin.index');
+
+            if ($request->has('remember_me')) {
+                $rememberMeCookie = Cookie::make('remember_me', true, 60 * 24 * 30);
+                if (Auth::user()->hasRole('admin')) {
+                    // если пользователь - администратор, его перенесёт на страницу админки
+                    return redirect()->route('admin.index')->withCookie($rememberMeCookie);
+                } else {
+                    return redirect()->home()->withCookie($rememberMeCookie);
+                }
             } else {
-                return redirect()->home();
+                if (Auth::user()->hasRole('admin')) {
+                    return redirect()->route('admin.index');
+                } else {
+                    return redirect()->home();
+                }
             }
         } else {
             return redirect()->back()->with('error', 'Логин или пароль введён неправильно');

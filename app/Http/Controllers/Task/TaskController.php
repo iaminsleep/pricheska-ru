@@ -9,11 +9,14 @@ use App\Models\Task\Task;
 use App\Models\Hairdresser;
 use Illuminate\Http\Request;
 use App\Models\Task\Category;
+use App\Models\Task\Feedback;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\CompleteTask;
 use App\Http\Services\YaGeoService;
 use App\Http\Controllers\Controller;
+use App\Http\Services\ClearMessages;
 use App\Http\Requests\Task\StoreTask;
+use App\Notifications\UserNotification;
 use App\Http\Services\CreateTaskService;
 use App\Http\Services\SearchTaskService;
 use App\Http\Requests\Task\CompleteTaskRequest;
@@ -244,5 +247,38 @@ class TaskController extends Controller
         $service->execute($request->validated(), $taskId);
 
         return redirect(route('tasks.index'));
+    }
+
+    public function refuse($taskId, ClearMessages $clearMessages)
+    {
+        $task = Task::find($taskId);
+
+        $performer = Hairdresser::findOrFail($task->performer_id);
+        Feedback::create([
+            'task_id' => $task->id,
+            'author_id' => $task->creator_id,
+            'receiver_id' => $performer->id,
+            'comment' => 'Пользователь отказался от данного заказа',
+            'rating' => 1,
+        ]);
+
+        $notification = new UserNotification([
+            "message" => 'Исполнитель отказался от задания',
+            "task_name" => $task->title,
+            "task_id" => $task->id,
+            "type" => 'refuse',
+        ]);
+        $notification->notifiable_type = 'App\Models\User';
+
+        $task->creator->notify($notification);
+
+        $task->performer_id = null;
+        $task->save();
+
+        $performer->save();
+
+        $clearMessages->execute($taskId);
+
+        return back();
     }
 }

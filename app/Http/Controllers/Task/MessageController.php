@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Task;
 
+use App\Models\User;
 use App\Models\Task\Task;
 use App\Models\Task\Message;
 use Illuminate\Http\Request;
@@ -43,19 +44,21 @@ class MessageController extends Controller
                     'created_at' => now(),
                 ]);
 
-                $interlocutorId = auth()->user()->id === $task->user_id
+                $interlocutorId = auth()->user()->id === $task->creator_id
                     ? $task->performer_id
-                    : $task->user_id;
+                    : $task->creator_id;
 
-                $interlocutor = User::find($interlocutorId);
-                if(in_array(1, json_decode($interlocutor->notification_settings, true))) {
-                    $interlocutor->notify(new UserNotification([
-                        'message' => 'Новое сообщение в чате',
-                        'task_name' => $task->title,
-                        'task_id' => $task->id,
-                        'type' => 'message',
-                    ]));
-                }
+                $interlocutor = User::findOrFail($interlocutorId);
+
+                $notification = new UserNotification([
+                    'message' => 'Новое сообщение в чате',
+                    'task_name' => $task->title,
+                    'task_id' => $task->id,
+                    'type' => 'message',
+                ]);
+                $notification->notifiable_type = 'App\Models\User';
+
+                $interlocutor->notify($notification);
 
                 return response($message, 201);
             } else {

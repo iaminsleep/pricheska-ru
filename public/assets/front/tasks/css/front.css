@@ -181,9 +181,23 @@ background-color: #f1f2f6;
   width: 30px;
   height: 30px;
   margin-left: 17px;
-  margin-right: 17px;
+  margin-right: 34px;
   cursor: pointer;
   fill: #e0e0e0; }
+
+  .has-notifications::after {
+      content: attr(data-count);
+      display: inline-block;
+      padding: 0.25em 0.5em;
+      border-radius: 50%;
+      background-color: red;
+      color: white;
+      font-size: 0.8em;
+      line-height: 1;
+      vertical-align: middle;
+      margin-right: 0.25em;
+        transform: translateX(70%) translateY(-20%);
+  }
 
 .header__lightbulb:hover {
   background-image: url("../img/lightbulb-white.png");

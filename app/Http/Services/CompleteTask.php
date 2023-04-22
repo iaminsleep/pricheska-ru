@@ -6,6 +6,7 @@ use Carbon\Carbon;
 
 use App\Models\User;
 use App\Models\Task\Task;
+use App\Models\Task\Message;
 use App\Models\Task\Feedback;
 use App\Notifications\UserNotification;
 
@@ -25,6 +26,19 @@ class CompleteTask
                 'comment' => $data['comment'],
                 'rating' => $data['rating'],
             ]);
+
+            $notification = new UserNotification([
+                "message" => 'Завершено задание',
+                "task_name" => $task->title,
+                'task_id' => $taskId,
+                "type" => 'close',
+            ]);
+            $notification->notifiable_type = 'App\Models\User';
+
+            $user->notify($notification);
+
+            $clearMessages = new ClearMessages();
+            $clearMessages->execute($taskId);
 
             $user->save();
         }
