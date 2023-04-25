@@ -1,4 +1,4 @@
-@hairdresser
+@if ($user->isHairdresser())
     <div class="content-view__feedback">
         <h2>Отзывы @if ($receivedFeedbacks->count() > 0)
                 <span>({{ $receivedFeedbacks->count() }})</span>
@@ -16,4 +16,4 @@
             @endforelse
         </div>
     </div>
-@endhairdresser
+@endif

@@ -108,6 +108,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         // Notifications
         Route::get('/mark-as-read', 'NotificationController@read')->name('notifications.read');
 
+        Route::group(['prefix' => 'service'], function () {
+            // Создать услугу (для парикмахера)
+            Route::get('/create', 'ServiceController@create')->name('service.create');
+            Route::post('/create', 'ServiceController@store')->name('service.store');
+            // Действия с услугой
+            Route::post('/{id}', 'ServiceController@order')->name('service.order');
+            Route::get('/{id}/edit', 'ServiceController@edit')->name('service.edit');
+            Route::put('/{id}/update', 'ServiceController@update')->name('service.update');
+            Route::delete('/{id}/delete', 'ServiceController@destroy')->name('service.delete');
+        });
     });
 
     Route::group(['prefix' => 'blog', 'namespace' => 'Blog'], function () {

@@ -5,9 +5,10 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Traits\HasRoles;
 use App\Models\Task\Task;
+use App\Models\Task\Service;
 use App\Models\Task\Response;
-use App\Models\Task\Favourite;
 
+use App\Models\Task\Favourite;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,6 +61,11 @@ class User extends Authenticatable
         return $this->hasMany(Response::class);
     }
 
+    public function services()
+    {
+        return $this->hasMany(Service::class, 'user_id');
+    }
+
     public function favourites()
     {
         return $this->hasMany(Favourite::class);
@@ -68,6 +74,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
+    }
+
+    public function isHairdresser()
+    {
+        return $this->roles()->where('codename', 'hairdresser')->exists();
     }
 
     public function getImage()

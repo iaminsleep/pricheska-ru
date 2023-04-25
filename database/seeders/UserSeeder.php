@@ -20,6 +20,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // 2, 5, 6, 7, 8 - hairdressers
+
         $admin = Role::where('codename', 'admin')->first();
         $customer = Role::where('codename', 'customer')->first();
         $hairdresser = Role::where('codename', 'hairdresser')->first();

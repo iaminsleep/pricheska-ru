@@ -61,6 +61,7 @@ class UserController extends Controller
     {
         $receivedFeedbacks = null;
         $completedTasksCount = null;
+        $services = null;
 
         $user = Hairdresser::find($id);
         if (!$user) {
@@ -68,12 +69,14 @@ class UserController extends Controller
         } else {
             $receivedFeedbacks = $user->received_feedbacks;
             $completedTasksCount = $user->completedTasksCount();
+            $services = $user->services;
         }
 
         return view('front.tasks.profile.index', [
             'user' => $user,
             'receivedFeedbacks' => $receivedFeedbacks,
-            'completedTasksCount' => $completedTasksCount
+            'completedTasksCount' => $completedTasksCount,
+            'services' => $services,
         ]);
     }
 }

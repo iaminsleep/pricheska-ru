@@ -6,7 +6,7 @@
         </div>
     </div>
     @auth
-        @if (auth()->user()->id === $task->creator->id)
+        @if (auth()->user()->id === $task->creator->id && $task->status_id === 1)
             <div class="profile-mini__wrapper" style="margin-top: 15px;">
                 <h3>Действия:</h3>
                 <div class="profile-mini__name five-stars__rate" style="display:flex; flex-direction: column">

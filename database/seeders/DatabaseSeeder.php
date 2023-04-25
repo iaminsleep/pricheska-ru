@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\ServiceSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // Tasks Section
         $this->call(CategorySeeder::class);
         $this->call(TaskSeeder::class);
+        $this->call(ServiceSeeder::class);
         $this->call(ResponseSeeder::class);
         $this->call(FeedbackSeeder::class);
         $this->call(StatusSeeder::class);

@@ -14,11 +14,20 @@
                     <a style="color: #ffffff !important;" href="{{ route('users.index') }}">Парикмахеры</a>
                 </li>
                 @auth
-                    <li class="site-list__item @if (Route::currentRouteName() === 'task.create') {{ 'site-list__item--active' }} @endif">
-                        <a style="color: #ffffff !important;" href="{{ route('task.create') }}">Создать заказ</a>
-                    </li>
+                    @if (!auth()->user()->isHairdresser())
+                        <li
+                            class="site-list__item @if (Route::currentRouteName() === 'task.create') {{ 'site-list__item--active' }} @endif">
+                            <a style="color: #ffffff !important;" href="{{ route('task.create') }}">Создать заказ</a>
+                        </li>
+                    @else
+                        <li
+                            class="site-list__item @if (Route::currentRouteName() === 'task.create') {{ 'site-list__item--active' }} @endif">
+                            <a style="color: #ffffff !important;" href="{{ route('service.create') }}">Создать услугу</a>
+                        </li>
+                    @endif
                     <li class="site-list__item @if (Route::currentRouteName() === 'users.single') {{ 'site-list__item--active' }} @endif">
-                        <a style="color: #ffffff !important;" href="{{ route('users.single', ['id' => auth()->id()]) }}">Мой
+                        <a style="color: #ffffff !important;"
+                            href="{{ route('users.single', ['id' => auth()->id()]) }}">Мой
                             профиль</a>
                     </li>
                 @endauth

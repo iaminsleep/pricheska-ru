@@ -5,7 +5,7 @@ Vue.component('chat', {
   template: `<div><h3>Переписка</h3>
              <div class="chat__overflow" :class="{'relative': this.messages.length === 0}" id="messagebox">
                 <p class="chat-empty" v-if="messages.length === 0">Вопросы по поводу задания можно обсудить здесь!</p>
-               <div class="chat__message" v-for="item in messages" :class="{'chat__message--out': item.user_id === this.user_id}">
+               <div class="chat__message" v-for="item in messages" :class="{'chat__message--out': item.user_id === authUserId}">
                 <p class="chat__message-time">{{ Intl.DateTimeFormat('ru-RU', { dateStyle: 'short', timeStyle: 'medium' }).format(new Date(item.created_at)) }}</p>
                 <p class="chat__message-text">{{ item.message }}</p>
                </div>

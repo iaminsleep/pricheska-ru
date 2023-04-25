@@ -1,6 +1,6 @@
 @extends('front.tasks.layout')
 
-@section('title', 'Опубликовать задание')
+@section('title', 'Отредактировать задание')
 
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,7 +20,7 @@
 @section('page-content')
     <div class="main-container page-container">
         <section class="create__task" style="width: 600px;">
-            <h1>Публикация нового заказа</h1>
+            <h1>Редактирование заказа</h1>
             <div class="create__task-main">
                 @include('front.tasks.edit.section-create-form')
             </div>
