@@ -128,6 +128,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
+            'LaravelDaily\\LaravelCharts\\' => 27,
         ),
         'I' => 
         array (
@@ -167,6 +168,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         array (
             'Cviebrock\\EloquentSluggable\\' => 28,
             'Cron\\' => 5,
+            'ConsoleTVs\\Charts\\' => 18,
             'Cocur\\Slugify\\' => 14,
             'Carbon\\' => 7,
         ),
@@ -174,6 +176,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         array (
             'Brick\\Math\\' => 11,
             'Barryvdh\\Debugbar\\' => 18,
+            'Balping\\JsonRaw\\' => 16,
         ),
         'A' => 
         array (
@@ -423,6 +426,10 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
+        'LaravelDaily\\LaravelCharts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laraveldaily/laravel-charts/src',
+        ),
         'Intervention\\Image\\' => 
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
@@ -511,6 +518,10 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'ConsoleTVs\\Charts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/consoletvs/charts/src',
+        ),
         'Cocur\\Slugify\\' => 
         array (
             0 => __DIR__ . '/..' . '/cocur/slugify/src',
@@ -526,6 +537,10 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'Barryvdh\\Debugbar\\' => 
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src',
+        ),
+        'Balping\\JsonRaw\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/balping/json-raw-encoder/src',
         ),
         'App\\' => 
         array (
@@ -545,6 +560,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
     );
 
     public static $classMap = array (
+        'App\\Charts\\SampleChart' => __DIR__ . '/../..' . '/app/Charts/SampleChart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Filters\\Profile\\ByProfileTaskActive' => __DIR__ . '/../..' . '/app/Filters/Profile/ByProfileTaskActive.php',
@@ -588,6 +604,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'App\\Http\\Controllers\\Task\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Task/MessageController.php',
         'App\\Http\\Controllers\\Task\\NotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Task/NotificationController.php',
         'App\\Http\\Controllers\\Task\\ResponseController' => __DIR__ . '/../..' . '/app/Http/Controllers/Task/ResponseController.php',
+        'App\\Http\\Controllers\\Task\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Task/ServiceController.php',
         'App\\Http\\Controllers\\Task\\TaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/Task/TaskController.php',
         'App\\Http\\Controllers\\Task\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Task/UserController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
@@ -611,9 +628,11 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'App\\Http\\Requests\\Blog\\StorePost' => __DIR__ . '/../..' . '/app/Http/Requests/Blog/StorePost.php',
         'App\\Http\\Requests\\StoreUser' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUser.php',
         'App\\Http\\Requests\\Task\\CompleteTaskRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Task/CompleteTaskRequest.php',
+        'App\\Http\\Requests\\Task\\OrderService' => __DIR__ . '/../..' . '/app/Http/Requests/Task/OrderService.php',
         'App\\Http\\Requests\\Task\\SendMessageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Task/SendMessageRequest.php',
         'App\\Http\\Requests\\Task\\StoreFeedback' => __DIR__ . '/../..' . '/app/Http/Requests/Task/StoreFeedback.php',
         'App\\Http\\Requests\\Task\\StoreResponse' => __DIR__ . '/../..' . '/app/Http/Requests/Task/StoreResponse.php',
+        'App\\Http\\Requests\\Task\\StoreService' => __DIR__ . '/../..' . '/app/Http/Requests/Task/StoreService.php',
         'App\\Http\\Requests\\Task\\StoreTask' => __DIR__ . '/../..' . '/app/Http/Requests/Task/StoreTask.php',
         'App\\Http\\Services\\AcceptResponse' => __DIR__ . '/../..' . '/app/Http/Services/AcceptResponse.php',
         'App\\Http\\Services\\ClearMessages' => __DIR__ . '/../..' . '/app/Http/Services/ClearMessages.php',
@@ -636,6 +655,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'App\\Models\\Task\\Feedback' => __DIR__ . '/../..' . '/app/Models/Task/Feedback.php',
         'App\\Models\\Task\\Message' => __DIR__ . '/../..' . '/app/Models/Task/Message.php',
         'App\\Models\\Task\\Response' => __DIR__ . '/../..' . '/app/Models/Task/Response.php',
+        'App\\Models\\Task\\Service' => __DIR__ . '/../..' . '/app/Models/Task/Service.php',
         'App\\Models\\Task\\Status' => __DIR__ . '/../..' . '/app/Models/Task/Status.php',
         'App\\Models\\Task\\Task' => __DIR__ . '/../..' . '/app/Models/Task/Task.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -653,6 +673,9 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'App\\Traits\\HasHairdresserRole' => __DIR__ . '/../..' . '/app/Traits/HasHairdresserRole.php',
         'App\\Traits\\HasRoles' => __DIR__ . '/../..' . '/app/Traits/HasRoles.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Balping\\JsonRaw\\Encoder' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Encoder.php',
+        'Balping\\JsonRaw\\Raw' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Raw.php',
+        'Balping\\JsonRaw\\Replacer' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Replacer.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
         'Barryvdh\\Debugbar\\Controllers\\AssetController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
         'Barryvdh\\Debugbar\\Controllers\\BaseController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/BaseController.php',
@@ -809,6 +832,34 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'Cocur\\Slugify\\Slugify' => __DIR__ . '/..' . '/cocur/slugify/src/Slugify.php',
         'Cocur\\Slugify\\SlugifyInterface' => __DIR__ . '/..' . '/cocur/slugify/src/SlugifyInterface.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'ConsoleTVs\\Charts\\ChartsServiceProvider' => __DIR__ . '/..' . '/consoletvs/charts/src/ChartsServiceProvider.php',
+        'ConsoleTVs\\Charts\\Classes\\BaseChart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/BaseChart.php',
+        'ConsoleTVs\\Charts\\Classes\\C3\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/C3/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\C3\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/C3/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Chartjs\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Chartjs/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Chartjs\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Chartjs/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\DatasetClass' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/DatasetClass.php',
+        'ConsoleTVs\\Charts\\Classes\\Echarts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Echarts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Echarts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Echarts/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Frappe\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Frappe/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Frappe\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Frappe/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Fusioncharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Fusioncharts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Fusioncharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Fusioncharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Highcharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Highcharts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Highcharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Highcharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Commands\\ChartsCommand' => __DIR__ . '/..' . '/consoletvs/charts/src/Commands/ChartsCommand.php',
+        'ConsoleTVs\\Charts\\Features\\C3\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/C3/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\C3\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/C3/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Chartjs\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Chartjs/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Chartjs\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Chartjs/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Echarts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Echarts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Echarts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Echarts/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Frappe\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Frappe/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Frappe\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Frappe/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Fusioncharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Fusioncharts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Fusioncharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Fusioncharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Highcharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Highcharts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Highcharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Highcharts/Dataset.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -836,6 +887,7 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'Database\\Seeders\\PostSeeder' => __DIR__ . '/../..' . '/database/seeders/PostSeeder.php',
         'Database\\Seeders\\ResponseSeeder' => __DIR__ . '/../..' . '/database/seeders/ResponseSeeder.php',
         'Database\\Seeders\\RoleSeeder' => __DIR__ . '/../..' . '/database/seeders/RoleSeeder.php',
+        'Database\\Seeders\\ServiceSeeder' => __DIR__ . '/../..' . '/database/seeders/ServiceSeeder.php',
         'Database\\Seeders\\StatusSeeder' => __DIR__ . '/../..' . '/database/seeders/StatusSeeder.php',
         'Database\\Seeders\\TagSeeder' => __DIR__ . '/../..' . '/database/seeders/TagSeeder.php',
         'Database\\Seeders\\TaskSeeder' => __DIR__ . '/../..' . '/database/seeders/TaskSeeder.php',
@@ -3021,6 +3073,8 @@ class ComposerStaticInit7c69cc4bfaa25a32efb3e789f5e90443
         'Intervention\\Image\\Point' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Point.php',
         'Intervention\\Image\\Response' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Response.php',
         'Intervention\\Image\\Size' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Size.php',
+        'LaravelDaily\\LaravelCharts\\Classes\\LaravelChart' => __DIR__ . '/..' . '/laraveldaily/laravel-charts/src/Classes/LaravelChart.php',
+        'LaravelDaily\\LaravelCharts\\LaravelChartsServiceProvider' => __DIR__ . '/..' . '/laraveldaily/laravel-charts/src/LaravelChartsServiceProvider.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
         'Laravel\\Sail\\SailServiceProvider' => __DIR__ . '/..' . '/laravel/sail/src/SailServiceProvider.php',

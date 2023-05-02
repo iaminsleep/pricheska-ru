@@ -11,6 +11,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         'middleware' => 'role:admin' // запрос пройдёт через этот посредник
     ], function () {
         Route::get('/', 'MainController@index')->name('admin.index');
+        Route::get('/statistics', 'MainController@index')->name('admin.chart');
 
         Route::resource('/users', 'UserController');
 

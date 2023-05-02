@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Админка | @yield('title')</title>
-
+    <link rel="icon" href="{{ asset('public/assets/admin/img/AdminLTELogo.png') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,7 +14,32 @@
         .ck-editor__editable_inline {
             min-height: 300px;
         }
+
+        .statistics-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+
+        .tile {
+            background-color: #dfdfdf;
+            border-radius: 10px;
+            padding: 125px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .statisctics-text {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            width: 260px;
+        }
     </style>
+    @yield('head-scripts')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -29,11 +54,31 @@
                         role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">Home</a>
+                    <a style="margin-right: 250px;" href="{{ route('admin.index') }}" class="nav-link">Главная</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="{{ route('users.index') }}" class="nav-link">Пользователи</a>
                 </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('roles.index') }}" class="nav-link">Роли</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('tags.index') }}" class="nav-link">Тэги</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('admin.tasks.index') }}" class="nav-link">Заказы</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('responses.index') }}" class="nav-link">Отклики</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('categories.index') }}" class="nav-link">Категории</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('feedbacks.index') }}" class="nav-link">Отзывы</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('admin.posts.index') }}" class="nav-link">Посты</a>
             </ul>
 
             <!-- Right navbar links -->
@@ -93,7 +138,8 @@
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                        <span class="float-right text-sm text-muted"><i
+                                                class="fas fa-star"></i></span>
                                     </h3>
                                     <p class="text-sm">I got your message bro</p>
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
@@ -171,7 +217,7 @@
             <a href="{{ route('home') }}" target="_blank" class="brand-link">
                 <img src="{{ asset('public/assets/admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3 (На сайт)</span>
+                <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
             <!-- Sidebar -->
@@ -179,8 +225,7 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('public/assets/admin/img/user2-160x160.jpg') }}"
-                            class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ auth()->user()->getImage() }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ auth()->user()->name }}</a>
