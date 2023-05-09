@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Task\UserController;
 use App\Http\Controllers\Blog\CommentController;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
@@ -83,22 +84,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/create', 'TaskController@create')->name('task.create');
         Route::post('/create', 'TaskController@store')->name('task.store');
 
-        // Users (hairdressers) page logic + search
-        Route::get('/users', 'UserController@index')->name('users.index');
-        Route::get('/users/{id}', 'UserController@show')->name('users.single');
-        Route::get('/search-user', 'UserController@search')->name('users.search');
-
-        Route::group(['prefix' => 'user'], function () {
+        Route::group(['prefix' => 'users'], function () {
+            // Users page logic
+            Route::get('/', 'UserController@index')->name('users.index');
+            Route::get('/{id}', 'UserController@show')->name('users.single');
+            // Favourite add and delete logic
             Route::post('/{id}/add-fav', 'UserController@add_fav')->name('favourites.add');
             Route::delete('/{id}/del-fav', 'UserController@delete_fav')->name('favourites.delete');
         });
+        Route::get('/search-user', [UserController::class, 'search'])->name('users.search'); // Search users (hairdressers)
 
         // List of authenticated user's tasks (created or completed)
         Route::get('/mylist', 'TaskController@personal')->name('mylist.index');
 
         // Account logic
-        Route::get('/account', 'UserController@account')->name('account.index');
-        Route::put('/account', 'UserController@store')->name('account.store');
+        Route::get('/settings', 'UserController@account')->name('account.index');
+        Route::put('/settings', 'UserController@save')->name('account.store');
 
         // Messenger
         Route::group(['prefix' => 'messages'], function () {

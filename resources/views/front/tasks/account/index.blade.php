@@ -16,7 +16,6 @@
                     @include('account.specialization-settings')
                     @include('account.security-settings')
                     @include('account.contacts-settings')
-                    @include('account.notifications-settings')
                 </div>
                 <button class="button" type="submit">Сохранить изменения</button>
             </form>

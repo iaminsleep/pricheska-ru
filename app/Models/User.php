@@ -6,10 +6,13 @@ namespace App\Models;
 use App\Traits\HasRoles;
 use App\Models\Task\Task;
 use App\Models\Task\Service;
+use App\Models\Task\Feedback;
 use App\Models\Task\Response;
 
 use App\Models\Task\Favourite;
 use Laravel\Sanctum\HasApiTokens;
+use App\Http\Services\ChangeSettings;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,6 +54,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function performing_tasks()
+    {
+        return $this->hasMany(Task::class, 'performer_id');
+    }
+
+    public function received_feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'receiver_id');
+    }
+
     public function tasks()
     {
         return $this->hasMany(Task::class, 'creator_id');
@@ -88,6 +101,27 @@ class User extends Authenticatable
         }
 
         return asset('/public/uploads/user/avatars/'.$this->avatar);
+    }
+
+    public static function uploadAvatar(ChangeSettings $request, $previousImage = null)
+    {
+        if ($request->hasFile('avatar')) {
+            if ($previousImage) {
+                Storage::delete($previousImage);
+            }
+
+            $imgFile = $request->file('avatar');
+
+            $folder = date('Y-m-d');
+            $path = $imgFile->store("user/avatars/{$folder}");
+
+            Image::make(public_path('uploads/'.$path))->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save();
+
+            return $data['avatar'] = $path;
+        }
+        return null;
     }
 
     public function deleteImage()

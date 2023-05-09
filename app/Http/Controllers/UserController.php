@@ -9,6 +9,7 @@ use App\Http\Requests\AuthUser;
 use App\Http\Requests\StoreUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use App\Http\Services\SearchUserService;
 
 class UserController extends Controller
 {

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Task;
 
 use App\Models\User;
 use App\Models\Hairdresser;
+use App\Models\Task\Favourite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Services\SearchUserService;
 
 class UserController extends Controller
 {
@@ -78,5 +80,54 @@ class UserController extends Controller
             'completedTasksCount' => $completedTasksCount,
             'services' => $services,
         ]);
+    }
+
+    public function add_fav($id)
+    {
+        Favourite::create([
+            'user_id' => auth()->user()->id,
+            'favourite_id' => $id,
+        ]);
+
+        return back();
+    }
+
+    public function delete_fav($id)
+    {
+        Favourite::findOrFail($id)->delete();
+
+        return back();
+    }
+
+    public function search(SearchUserService $service)
+    {
+        $searchParameters = request()->all();
+
+        if (empty(array_filter($searchParameters, function ($searchParam) {
+            return $searchParam !== null; //check if search parameters are empty
+        }))) {
+            return redirect('/users');
+        } else {
+            $users = $service->execute();
+            $users = $users->paginate(4);
+        }
+
+        return view('front.tasks.search-user.index', ['users' => $users]);
+    }
+
+    public function account()
+    {
+        $user = auth()->user();
+
+        return view('front.tasks.account.index', [
+            'user' => $user,
+        ]);
+    }
+
+    public function save(ChangeSettingsRequest $request, ChangeSettings $service)
+    {
+        $service->execute($request->validated());
+
+        return redirect('/settings');
     }
 }

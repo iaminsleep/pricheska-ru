@@ -1,6 +1,6 @@
-{{-- <div class="content-view__headline user__card-bookmark @if (auth()->user() &&
-    auth()->user()->favourites->contains('favouritable_id', $user->id)) {{ 'user__card-bookmark--current' }} @endif"> --}}
-<div class="content-view__headline user__card-bookmark">
+<div
+    class="content-view__headline user__card-bookmark @if (auth()->user() &&
+            auth()->user()->favourites->contains('favourite_id', $user->id)) {{ 'user__card-bookmark--current' }} @endif">
     @if (Cache::has('user-is-online-' . $user->id))
         <span class="online">● Онлайн</span>
     @elseif(!$user->last_seen)
@@ -12,16 +12,16 @@
             Был(а) на сайте {{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}
         </span>
     @endif
-    {{-- @auth
+    @auth
         @if (auth()->user()->id !== $user->id)
             <form
-                action="@if (auth()->user()->favourites->contains('favouritable_id', $user->id)) {{ route('favourites.delete', ['id' => $user->id]) }} @else {{ route('favourites.add', ['id' => $user->id]) }} @endif"
+                action="@if (auth()->user()->favourites->contains('favourite_id', $user->id)) {{ route('favourites.delete', ['id' => $user->id]) }} @else {{ route('favourites.add', ['id' => $user->id]) }} @endif"
                 method="post">
                 <button type="submit" class="no-button">
                     <a style="cursor:pointer;"><b></b></a>
                 </button>
                 @csrf
-                @if (auth()->user()->favourites->contains('favouritable_id', $user->id))
+                @if (auth()->user()->favourites->contains('favourite_id', $user->id))
                     @method('DELETE')
                 @endif
             </form>
@@ -32,5 +32,5 @@
                 <b></b>
             </a>
         </div>
-    @endauth --}}
+    @endauth
 </div>
