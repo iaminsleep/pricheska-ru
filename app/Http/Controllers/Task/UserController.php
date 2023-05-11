@@ -7,7 +7,10 @@ use App\Models\Hairdresser;
 use App\Models\Task\Favourite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Services\ChangeSettings;
 use App\Http\Services\SearchUserService;
+use App\Http\Requests\ChangeSettingsRequest;
 
 class UserController extends Controller
 {
@@ -126,7 +129,16 @@ class UserController extends Controller
 
     public function save(ChangeSettingsRequest $request, ChangeSettings $service)
     {
-        $service->execute($request->validated());
+        $data = array_filter($request->validated());
+        if($request->has('avatar')) {
+            $data['avatar'] = User::uploadAvatar($request);
+        }
+
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        $service->execute($data);
 
         return redirect('/settings');
     }

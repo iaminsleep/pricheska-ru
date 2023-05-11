@@ -1,11 +1,11 @@
 <h3 class="div-line">Настройки аккаунта</h3>
 <div class="account__redaction-section-wrapper">
-    @include('account.partials.settings-avatar')
+    @include('front.tasks.account.partials.settings-avatar')
     <div class="account__redaction">
-        @include('account.partials.settings-name')
-        @include('account.partials.settings-email')
-        @include('account.partials.settings-city')
-        @include('account.partials.settings-birthdate')
-        @include('account.partials.settings-description')
+        @include('front.tasks.account.partials.settings-name')
+        @include('front.tasks.account.partials.settings-email')
+        {{-- @include('front.tasks.account.partials.settings-city') --}}
+        @include('front.tasks.account.partials.settings-birthdate')
+        @include('front.tasks.account.partials.settings-description')
     </div>
 </div>

@@ -26,15 +26,10 @@ class ChangeSettingsRequest extends FormRequest
         return [
             'name' => 'min:3|max:35',
             'email' => 'email:rfc,dns',
-            'password' => 'nullable|min:8|max:25|confirmed',
-            'city_id' => 'integer',
+            'password' => 'nullable|string|min:8|max:25|confirmed',
             'birth_date' => 'nullable|date|before:-18 years',
             'description' => 'nullable|string|max:1000',
-            'specialization' => 'nullable|array',
-            'phone' => 'nullable|string',
-            'skype' => 'nullable|string|max:30',
             'avatar' => 'nullable|max:10000|mimes:jpg,jpeg,png',
-            'notification_settings' => 'nullable',
         ];
     }
 
@@ -57,9 +52,6 @@ class ChangeSettingsRequest extends FormRequest
 
             'birth_date.date' => 'Дата неправильного формата',
             'description.max' => 'Слишком длинное описание',
-
-            'phone.integer' => 'Телефон должен быть числовым значением',
-            'skype.max' => 'Слишком длинный никнейм пользователя',
 
             'avatar.mimes' => 'Файл неверного формата',
             'avatar.max' => 'Слишком большой размер файла'

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Image;
 use App\Traits\HasRoles;
 use App\Models\Task\Task;
 use App\Models\Task\Service;
@@ -14,6 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Http\Services\ChangeSettings;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
+use App\Http\Requests\ChangeSettingsRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -33,6 +35,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'description',
+        'birth_date',
     ];
 
     /**
@@ -103,12 +108,12 @@ class User extends Authenticatable
         return asset('/public/uploads/user/avatars/'.$this->avatar);
     }
 
-    public static function uploadAvatar(ChangeSettings $request, $previousImage = null)
+    public static function uploadAvatar(ChangeSettingsRequest $request, $previousImage = null)
     {
         if ($request->hasFile('avatar')) {
-            if ($previousImage) {
-                Storage::delete($previousImage);
-            }
+            // if ($previousImage) {
+            //     Storage::delete($previousImage);
+            // }
 
             $imgFile = $request->file('avatar');
 
@@ -119,7 +124,7 @@ class User extends Authenticatable
                 $const->aspectRatio();
             })->save();
 
-            return $data['avatar'] = $path;
+            return $data['avatar'] = str_replace("user/avatars/", "", $path);
         }
         return null;
     }
