@@ -21,7 +21,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Список пользователей</p>
                     </a>
@@ -30,12 +30,6 @@
                     <a href="{{ route('admin.hairdressers.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Рейтинг парикмахеров</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('users.create') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Новый пользователь</p>
                     </a>
                 </li>
             </ul>
@@ -65,7 +59,7 @@
         </li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tags"></i>
+                <i class="nav-icon fa fa-hashtag"></i>
                 <p>
                     Тэги
                     <i class="right fas fa-angle-left"></i>
@@ -112,7 +106,7 @@
         </li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-reply"></i>
+                <i class="nav-icon fa fa-reply"></i>
                 <p>
                     Отклики
                     <i class="right fas fa-angle-left"></i>
@@ -179,6 +173,23 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-scissors"></i>
+                <p>
+                    Услуги
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('services.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Все услуги</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-header">БЛОГ</li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -222,6 +233,23 @@
                     <a href="{{ route('blog-categories.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Новая категория</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-comment"></i>
+                <p>
+                    Комментарии
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('comments.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Список комментариев</p>
                     </a>
                 </li>
             </ul>

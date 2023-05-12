@@ -5,6 +5,7 @@ namespace App\Models\Task;
 use Image;
 
 use App\Models\User;
+use App\Models\Task\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Task\StoreService;
@@ -26,6 +27,11 @@ class Service extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public static function uploadImage(StoreService $request, $previousImage = null)

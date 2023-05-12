@@ -7,9 +7,6 @@
         <div class="card">
             @include('admin.layouts.card-header')
             <div class="card-body">
-                <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">
-                    Добавить пользователя
-                </a>
                 @if ($hairdressers->count())
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -46,11 +43,11 @@
                                                 class="btn btn-warning btn-sm float-left mr-1" target="_blank">
                                                 <i class="fas fa-share"></i>
                                             </a>
-                                            <a href="{{ route('users.edit', ['user' => $hairdresser->id]) }}"
+                                            <a href="{{ route('admin.users.edit', ['user' => $hairdresser->id]) }}"
                                                 class="btn btn-info btn-sm float-left mr-1">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            <form action="{{ route('users.destroy', ['user' => $hairdresser->id]) }}"
+                                            <form action="{{ route('admin.users.destroy', ['user' => $hairdresser->id]) }}"
                                                 method="post" class="float-left">
                                                 @csrf
                                                 @method('DELETE')

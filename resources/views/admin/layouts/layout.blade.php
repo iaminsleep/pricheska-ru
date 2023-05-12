@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Админка | @yield('title')</title>
+    <title>Админ-панель | @yield('title')</title>
     <link rel="icon" href="{{ asset('public/assets/admin/img/AdminLTELogo.png') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('public/assets/admin/css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .ck-editor__editable_inline {
             min-height: 300px;
@@ -17,7 +18,7 @@
 
         .statistics-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
             grid-gap: 10px;
         }
@@ -25,7 +26,7 @@
         .tile {
             background-color: #dfdfdf;
             border-radius: 10px;
-            padding: 125px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -37,6 +38,7 @@
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
             width: 260px;
+            height: 50px;
         }
     </style>
     @yield('head-scripts')
@@ -217,7 +219,7 @@
             <a href="{{ route('home') }}" target="_blank" class="brand-link">
                 <img src="{{ asset('public/assets/admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">Админ-панель</span>
             </a>
 
             <!-- Sidebar -->

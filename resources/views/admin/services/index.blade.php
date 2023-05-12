@@ -1,51 +1,48 @@
 @extends('admin.layouts.layout')
 
-@section('title', 'Список всех пользователей')
+@section('title', 'Список услуг')
 
 @section('content')
     <section class="content">
         <div class="card">
             @include('admin.layouts.card-header')
             <div class="card-body">
-                @if ($users->count())
+                @if ($services->count())
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
-                                    <th>Имя пользователя</th>
-                                    <th>Почта</th>
-                                    <th>Роль</th>
-                                    <th>Дата регистрации</th>
+                                    <th>Автор</th>
+                                    <th>Заголовок</th>
+                                    <th>Категория</th>
+                                    <th>Описание</th>
+                                    <th>Цена</th>
+                                    <th>Дата создания</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($services as $service)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->roles->pluck('name')->map(function ($name) {
-                                                return $name;
-                                            })->join(', ') }}
-                                        </td>
-                                        <td>{{ $user->created_at }}</td>
+                                        <td>{{ $service->id }}</td>
+                                        <td>{{ $service->user->name }}</td>
+                                        <td>{{ $service->name }}</td>
+                                        <td>{{ $service->category->title }}</td>
+                                        <td>{{ $service->description }}</td>
+                                        <td>{{ $service->price }}</td>
+                                        <td>{{ $service->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('users.single', ['id' => $user->id]) }}"
+                                            <a href="{{ route('users.single', ['id' => $service->user->id]) }}"
                                                 class="btn btn-warning btn-sm float-left mr-1" target="_blank">
                                                 <i class="fas fa-share"></i>
                                             </a>
-                                            <a href="{{ route('admin.users.edit', ['user' => $user->id]) }}"
-                                                class="btn btn-info btn-sm float-left mr-1">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </a>
-                                            <form action="{{ route('admin.users.destroy', ['user' => $user->id]) }}"
+                                            <form action="{{ route('services.destroy', ['service' => $service->id]) }}"
                                                 method="post" class="float-left">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('Подтвердите удаление пользователя')">
+                                                    onclick="return confirm('Подтвердите удаление')">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>
@@ -56,11 +53,11 @@
                         </table>
                     </div>
                 @else
-                    <p>Пользователей пока нет...</p>
+                    <p>Заказов пока нет...</p>
                 @endif
             </div>
             <div class="card-footer">
-                {{ $users->links() }}
+                {{ $services->links() }}
             </div>
         </div>
     </section>

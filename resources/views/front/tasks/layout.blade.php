@@ -6,6 +6,7 @@
     <title>@yield('title')</title>
     @yield('head')
     <link href="{{ asset('public/assets/front/tasks/css/front.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/front/tasks/css/media.css') }}" rel="stylesheet">
     <link rel="icon" href="{{ asset('public/assets/front/tasks/img/barber-shop.png') }}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data.js"></script>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Task\UserController;
 use App\Http\Controllers\Blog\CommentController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // Доступно только админам
@@ -14,7 +15,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/', 'MainController@index')->name('admin.index');
         Route::get('/statistics', 'MainController@index')->name('admin.chart');
 
-        Route::resource('/users', 'UserController');
+        Route::resource('/users', AdminUserController::class, [
+            'names' => [
+                'index' => 'admin.users.index',
+                'store' => 'admin.users.store', 'edit' => 'admin.users.edit',
+                'update' => 'admin.users.update', 'destroy' => 'admin.users.destroy',
+            ]
+        ]);
 
         Route::get('/hairdressers', 'UserController@hairdressers')->name('admin.hairdressers.index');
 
@@ -32,6 +39,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                     'update' => 'admin.posts.update', 'destroy' => 'admin.posts.destroy',
                 ]
             ]);
+
+            Route::resource('/comments', 'CommentController');
         });
 
         Route::group(['namespace' => 'Task'], function () {
@@ -48,6 +57,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                     'update' => 'admin.tasks.update', 'destroy' => 'admin.tasks.destroy',
                 ]
             ]);
+
+            Route::resource('/services', 'ServiceController');
         });
     });
 
