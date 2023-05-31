@@ -85,9 +85,9 @@ class UserSeeder extends Seeder
         $user4->roles()->attach($hairdresser);
 
         $user5 = new User();
-        $user5->name = 'Морозова Евгения';
+        $user5->name = 'Макеева Юлия';
         $user5->description = 'Давать шансы человеку, который вас предал, наверное, тоже самое, что дать вторую пулю тому, кто первый раз в вас не попал.';
-        $user5->email = 'evgeniya@email.com';
+        $user5->email = 'yuliya@email.com';
         $user5->password = bcrypt('password@');
         $user5->avatar = 'avatar-6.png';
         $user5->last_seen = (new \DateTime())->format("Y-m-d H:i:s");

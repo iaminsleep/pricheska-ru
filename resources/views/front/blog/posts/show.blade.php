@@ -7,27 +7,26 @@
         <div class="blog-title-area">
             <ol class="breadcrumb hidden-xs-down">
                 <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Главная</a></li>
-                <li class="breadcrumb-item"><a
-                        href="{{ route('categories.single', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a>
+                <li class="breadcrumb-item"><a href="{{ route('categories.single', ['slug' => $post->category->slug]) }}">
+                        {{ $post->category->title }}
+                    </a>
                 </li>
                 <li class="breadcrumb-item active">{{ $post->title }}</li>
             </ol>
 
-            <span class="color-yellow"><a href="{{ route('categories.single', ['slug' => $post->category->slug]) }}"
+            <span class="color-yellow">
+                <a href="{{ route('categories.single', ['slug' => $post->category->slug]) }}"
                     title="">{{ $post->category->title }}</a></span>
-
             <h3>{{ $post->title }}</h3>
-
             <div class="blog-meta big-meta">
                 <small><a href="marketing-single.html" title="">{{ $post->getDate() }}</a></small>
                 <small><a href="blog-author.html" title="">{{ $post->creator->name }}</a></small>
                 <small><a href="#" title=""><i class="fa fa-eye"></i> {{ $post->views }}</a></small>
-            </div><!-- end meta -->
-        </div><!-- end title -->
-
+            </div>
+        </div>
         <div class="single-post-media">
             <img src="{{ $post->getImage() }}" alt="{{ $post->title }}" class="img-fluid">
-        </div><!-- end media -->
+        </div>
 
         <div class="blog-content">
             {!! $post->content !!}

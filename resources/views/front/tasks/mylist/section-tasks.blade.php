@@ -1,4 +1,4 @@
-<section class="my-list">
+<section class="my-list" style="border-radius: 10px">
     <div class="my-list__wrapper">
         <h1>Мои задания</h1>
         @forelse($tasks as $task)

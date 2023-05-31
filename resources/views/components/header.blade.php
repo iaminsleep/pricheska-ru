@@ -8,31 +8,36 @@
         <div class="header__nav" style="margin-left:10%">
             <ul class="header-nav__list site-list">
                 <li class="site-list__item @if (Route::currentRouteName() === 'tasks.index') {{ 'site-list__item--active' }} @endif">
-                    <a style="color: #ffffff !important;" href="{{ route('tasks.index') }}">Задания</a>
+                    <a style="color: #ffffff !important; font-weight: normal"
+                        href="{{ route('tasks.index') }}">Задания</a>
                 </li>
                 <li class="site-list__item @if (Route::currentRouteName() === 'users.index') {{ 'site-list__item--active' }} @endif">
-                    <a style="color: #ffffff !important;" href="{{ route('users.index') }}">Парикмахеры</a>
+                    <a style="color: #ffffff !important; font-weight: normal"
+                        href="{{ route('users.index') }}">Парикмахеры</a>
                 </li>
                 @auth
                     @if (!auth()->user()->isHairdresser())
                         <li
                             class="site-list__item @if (Route::currentRouteName() === 'task.create') {{ 'site-list__item--active' }} @endif">
-                            <a style="color: #ffffff !important;" href="{{ route('task.create') }}">Создать заказ</a>
+                            <a style="color: #ffffff !important; font-weight: normal"
+                                href="{{ route('task.create') }}">Создать заказ</a>
                         </li>
                     @else
                         <li
                             class="site-list__item @if (Route::currentRouteName() === 'task.create') {{ 'site-list__item--active' }} @endif">
-                            <a style="color: #ffffff !important;" href="{{ route('service.create') }}">Создать услугу</a>
+                            <a style="color: #ffffff !important; font-weight: normal"
+                                href="{{ route('service.create') }}">Создать услугу</a>
                         </li>
                     @endif
                     <li class="site-list__item @if (Route::currentRouteName() === 'users.single') {{ 'site-list__item--active' }} @endif">
-                        <a style="color: #ffffff !important;"
+                        <a style="color: #ffffff !important; font-weight: normal"
                             href="{{ route('users.single', ['id' => auth()->id()]) }}">Мой
                             профиль</a>
                     </li>
                 @endauth
                 <li class="site-list__item  @if (Route::currentRouteName() === 'posts.index') {{ 'site-list__item--active' }} @endif">
-                    <a style="color: #ffffff !important;" href="{{ route('posts.index') }}">Блог</a>
+                    <a style="color: #ffffff !important; font-weight: normal"
+                        href="{{ route('posts.index') }}">Блог</a>
                 </li>
             </ul>
         </div>
@@ -65,7 +70,7 @@
                     <img src="{{ auth()->user()->getImage() }}" style="width: 100%; height: 100%; object-fit:cover"
                         alt="Аватар пользователя {{ auth()->user()->name }}">
                 </a>
-                <span class="header__account-name">
+                <span class="header__account-name" style="font-weight: normal">
                     {{ auth()->user()->name }}
                 </span>
             </div>

@@ -19,7 +19,7 @@
 
 @section('page-content')
     <div class="main-container page-container">
-        <section class="create__task" style="width: 600px;">
+        <section class="create__task" style="width: 600px; border-radius: 10px">
             <h1>Редактирование заказа</h1>
             <div class="create__task-main">
                 @include('front.tasks.edit.section-create-form')

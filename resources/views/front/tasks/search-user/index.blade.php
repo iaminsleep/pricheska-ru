@@ -5,7 +5,7 @@
 @section('main-class', 'page-main')
 
 @section('page-content')
-    <div class="main-container page-container relative-container">
+    <div class="main-container page-container relative-container" style="border-radius: 10px">
         <a class="dec-none" href="{{ route('users.index') }}">
             <button class="button absolute-button">
                 << Назад</button>

@@ -16,7 +16,7 @@
 <body class="@yield('body-class')">
     <div class="table-layout" style="background-color:#EDE9E6">
         <x-header></x-header>
-        <main class="@yield('main-class')" style="background-color: #EDE9E6">
+        <main class="@yield('main-class')" style="background-color: #EDE9E6; padding-top: 30px;">
             @yield('page-content')
         </main>
         @guest

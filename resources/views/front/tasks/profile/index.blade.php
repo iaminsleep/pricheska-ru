@@ -6,7 +6,7 @@
 
 @section('page-content')
     <div class="main-container page-container">
-        <section class="content-view">
+        <section class="content-view" style="border-radius: 10px">
             @include('front.tasks.profile.section-user-card')
             @if ($user->isHairdresser())
                 <div class="content-view__feedback">

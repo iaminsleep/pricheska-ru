@@ -1,4 +1,4 @@
-<section class="search-task">
+<section class="search-task" style="border-radius: 10px">
     <div class="search-task__wrapper">
         <form class="search-task__form" method="get" action="{{ route('users.search') }}">
             @include('front.tasks.performers.partials.category-filters')

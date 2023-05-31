@@ -1,4 +1,4 @@
-<section class="new-task">
+<section class="new-task" style=" border-radius: 10px">
     <div class="new-task__wrapper">
         <h1>Новые заказы</h1>
         @forelse($tasks as $task)

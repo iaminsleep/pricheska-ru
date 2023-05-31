@@ -1,4 +1,4 @@
-<div class="connect-desk__profile-mini">
+<div class="connect-desk__profile-mini" style="border-radius: 10px">
     <div class="profile-mini__wrapper">
         <h3>Исполнитель</h3>
         <div class="profile-mini__top">

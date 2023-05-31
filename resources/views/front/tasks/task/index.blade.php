@@ -26,14 +26,14 @@
 
 @section('page-content')
     <div class="main-container page-container" @if ($task->status->id !== 1 && $task->status->id !== 4) style="opacity: 0.7" @endif>
-        <section class="search-task" style="margin-right: 20px; width: auto">
+        <section class="search-task" style="margin-right: 20px; width: auto; border-radius: 10px">
             <div class="search-task__wrapper">
                 <h3 style="justify-content: center;
 display: flex;">Рекомендации</h3>
                 @foreach ($hairdressers as $hairdresser)
                     <div class="content-view__feedback-card user__search-wrapper"
-                        style="border-left: 2px solid #d4d4d4; border-right: 2px solid #d4d4d4; padding-left: 5px;
-padding-right: 5px;@if ($loop->iteration === 1) border-top: 2px solid #d4d4d4; @endif @if ($hairdresser->additiveCriterion() >= 0.9) background-color: #fff8d0 @endif">
+                        style="border: 2px solid #d4d4d4; padding-left: 5px;
+padding-right: 5px; border-radius: 10px; #d4d4d4; @if ($loop->iteration === 1) @else margin-top: 10px; @endif @if ($hairdresser->additiveCriterion() >= 0.9) border: 2px solid orange; @endif">
                         <div class="feedback-card__top" style="flex-direction: column; align-items:center">
                             <div class="user__search-icon" style="align-items:center">
                                 <a href="{{ route('users.single', ['id' => $hairdresser->id]) }}">
@@ -44,7 +44,8 @@ padding-right: 5px;@if ($loop->iteration === 1) border-top: 2px solid #d4d4d4; @
                             </div>
                             <div class="feedback-card__top--name user__search-card">
                                 <p class="link-name">
-                                    <a href="{{ route('users.single', ['id' => $hairdresser->id]) }}" class="link-regular">
+                                    <a style="padding-left: 10px;"
+                                        href="{{ route('users.single', ['id' => $hairdresser->id]) }}" class="link-regular">
                                         {{ $hairdresser->name }}
                                     </a>
                                 </p>
@@ -57,7 +58,7 @@ padding-right: 5px;@if ($loop->iteration === 1) border-top: 2px solid #d4d4d4; @
             </div>
         </section>
 
-        <section class="content-view">
+        <section class="content-view" style="border-radius: 10px">
             <div class="content-view__card">
                 @include('front.tasks.task.partials.info-general')
                 @include('front.tasks.task.partials.action-buttons')

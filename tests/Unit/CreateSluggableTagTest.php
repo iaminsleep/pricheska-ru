@@ -27,8 +27,6 @@ class CreateSluggableTagTest extends TestCase
         $tag->title = 'Привет мир!';
         $tag->save();
 
-        // Log::info($tag->slug);
-
         $this->assertDatabaseHas('tags', [
             'slug' => 'privet-mir'
         ]);

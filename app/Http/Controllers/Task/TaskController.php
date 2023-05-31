@@ -102,7 +102,6 @@ class TaskController extends Controller
             'avatar',
         ])->first() ?? null;
 
-
         $sorted = Hairdresser::get()
                             ->sortBy('additive_criterion') //appended attribute
                             ->pluck('id')
@@ -110,7 +109,7 @@ class TaskController extends Controller
 
         $orderedIds = implode(',', $sorted);
 
-        $recommendedHairdressers = $performer ? Hairdresser::inRandomOrder()->whereNot('users.id', $performer->id)->orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->take(2)->get() : Hairdresser::inRandomOrder()->take(2)->orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->get();
+        $recommendedHairdressers = $performer ? Hairdresser::inRandomOrder()->whereNot('users.id', $performer->id)->orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->take(3)->get() : Hairdresser::inRandomOrder()->take(3)->orderByRaw(DB::raw("FIELD(users.id, ".$orderedIds." ) desc"))->get();
 
         return view(
             'front.tasks.task.index',

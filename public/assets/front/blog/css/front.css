@@ -9730,7 +9730,7 @@ div.tab button:hover {
 **************************************/
 
 .section {
-    padding: 4rem 0;
+    padding: 3rem 0;
     display: block;
     position: relative;
     background-color: #ffffff;
@@ -10652,7 +10652,7 @@ hr.invis3 {
 .sidebar .widget {
     position: relative;
     display: block;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .sidebar .banner-spot {
@@ -13127,7 +13127,7 @@ h6 {
 .sidebar .widget {
     background-color: #ffffff;
     padding: 3rem 2rem;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .widget-no-style {
@@ -13232,6 +13232,7 @@ h6 {
 .page-wrapper {
     background-color: #ffffff;
     padding: 3rem;
+    border-radius: 10px;
 }
 
 .single-post-media {
